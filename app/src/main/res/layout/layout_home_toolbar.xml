@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color6DC99B"
-        android:elevation="@dimen/_5sdp"
+        android:elevation="@dimen/_2sdp"
         android:visibility="@{toolbarModel.isVisible ? View.VISIBLE : View.GONE}">
 
 

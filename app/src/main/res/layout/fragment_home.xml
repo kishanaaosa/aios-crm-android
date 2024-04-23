@@ -10,38 +10,621 @@
             type="com.ecommercwebsite.aioscrm.ui.home.viewmodel.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.ui.HomeFragment">
+        android:fillViewport="true">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/color6DC99B"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/white"
-            app:tabMode="scrollable"
-            android:visibility="gone"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@color/white">
+            android:layout_height="match_parent"
+            android:background="@color/colorF8F5F6"
+            android:paddingBottom="@dimen/_8ssp"
+            tools:context=".ui.home.ui.HomeFragment">
 
-        </com.google.android.material.tabs.TabLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/_8sdp" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPagerMyAccount"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
-            android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/_8sdp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFinishedTask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFinishedTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_16sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivFinishedTasks"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:tint="@color/color6DC99B"
+                        app:layout_constraintStart_toStartOf="@id/clFinishedTask"
+                        app:layout_constraintTop_toTopOf="@id/clFinishedTask"
+                        app:srcCompat="@drawable/ic_task" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/lblTaskNotFinished"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Tasks not Finished"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedTasks"
+                        app:layout_constraintEnd_toStartOf="@+id/tvTaskCounts"
+                        app:layout_constraintStart_toEndOf="@id/ivFinishedTasks"
+                        app:layout_constraintTop_toTopOf="@id/ivFinishedTasks" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTaskCounts"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="5/25"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedTasks"
+                        app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
+                        app:layout_constraintStart_toEndOf="@id/lblTaskNotFinished"
+                        app:layout_constraintTop_toTopOf="@id/ivFinishedTasks" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/pb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:progress="10"
+                        app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
+                        app:layout_constraintStart_toStartOf="@id/ivFinishedTasks"
+                        app:layout_constraintTop_toBottomOf="@id/ivFinishedTasks" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvOpenedTask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/cvFinishedTask">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clOpenedTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_16sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivOpenedTask"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:tint="@color/color6DC99B"
+                        app:layout_constraintStart_toStartOf="@id/clOpenedTask"
+                        app:layout_constraintTop_toTopOf="@id/clOpenedTask"
+                        app:srcCompat="@drawable/ic_task" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/lblOpenedTask"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Opened Tasks"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toBottomOf="@id/ivOpenedTask"
+                        app:layout_constraintEnd_toStartOf="@+id/tvTaskOpenedCounts"
+                        app:layout_constraintStart_toEndOf="@id/ivOpenedTask"
+                        app:layout_constraintTop_toTopOf="@id/ivOpenedTask" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTaskOpenedCounts"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="5/25"
+                        app:layout_constraintBottom_toBottomOf="@id/ivOpenedTask"
+                        app:layout_constraintEnd_toEndOf="@id/clOpenedTask"
+                        app:layout_constraintStart_toEndOf="@id/lblOpenedTask"
+                        app:layout_constraintTop_toTopOf="@id/ivOpenedTask" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/pbOpenedTasks"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:progress="10"
+                        app:layout_constraintEnd_toEndOf="@id/clOpenedTask"
+                        app:layout_constraintStart_toStartOf="@id/ivOpenedTask"
+                        app:layout_constraintTop_toBottomOf="@id/ivOpenedTask" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvConvertedLeads"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/cvOpenedTask">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clConvertedLeads"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_16sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivConvertedLeads"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:tint="@color/color6DC99B"
+                        app:layout_constraintStart_toStartOf="@id/clConvertedLeads"
+                        app:layout_constraintTop_toTopOf="@id/clConvertedLeads"
+                        app:srcCompat="@drawable/ic_leads" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/lblConvertedLeads"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Converted Leads"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toBottomOf="@id/ivConvertedLeads"
+                        app:layout_constraintEnd_toStartOf="@+id/tvConvertedLeadsCount"
+                        app:layout_constraintStart_toEndOf="@id/ivConvertedLeads"
+                        app:layout_constraintTop_toTopOf="@id/ivConvertedLeads" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvConvertedLeadsCount"
+                        style="@style/TextView.regular.10.color444444"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="5/25"
+                        app:layout_constraintBottom_toBottomOf="@id/ivConvertedLeads"
+                        app:layout_constraintEnd_toEndOf="@id/clConvertedLeads"
+                        app:layout_constraintStart_toEndOf="@id/lblConvertedLeads"
+                        app:layout_constraintTop_toTopOf="@id/ivConvertedLeads" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/pbConvertedLeads"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:progress="10"
+                        app:layout_constraintEnd_toEndOf="@id/clConvertedLeads"
+                        app:layout_constraintStart_toStartOf="@id/ivConvertedLeads"
+                        app:layout_constraintTop_toBottomOf="@id/ivConvertedLeads" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvIncomingCalls"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_4ssp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/cvDialCalls"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/cvConvertedLeads">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_8sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivInComingCallBackGround"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/color6DC99B"
+                        app:layout_constraintBottom_toBottomOf="@id/ivInComingCall"
+                        app:layout_constraintEnd_toEndOf="@+id/ivInComingCall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivInComingCall"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_call"
+                        app:tint="@color/white" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvInComingCallCount"
+                        style="@style/TextView.bold.12.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivInComingCall" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvInComingCall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Incoming Calls"
+                        style="@style/TextView.regular.10.color444444"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvInComingCallCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvDialCalls"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4ssp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/cvIncomingCalls"
+                app:layout_constraintTop_toBottomOf="@id/cvConvertedLeads">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_8sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivDialCallsBackGround"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/color6DC99B"
+                        app:layout_constraintBottom_toBottomOf="@id/ivDialCalls"
+                        app:layout_constraintEnd_toEndOf="@+id/ivDialCalls"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivDialCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_call"
+                        app:tint="@color/white" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDialCallsCount"
+                        style="@style/TextView.bold.12.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivDialCalls" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDialCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        style="@style/TextView.regular.10.color444444"
+                        android:text="Dial Calls"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDialCallsCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvMissedCalls"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_4ssp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/cvUnAnsweredCalls"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/cvIncomingCalls">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_8sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivMissedCallsBackGround"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/color6DC99B"
+                        app:layout_constraintBottom_toBottomOf="@id/ivMissedCalls"
+                        app:layout_constraintEnd_toEndOf="@+id/ivMissedCalls"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivMissedCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_call"
+                        app:tint="@color/white" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvMissedCallsCount"
+                        style="@style/TextView.bold.12.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivMissedCalls" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvMissedCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        style="@style/TextView.regular.10.color444444"
+                        android:lines="1"
+                        android:text="Missed Calls"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMissedCallsCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvUnAnsweredCalls"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4ssp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/cvMissedCalls"
+                app:layout_constraintTop_toBottomOf="@id/cvDialCalls">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_8sdp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivUnAnsweredCallsGround"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/color6DC99B"
+                        app:layout_constraintBottom_toBottomOf="@id/ivUnAnsweredCalls"
+                        app:layout_constraintEnd_toEndOf="@+id/ivUnAnsweredCalls"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivUnAnsweredCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:scaleType="centerInside"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_call"
+                        app:tint="@color/white" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvUnAnsweredCallsCount"
+                        style="@style/TextView.bold.12.color444444"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivUnAnsweredCalls" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvUnAnsweredCalls"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        style="@style/TextView.regular.10.color444444"
+                        android:text="Unanswered Calls"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvUnAnsweredCallsCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvHighPriorityTasks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                app:cardBackgroundColor="@color/color_8B513E"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/cvLowPriorityTasks"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/cvMissedCalls">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_8sdp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvHighPriorityTaskCount"
+                        style="@style/TextView.bold.12.colorWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvHighPriorityTask"
+                        android:layout_width="0dp"
+                        style="@style/TextView.regular.10.colorWhite"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="High Priority Tasks"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHighPriorityTaskCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvLowPriorityTasks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/color_d1b452"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/cvHighPriorityTasks"
+                app:layout_constraintTop_toBottomOf="@id/cvUnAnsweredCalls">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_8sdp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvLowPriorityTaskCount"
+                        style="@style/TextView.bold.12.colorWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvLowPriorityTask"
+                        style="@style/TextView.regular.10.colorWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Low Priority Tasks"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLowPriorityTaskCount" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -1,10 +1,14 @@
 package com.ecommercwebsite.aioscrm.ui.leads.ui
 
+import android.view.View
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.base.FragmentBase
 import com.ecommercwebsite.aioscrm.base.ToolbarModel
+import com.ecommercwebsite.aioscrm.bind.GenericRecyclerViewAdapter
 import com.ecommercwebsite.aioscrm.databinding.FragmentLeadsBinding
+import com.ecommercwebsite.aioscrm.databinding.ItemLeadsBinding
+import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsModel
 import com.ecommercwebsite.aioscrm.ui.leads.viewmodel.LeadsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +29,91 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
     }
 
     override fun initializeScreenVariables() {
+        var leadsList: ArrayList<LeadsModel> = arrayListOf()
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+
+
+        setUpLeads(leadsList)
+    }
+
+    private fun setUpLeads(ledaList: ArrayList<LeadsModel>) {
+        if (ledaList.size == 0) {
+            showNoDataFound()
+        } else {
+            getDataBinding().rvLanguage.adapter = object :
+                GenericRecyclerViewAdapter<LeadsModel, ItemLeadsBinding>(
+                    requireContext(),
+                    ledaList
+                ) {
+                override val layoutResId: Int
+                    get() = R.layout.item_leads
+
+                override fun onBindData(
+                    model: LeadsModel,
+                    position: Int,
+                    dataBinding: ItemLeadsBinding
+                ) {
+                    dataBinding.model = model
+                    dataBinding.executePendingBindings()
+                }
+
+                override fun onItemClick(model: LeadsModel, position: Int) {
+
+                }
+            }
+        }
+    }
+
+    private fun showNoDataFound() {
+        getDataBinding().clNoDataFound.visibility = View.VISIBLE
+        getDataBinding().rvLanguage.visibility = View.GONE
     }
 
     override fun getViewModelClass(): Class<LeadsViewModel> = LeadsViewModel::class.java
