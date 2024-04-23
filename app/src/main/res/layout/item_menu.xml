@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="menu"
+            type="com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@{menu.isSelected?@drawable/bg_round_menu_selected:@drawable/bg_round_menu_unselected}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFacebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@{menu.imageId}"
+            android:tint="@{menu.isSelected? @color/white: @color/color6E394A}"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            tools:src="@drawable/tmp_ic_home" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLogInWith"
+            style="@style/TextView.regular.12.color6E394A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:background="@color/white"
+            android:singleLine="true"
+            android:text="@{menu.name}"
+            android:textColor="@{menu.isSelected? @color/color6DC99B:@color/color6E394A}"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFacebook"
+            app:layout_constraintStart_toEndOf="@+id/ivFacebook"
+            app:layout_constraintTop_toTopOf="@+id/ivFacebook"
+            tools:text="Home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

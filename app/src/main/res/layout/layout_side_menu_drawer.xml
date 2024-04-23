@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="flag"
+            type="Boolean" />
+        <variable
+            name="profile"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@drawable/bg_round_bottom_corner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_28sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:elevation="@dimen/_2sdp"
+            android:scaleType="fitXY"
+            bind:loadProfileImage="@{profile}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+            app:srcCompat="@drawable/ic_profile"
+            app:strokeColor="@color/white"
+            app:strokeWidth="@dimen/_3sdp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvWelcome"
+            style="@style/TextView.regular.10.colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Welcome!"
+            app:layout_constraintStart_toEndOf="@id/ivProfile"
+            app:layout_constraintTop_toTopOf="@id/ivProfile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            style="@style/TextView.bold.12.colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="Guest"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+            app:layout_constraintStart_toEndOf="@id/ivProfile" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMyAccount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_29sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/montserrat_regular"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:text="My Account"
+            android:textColor="@color/color6DC99B"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="@{flag? View.VISIBLE: View.INVISIBLE}"
+            app:cornerRadius="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_29sdp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMenu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/clBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            tools:listitem="@layout/item_menu" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16ssp"
+            android:background="@color/colorF8F5F6"
+            android:padding="@dimen/_3sdp"
+            app:layout_constraintBottom_toTopOf="@+id/llIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAppLogo"
+                android:layout_width="25dp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_29sdp"
+                android:src="@drawable/ic_app_logo"
+                app:layout_constraintBottom_toBottomOf="@+id/clBottom"
+                app:layout_constraintStart_toStartOf="@id/clBottom"
+                app:layout_constraintTop_toTopOf="@+id/clBottom" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLogInWith"
+                style="@style/TextView.regular.12.color444444"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="App Version 1.0"
+                app:layout_constraintBottom_toBottomOf="@+id/ivAppLogo"
+                app:layout_constraintStart_toEndOf="@id/ivAppLogo"
+                app:layout_constraintTop_toTopOf="@+id/ivAppLogo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16ssp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFacebook"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_facebook" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivGoogle"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_google" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

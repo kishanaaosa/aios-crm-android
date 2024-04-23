@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tool="http://schemas.android.com/tools">
+    xmlns:tool="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,28 +19,28 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rootLayout"
         android:layout_width="match_parent"
-        android:visibility="@{toolbarModel.isVisible ? View.VISIBLE : View.GONE}"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500">
+        android:background="@color/color6DC99B"
+        android:elevation="@dimen/_5sdp"
+        android:visibility="@{toolbarModel.isVisible ? View.VISIBLE : View.GONE}">
 
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:visibility="@{toolbarModel.backButtonVisible ? View.VISIBLE : View.GONE}"
-            android:onClick="@{()->clickListener.onBackClick()}"
-            android:padding="@dimen/_6sdp"
+            android:id="@+id/ivMenu"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:onClick="@{()->clickListener.onMenuClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_back" />
+            app:srcCompat="@drawable/ic_menu" />
+
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            style="@style/TextView.regular.12.colorWhite"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ellipsize="end"
@@ -49,11 +50,67 @@
             android:paddingEnd="@dimen/_16sdp"
             android:text="@{toolbarModel.title}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivBack"
+            app:layout_constraintEnd_toStartOf="@id/ivNotification"
+            app:layout_constraintStart_toEndOf="@id/ivMenu"
             app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/white"
             tool:text="@tools:sample/lorem/random" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:onClick="@{()->clickListener.onNotificationClick()}"
+            android:padding="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivCart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_notification" />
+
+        <TextView
+            android:id="@+id/tvBadgeNotification"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:background="@drawable/bg_badge"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/color6DC99B"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintCircle="@+id/ivNotification"
+            app:layout_constraintCircleAngle="45"
+            app:layout_constraintCircleRadius="10dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:onClick="@{()->clickListener.onNotificationClick()}"
+            android:padding="@dimen/_7sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_notification" />
+
+        <TextView
+            android:id="@+id/tvBadgeCart"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:background="@drawable/bg_badge"
+            android:text="1"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:textColor="@color/color6DC99B"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintCircle="@+id/ivCart"
+            app:layout_constraintCircleAngle="45"
+            app:layout_constraintCircleRadius="10dp"
+            tools:ignore="MissingConstraints" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

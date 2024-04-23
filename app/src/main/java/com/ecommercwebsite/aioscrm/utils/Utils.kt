@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import com.ecommercwebsite.aioscrm.R
+import java.util.Calendar
 
 object Utils {
     /**
@@ -21,6 +22,19 @@ object Utils {
         dialog.setCancelable(false)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return dialog
+    }
+    /**
+     * Common greeting message
+     */
+     fun getGreetingMessage(): String {
+        val c = Calendar.getInstance()
+        return when (c.get(Calendar.HOUR_OF_DAY)) {
+            in 0..11 -> "Good Morning"
+            in 12..15 -> "Good Afternoon"
+            in 16..20 -> "Good Evening"
+            in 21..23 -> "Good Night"
+            else -> "Good Morning"
+        }
     }
 
     /**

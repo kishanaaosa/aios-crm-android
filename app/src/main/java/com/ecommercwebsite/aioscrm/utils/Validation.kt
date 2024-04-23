@@ -61,18 +61,27 @@ object Validation {
             mString == null -> {
                 false
             }
+
             mString.equals("", ignoreCase = true) -> {
                 false
             }
+
             mString.equals("N/A", ignoreCase = true) -> {
                 false
             }
+
             mString.equals("[]", ignoreCase = true) -> {
                 false
             }
+
             mString.equals("null", ignoreCase = true) -> {
                 false
             }
+
+            mString.isEmpty() -> {
+                false
+            }
+
             else -> !mString.equals("{}", ignoreCase = true)
         }
     }

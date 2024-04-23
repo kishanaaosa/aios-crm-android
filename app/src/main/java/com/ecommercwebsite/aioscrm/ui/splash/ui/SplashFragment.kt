@@ -1,9 +1,11 @@
-package com.ecommercwebsite.aioscrm.ui.splash
+package com.ecommercwebsite.aioscrm.ui.splash.ui
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.provider.Settings
+import android.view.animation.AnimationUtils
 import androidx.activity.addCallback
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.NavDirections
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
@@ -50,10 +52,16 @@ class SplashFragment : FragmentBase<ViewModelBase, FragmentSplashBinding>() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onResume() {
         super.onResume()
+        rotateLogo()
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(3000)
-            navigateToScreen(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+            delay(2000)
+            navigateToScreen(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
         }
+    }
+
+    private fun rotateLogo() {
+        val animation = AnimationUtils.loadAnimation(context, R.anim.rotate)
+        getDataBinding().imgAnimSplash?.startAnimation(animation)
     }
 
     private fun navigateToScreen(action: NavDirections) {

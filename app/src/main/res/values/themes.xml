@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Aioscrm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/color6DC99B</item>
+        <item name="colorPrimaryVariant">@color/color6DC99B</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,4 +13,426 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Text input layout -->
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_8sdp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeColor">@color/color6E394A</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <!-- Text input edit text font family montserrat(regular)  font size 14 font color color444444 -->
+    <style name="TextInputEditText.regular.14.color444444" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Text input edit text font family montserrat(regular)  font size 12 font color color444444 -->
+    <style name="TextInputEditText.regular.12.color444444" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Text input edit text font family montserrat(regular)  font size 11 font color color444444 -->
+    <style name="TextInputEditText.regular.11.color444444" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Text input edit text font family montserrat(regular)  font size 12 font color color50444480 -->
+    <style name="TextInputEditText.regular.12.color50444480" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color50444480</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 20 font color white -->
+    <style name="TextView.bold.20.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 18 font color white -->
+    <style name="TextView.bold.18.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 16 font color white -->
+    <style name="TextView.bold.16.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 14 font color color6E394A -->
+    <style name="TextView.regular.14.color6E394A" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color6E394A</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 12 font color color444444 -->
+    <style name="TextView.regular.12.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 12 font color color444444 -->
+    <style name="TextView.bold.12.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 14 font color white -->
+    <style name="TextView.regular.14.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 14 font color color6E394A -->
+    <style name="TextView.bold.14.color6E394A" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color6E394A</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 14 font color color6DC99B -->
+    <style name="TextView.bold.14.color6DC99B" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color6DC99B</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 14 font color color444444 -->
+    <style name="TextView.regular.14.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 14 font color color444444 -->
+    <style name="TextView.bold.14.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 36 font color white -->
+    <style name="TextView.bold.36.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_36ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 16 font color white -->
+    <style name="TextView.regular.16.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 9 font color color6DC99B -->
+    <style name="TextView.regular.9.color6DC99B" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_9ssp</item>
+        <item name="android:textColor">@color/color6DC99B</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 12 font color color6E394A -->
+    <style name="TextView.regular.12.color6E394A" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color6E394A</item>
+    </style>
+
+
+    <!-- Text view font family montserrat(regular) font size 12 font color color6DC99B -->
+    <style name="TextView.regular.12.color6DC99B" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color6DC99B</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 18 font color color506E394A -->
+    <style name="TextView.regular.18.color506E394A" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/color506E394A</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 12 font color White -->
+    <style name="TextView.regular.12.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 10 font color444444 -->
+    <style name="TextView.regular.10.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 10 font color White -->
+    <style name="TextView.regular.10.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 10 font color White -->
+    <style name="TextView.bold.10.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view font family montserrat(bold) font size 18 font color White -->
+    <style name="TextView.regular.18.colorWhite" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text view family montserrat(bold) font size 10 font color color6DC99B -->
+    <style name="TextView.bold.10.color6DC99B" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/color6DC99B</item>
+    </style>
+
+    <!-- Button font family montserrat(bold) font size 14 font color white -->
+    <style name="Button.bold.14.colorWhite" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+    </style>
+
+    <!-- Button font family montserrat(bold) font size 12 font color white -->
+    <style name="Button.bold.12.colorWhite" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+    </style>
+
+    <!-- Button font family montserrat(bold) font size 14 font color white -->
+    <style name="TextView.bold.14.colorWhite" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+    </style>
+
+    <!-- Button font family montserrat(bold) font size 12 font color white -->
+    <style name="TextView.bold.12.colorWhite" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+    </style>
+
+
+    <!-- Button font family montserrat(bold) font size 14 font color color6E394A -->
+    <style name="ButtonWithStroke.bold.14.color6E394A" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color6E394A</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+        <item name="strokeColor">@color/color6E394A</item>
+        <item name="strokeWidth">@dimen/_1sdp</item>
+        <item name="android:padding">@dimen/_12sdp</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+
+    <!-- Round Imageview -->
+    <!-- Round Imageview -->
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize30Percent" parent="">
+        <item name="cornerSize">30%</item>
+    </style>
+
+    <!--For Bottom sheet-->
+    <style name="MyBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MYBottomSheetStyle</item>
+    </style>
+
+    <style name="MYBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="CustomMaterialAlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogBodyTextStyle">
+            @style/BodyMaterialAlertDialog.MaterialComponents.Body.Text
+        </item>
+        <item name="materialAlertDialogTitleTextStyle">
+            @style/BodyMaterialAlertDialog.MaterialComponents.Title.Text
+        </item>
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
+
+    </style>
+
+    <style name="BodyMaterialAlertDialog.MaterialComponents.Body.Text" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">@color/color444444</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="BodyMaterialAlertDialog.MaterialComponents.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:fillColor">@color/colorE2D7DB</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="rippleColor">@color/color6DC99B</item>
+    </style>
+
+    <style name="Alert.Button.Negative" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:fillColor">@color/colorE2D7DB</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="rippleColor">@color/color6DC99B</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--regular Fonts style-->
+    <style name="regular.15.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!--regular Fonts style-->
+    <style name="regular.15.color3F3F3F" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">#3F3F3F</item>
+    </style>
+
+    <!--Medium Fonts style-->
+    <style name="medium.14.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="medium.14.color_8B513E" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/color_8B513E</item>
+    </style>
+
+    <!--SemiBold Font Style-->
+    <style name="semibold.30.color_d1b452" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_30ssp</item>
+        <item name="android:textColor">@color/color_d1b452</item>
+    </style>
+
+    <style name="semibold.30.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_30ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="semibold.13.colorWhite" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="semibold.13.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="semibold.13.color8D8D8E" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">#8D8D8E</item>
+    </style>
+
+    <style name="regular.13.color8D8D8E" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">#8D8D8E</item>
+    </style>
+
+    <style name="semibold.15.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="semibold.15.color3F3F3F" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">#3F3F3F</item>
+    </style>
+
+    <style name="semibold.13.color_d1b452" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:textColor">@color/color_d1b452</item>
+    </style>
+
+    <style name="semibold.12.colorBlack" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
