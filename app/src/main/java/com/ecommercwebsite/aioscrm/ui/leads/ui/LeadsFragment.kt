@@ -10,6 +10,7 @@ import com.ecommercwebsite.aioscrm.databinding.FragmentLeadsBinding
 import com.ecommercwebsite.aioscrm.databinding.ItemLeadsBinding
 import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsModel
 import com.ecommercwebsite.aioscrm.ui.leads.viewmodel.LeadsViewModel
+import com.ecommercwebsite.aioscrm.utils.CommonFunctionHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -78,6 +79,90 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
                 "0",
                 "0"
             ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
+        leadsList.add(
+            LeadsModel(
+                "1", "Sonu Gurnani",
+                "SkyLine Automobiles",
+                "sonu@gmail.com",
+                "9726540727",
+                "Sheets",
+                "New",
+                "Sheets",
+                "0",
+                "0"
+            ))
 
 
         setUpLeads(leadsList)
@@ -87,7 +172,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
         if (ledaList.size == 0) {
             showNoDataFound()
         } else {
-            getDataBinding().rvLanguage.adapter = object :
+            getDataBinding().rvLeads.adapter = object :
                 GenericRecyclerViewAdapter<LeadsModel, ItemLeadsBinding>(
                     requireContext(),
                     ledaList
@@ -100,6 +185,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
                     position: Int,
                     dataBinding: ItemLeadsBinding
                 ) {
+                    CommonFunctionHelper.setFadeAnimation(dataBinding.root)
                     dataBinding.model = model
                     dataBinding.executePendingBindings()
                 }
@@ -113,7 +199,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
 
     private fun showNoDataFound() {
         getDataBinding().clNoDataFound.visibility = View.VISIBLE
-        getDataBinding().rvLanguage.visibility = View.GONE
+        getDataBinding().rvLeads.visibility = View.GONE
     }
 
     override fun getViewModelClass(): Class<LeadsViewModel> = LeadsViewModel::class.java

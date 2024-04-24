@@ -13,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/_3sdp"
         app:cardCornerRadius="@dimen/_8sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,9 +26,9 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivUserProfile"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:background="@color/color444444"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/color6DC99B"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
@@ -99,8 +102,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivCall"
-                    android:layout_width="@dimen/_26sdp"
-                    android:layout_height="@dimen/_26sdp"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
                     android:src="@drawable/ic_call"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ivMail"
@@ -110,8 +113,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivMail"
-                    android:layout_width="@dimen/_26sdp"
-                    android:layout_height="@dimen/_26sdp"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
                     android:src="@drawable/ic_email"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ivWhatsApp"
@@ -120,8 +123,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivWhatsApp"
-                    android:layout_width="@dimen/_26sdp"
-                    android:layout_height="@dimen/_26sdp"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
                     android:src="@drawable/ic_whatsapp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ivEdit"
@@ -130,8 +133,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivEdit"
-                    android:layout_width="@dimen/_26sdp"
-                    android:layout_height="@dimen/_26sdp"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
                     android:src="@drawable/ic_edit"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
