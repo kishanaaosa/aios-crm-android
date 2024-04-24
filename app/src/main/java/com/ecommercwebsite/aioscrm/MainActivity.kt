@@ -26,7 +26,6 @@ import com.ecommercwebsite.aioscrm.base.ViewModelBase
 import com.ecommercwebsite.aioscrm.bind.GenericRecyclerViewAdapter
 import com.ecommercwebsite.aioscrm.databinding.ActivityMainBinding
 import com.ecommercwebsite.aioscrm.databinding.ItemMenuBinding
-import com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragmentDirections
 import com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel
 import com.ecommercwebsite.aioscrm.utils.DebugLog
 import com.ecommercwebsite.aioscrm.utils.HomeToolbarClickHandler
@@ -128,6 +127,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
 
                         "menuOption4" -> {
                             viewModel.showSnackbarMessage("logout")
+
                         }
 
                         else -> {
@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         }
         val menuOption4 =
             SideMenuModel(
-                "menuOption3",
+                "menuOption4",
                 getDrawableValue(R.drawable.ic_logout),
                 "Logout",
                 true,

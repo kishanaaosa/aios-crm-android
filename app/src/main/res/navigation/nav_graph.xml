@@ -37,21 +37,6 @@
         android:name="com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_salesFragment"
-            app:destination="@id/salesFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_toDoFragment"
-            app:destination="@id/toDoFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_myAccountFragment"
-            app:destination="@id/myAccountFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_notificationFragment"
-            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/leadsFragment"
