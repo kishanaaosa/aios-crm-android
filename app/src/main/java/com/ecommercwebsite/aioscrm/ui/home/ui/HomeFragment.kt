@@ -20,7 +20,9 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
                 isVisible = true,
                 title = "Home",
                 isBackButtonVisible = false,
-                isBottomNavVisible = true
+                isBottomNavVisible = true,
+                isNotificationVisible = true,
+                isMenuVisible = true
             )
         )
     }

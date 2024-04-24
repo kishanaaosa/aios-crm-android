@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,27 +13,29 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="@dimen/_3sdp"
-        app:cardCornerRadius="@dimen/_8sdp">
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_3sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_8sdp">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivUserProfile"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvUserProfile"
+                style="@style/TextView.bold.12.colorWhite"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:background="@color/color6DC99B"
+                android:background="@drawable/bg_round_menu_selected"
+                android:gravity="center"
+                android:text="S"
+                android:textAlignment="center"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                app:srcCompat="@drawable/ic_app_logo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCompanyName"
@@ -40,25 +43,31 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="@{model.company}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivUserProfile"
-                app:layout_constraintTop_toTopOf="@+id/ivUserProfile" />
+                app:layout_constraintStart_toEndOf="@+id/tvUserProfile"
+                app:layout_constraintTop_toTopOf="@+id/tvUserProfile"
+                tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvName"
                 style="@style/TextView.regular.10.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="@{model.name}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvCompanyName"
-                app:layout_constraintTop_toBottomOf="@id/tvCompanyName" />
+                app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
+                tools:text="@tools:sample/lorem" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvCompanyName"
                 app:layout_constraintTop_toBottomOf="@id/tvName">
@@ -69,7 +78,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@{model.status}" />
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.status}"
+                    tools:text="@tools:sample/lorem" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvSource"
@@ -77,7 +89,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@{model.source}" />
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.source}"
+                    tools:text="@tools:sample/lorem" />
 
             </LinearLayout>
 
@@ -88,13 +103,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:background="@color/colorF8F5F6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/ivUserProfile"
-                app:layout_constraintTop_toBottomOf="@id/ivUserProfile" />
+                app:layout_constraintStart_toStartOf="@id/tvUserProfile"
+                app:layout_constraintTop_toBottomOf="@id/tvUserProfile" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,8 +117,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivCall"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_call"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ivMail"
@@ -113,8 +129,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivMail"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_email"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ivWhatsApp"
@@ -123,8 +140,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivWhatsApp"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_whatsapp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ivEdit"
@@ -133,8 +151,9 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivEdit"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_edit"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

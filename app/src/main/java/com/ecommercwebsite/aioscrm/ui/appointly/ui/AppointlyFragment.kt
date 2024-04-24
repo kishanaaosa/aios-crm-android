@@ -19,7 +19,9 @@ class AppointlyFragment : FragmentBase<AppointlyViewModel, FragmentAppointlyBind
                 isVisible = true,
                 title = "Appointy",
                 isBackButtonVisible = false,
-                isBottomNavVisible = true
+                isBottomNavVisible = true,
+                isNotificationVisible = true,
+                isMenuVisible = true
             )
         )
     }

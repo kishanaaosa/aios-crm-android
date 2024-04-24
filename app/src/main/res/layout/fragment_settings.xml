@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.ecommercwebsite.aioscrm.ui.settings.viewmodel.SettingsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,11 +14,209 @@
         android:layout_height="match_parent"
         tools:context=".ui.settings.ui.SettingsFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNotificationAndAleart"
+            style="@style/TextView.regular.12.color444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@color/white"
+            android:text="Notifications &amp; Aleart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvNotificationAndAleart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotificationAndAleart"
+            app:strokeColor="@color/colorE2D7DB"
+            app:strokeWidth="@dimen/_1sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clNotificationAndAleart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchPushNotification"
+                    style="@style/TextView.regular.14.color444444"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:checked="@{viewModel.pushNotificationSaate}"
+                    android:onCheckedChanged="@{(switch, checked)->viewModel.pushNotificationCheckedChange(checked)}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="Push Notification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/clNotificationAndAleart"
+                    app:thumbTint="@drawable/switch_track_selector"
+                    app:trackTint="@drawable/switch_thumb_selector" />
+
+                <View
+                    android:id="@+id/viewPushNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/color44444433"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switchPushNotification" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchSms"
+                    style="@style/TextView.regular.14.color444444"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:checked="@{viewModel.smsState}"
+                    android:onCheckedChanged="@{(switch, checked)->viewModel.smsStateCheckedChange(checked)}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="SMS / Text Messages"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPushNotification"
+                    app:thumbTint="@drawable/switch_track_selector"
+                    app:trackTint="@drawable/switch_thumb_selector" />
+
+                <View
+                    android:id="@+id/viewSms"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/color44444433"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switchSms" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchEmail"
+                    style="@style/TextView.regular.14.color444444"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:checked="@{viewModel.emailState}"
+                    android:onCheckedChanged="@{(switch, checked)->viewModel.emailStateCheckedChange(checked)}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="Email Update"
+                    app:layout_constraintBottom_toBottomOf="@+id/clNotificationAndAleart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSms"
+                    app:thumbTint="@drawable/switch_track_selector"
+                    app:trackTint="@drawable/switch_thumb_selector" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvChangeLanguage"
+            style="@style/TextView.regular.12.color444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@color/white"
+            android:text="Change Language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvNotificationAndAleart" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvChangeLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvChangeLanguage"
+            app:strokeColor="@color/colorE2D7DB"
+            app:strokeWidth="@dimen/_1sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clChangeLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHindi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@{viewModel.language==`hi`? @drawable/bg_text_view_active: @drawable/bg_text_view_inactive}"
+                    android:drawableEnd="@{viewModel.language==`hi`? @drawable/ic_mark: null}"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Hindi"
+                    android:onClick="@{()->viewModel.hindiClick()}"
+                    android:textColor="@{viewModel.language==`hi`? @color/color6DC99B : @color/color444444}"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEnglish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:onClick="@{()->viewModel.englishClick()}"
+                    android:background="@{viewModel.language==`en`? @drawable/bg_text_view_active: @drawable/bg_text_view_inactive}"
+                    android:drawableEnd="@{viewModel.language==`en`? @drawable/ic_mark: null}"
+                    android:fontFamily="@font/montserrat"
+                    android:text="English"
+                    android:textColor="@{viewModel.language==`en`? @color/color6DC99B : @color/color444444}"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHindi" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            style="@style/Button.bold.14.colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20ssp"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:onClick="@{()->viewModel.saveClick()}"
+            android:paddingStart="@dimen/_50sdp"
+            android:paddingTop="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_50sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

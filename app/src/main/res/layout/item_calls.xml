@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.ecommercwebsite.aioscrm.ui.calls.model.CallModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_3sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvUserProfile"
+                style="@style/TextView.bold.12.colorWhite"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/bg_round_menu_selected"
+                android:gravity="center"
+                android:text="S"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                style="@style/TextView.regular.12.color444444"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.name}"
+                app:layout_constraintBottom_toTopOf="@id/tvNumber"
+                app:layout_constraintEnd_toStartOf="@+id/tvDuration"
+                app:layout_constraintStart_toEndOf="@+id/tvUserProfile"
+                app:layout_constraintTop_toTopOf="@+id/tvUserProfile"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDuration"
+                style="@style/TextView.regular.10.color444444"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.callDuration}"
+                app:layout_constraintBottom_toTopOf="@id/tvNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvName"
+                app:layout_constraintTop_toTopOf="@+id/tvUserProfile"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvNumber"
+                style="@style/TextView.regular.10.color444444"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.number}"
+                app:layout_constraintBottom_toBottomOf="@id/tvUserProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/icCallType"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="@id/tvUserProfile"
+                app:layout_constraintStart_toStartOf="@id/tvUserProfile"
+                app:layout_constraintTop_toBottomOf="@id/tvUserProfile"
+                app:srcCompat="@drawable/ic_missedcall" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDateTime"
+                style="@style/TextView.regular.10.color444444"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.callDateTime}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvNumber"
+                app:layout_constraintTop_toTopOf="@id/icCallType"
+                tools:text="@tools:sample/lorem" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -24,7 +24,9 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
                 isVisible = true,
                 title = "Leads",
                 isBackButtonVisible = false,
-                isBottomNavVisible = true
+                isBottomNavVisible = true,
+                isNotificationVisible = true,
+                isMenuVisible = true
             )
         )
     }

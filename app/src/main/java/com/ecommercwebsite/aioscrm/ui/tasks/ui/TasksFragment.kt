@@ -24,7 +24,9 @@ class TasksFragment : FragmentBase<TasksViewModel,FragmentTasksBinding>() {
                 isVisible = true,
                 title = "Tasks",
                 isBackButtonVisible = false,
-                isBottomNavVisible = true
+                isBottomNavVisible = true,
+                isNotificationVisible = true,
+                isMenuVisible = true
             )
         )
     }

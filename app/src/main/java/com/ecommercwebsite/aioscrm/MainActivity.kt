@@ -26,6 +26,7 @@ import com.ecommercwebsite.aioscrm.base.ViewModelBase
 import com.ecommercwebsite.aioscrm.bind.GenericRecyclerViewAdapter
 import com.ecommercwebsite.aioscrm.databinding.ActivityMainBinding
 import com.ecommercwebsite.aioscrm.databinding.ItemMenuBinding
+import com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragmentDirections
 import com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel
 import com.ecommercwebsite.aioscrm.utils.DebugLog
 import com.ecommercwebsite.aioscrm.utils.HomeToolbarClickHandler
@@ -84,9 +85,8 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         binding.layoutSideMenuDrawer.flag = mPref.getValueBoolean(PrefKey.IS_LOGIN, false)
 
         binding.layoutSideMenuDrawer.btnMyAccount.setOnClickListener {
-            /*navigateToNextScreenThroughDirections(
-                HomeFragmentDirections.actionHomeFragmentToMyAccountFragment()
-            )*/
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            navHostFragment.findNavController().navigate(R.id.myAccountFragment)
         }
 
         sideMenuList = getSideMenuList()
@@ -114,54 +114,21 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                     when (model.id) {
 
                         "menuOption1" -> {
-                            viewModel.showSnackbarMessage("menuOption1")
+                            navHostFragment.findNavController().navigate(R.id.toDoFragment)
                         }
 
                         "menuOption2" -> {
-                            viewModel.showSnackbarMessage("menuOption2")
+                            navHostFragment.findNavController().navigate(R.id.salesFragment)
 
                         }
 
                         "menuOption3" -> {
+                            navHostFragment.findNavController().navigate(R.id.settingsFragment)
+                        }
+
+                        "menuOption4" -> {
                             viewModel.showSnackbarMessage("logout")
                         }
-                        /*    "menuOption3" -> {
-                                navigateToNextScreenThroughDirections(
-                                    HomeFragmentDirections.actionHomeFragmentToMySubscriptionsFragment()
-                                )
-                            }
-                            "menuOption4" -> {
-
-                            }
-                            "menuOption5" -> {
-                                navigateToNextScreenThroughDirections(
-                                    HomeFragmentDirections.actionHomeFragmentToWebViewFragment(
-                                        ArgumentsKey.ABOUT_WELLNESS
-                                    )
-                                )
-                            }
-                            "menuOption6" -> {
-                                navigateToNextScreenThroughDirections(
-                                    HomeFragmentDirections.actionHomeFragmentToWebViewFragment(
-                                        ArgumentsKey.FAQ
-                                    )
-                                )
-                            }
-                            "menuOption7" -> {
-                                navigateToNextScreenThroughDirections(
-                                    HomeFragmentDirections.actionHomeFragmentToWebViewFragment(
-                                        ArgumentsKey.PRIVACY_POLICY
-                                    )
-                                )
-                            }
-                            "menuOption8" -> {
-                                navigateToNextScreenThroughDirections(
-                                    HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
-                                )
-                            }
-                            "menuOption9" -> {
-
-                            }*/
 
                         else -> {
 
@@ -189,7 +156,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         val menuOption2 =
             SideMenuModel(
                 "menuOption2",
-                getDrawableValue(R.drawable.ic_settings),
+                getDrawableValue(R.drawable.tmp_ic_home),
                 "Sales",
                 true,
                 R.id.salesFragment,
@@ -201,7 +168,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         val menuOption3 =
             SideMenuModel(
                 "menuOption3",
-                getDrawableValue(R.drawable.ic_logout),
+                getDrawableValue(R.drawable.ic_settings),
                 "Settings",
                 true,
                 R.id.settingsFragment,
@@ -309,7 +276,12 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
     }
 
     override fun onNotificationClick() {
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        navHostFragment.findNavController().navigate(R.id.notificationFragment)
+    }
 
+    override fun onBackClick() {
+        onBackPressedDispatcher.onBackPressed()
     }
 
     fun sideMenuOpen() {
