@@ -35,6 +35,20 @@ android {
             )
         }
     }
+    flavorDimensions += "default"
+    productFlavors {
+        create("dev") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+        }
+        create("stag") {
+            dimension = "default"
+            applicationIdSuffix = ".stag"
+        }
+        create("prod") {
+            dimension = "default"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -46,6 +60,19 @@ android {
         buildConfig = true
         viewBinding = true
         dataBinding = true
+    }
+    lint {
+        disable += "MissingTranslation" + "TypographyFractions"
+        abortOnError = false
+        checkReleaseBuilds =  false
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path = file("src/main/jni/Android.mk") //path of Android.mk file
+        }
+    }
+    android {
+        ndkVersion = "20.0.5594570"
     }
 }
 
@@ -73,9 +100,26 @@ dependencies {
     implementation("androidx.security:security-crypto:1.1.0-alpha05")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
+    //jackson parser
+    val jacksonVersion = "2.12.7"
+    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${jacksonVersion}")
+
+    // retrofit, okhttp, jackson interceptor
+    val retrofitVersion = "2.9.0"
+    val okHttpVersion = "4.9.1"
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:${okHttpVersion}"))
+    implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}")
+    implementation("com.squareup.retrofit2:converter-gson:${retrofitVersion}")
+
     //sdp and ssp
-    implementation ("com.intuit.sdp:sdp-android:1.0.6")
-    implementation ("com.intuit.ssp:ssp-android:1.0.6")
+    implementation("com.intuit.sdp:sdp-android:1.0.6")
+    implementation("com.intuit.ssp:ssp-android:1.0.6")
 
     //Work Runtime
     implementation("androidx.work:work-runtime-ktx:2.8.1")

@@ -1,5 +1,8 @@
 package com.ecommercwebsite.aioscrm.base
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +10,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ecommercwebsite.aioscrm.MainActivity
+import com.ecommercwebsite.aioscrm.R
+import com.ecommercwebsite.aioscrm.network.HttpErrorCode
 import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
@@ -19,7 +24,7 @@ import javax.inject.Inject
  * Abstract base class for Fragments
  */
 abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
-    Fragment() {
+    FragmentBaseWrapper() {
 
     private lateinit var dataBinding: DataBinding
     private lateinit var mViewModel: V
@@ -52,14 +57,36 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
     protected abstract fun getViewModelIsSharedViewModel(): Boolean
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         dataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         dataBinding.lifecycleOwner = viewLifecycleOwner
         dataBinding.executePendingBindings()
         return dataBinding.root
+    }
+
+    private fun handleException(code: Int, message: String, messageCode: String) {
+        when (code) {
+            HttpErrorCode.EMPTY_RESPONSE.code -> dataNotFound(message, messageCode)
+            HttpErrorCode.NEW_VERSION_FOUND.code -> newVersionFound()
+            HttpErrorCode.UNAUTHORIZED.code -> unAuthorizationUser(message, messageCode)
+            HttpErrorCode.NO_CONNECTION.code -> noInternet()
+            HttpErrorCode.SERVER_UNDER_MAINTENANCE.code -> serverUnderMaintenance(
+                message, messageCode
+            )
+
+            else -> somethingWentWrong(message)
+        }
+
+    }
+
+    override fun serverUnderMaintenance(message: String?, messageCode: String?) {
+        MaterialAlertDialogBuilder(
+            requireActivity(), R.style.CustomMaterialAlertDialog
+        ).setTitle(R.string.app_name).setMessage(message)
+            .setPositiveButton(R.string.lbl_ok) { _, _ ->
+                activity?.finish()
+            }.show()
     }
 
 
@@ -70,7 +97,6 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
         initializeScreenVariables()
         observeToolbar()
         setupToolbar()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +109,7 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
         }
         setUpProgressBar()
         setUpSnackBar()
+        //getFCMToken()
     }
 
     /**
@@ -116,8 +143,7 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
     private fun setUpSnackBar() {
         viewModel.snackbarMessage.observe(this) { o: Any ->
             if (o is Int) {
-                (activity as MainActivity).resources.getString(o)
-                    .let { showSnackbar(it) }
+                (activity as MainActivity).resources.getString(o).let { showSnackbar(it) }
             } else if (o is String) {
                 showSnackbar(o)
             }
@@ -143,16 +169,141 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
      */
     private fun showSnackbar(message: String) {
         val snackbar = Snackbar.make(
-            requireActivity().findViewById(android.R.id.content)!!,
-            message,
-            Snackbar.LENGTH_SHORT
+            requireActivity().findViewById(android.R.id.content)!!, message, Snackbar.LENGTH_SHORT
         )
         val view = snackbar.view
-        val snackTV = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+        val snackTV: TextView = view.findViewById(com.google.android.material.R.id.snackbar_text)
         snackTV.maxLines = 5
 //        snackTV.setTextColor(ContextCompat.getColor(this, android.R.color.white))
         snackbar.show()
     }
+
+    /**
+     * This is the generic method from where the message will display if something went wrong.
+     * This will called based from the make Api called and decide the response with response code.
+     */
+    override fun somethingWentWrong(message: String?) {
+        var msg = message
+        if (message.isNullOrEmpty()) {
+            msg = getString(R.string.internal_server_error_500)
+        }
+        viewModel.showSnackbarMessage(msg!!)
+    }
+
+    /**
+     * This is the generic method from where the message will display if Internet connection not available.
+     * This will called based from the make Api called and decide the response with response code.
+     */
+    override fun noInternet() {
+        viewModel.showSnackbarMessage(getString(R.string.no_internet))
+    }
+
+    override fun onRetryClicked(retryButtonType: String) {
+    }
+
+    /**
+     * This is the generic method from where the message will display if No Data Found.
+     * This will called based from the make Api called and decide the response with response code.
+     */
+    override fun dataNotFound(message: String?, messageCode: String?) {
+        message?.let { viewModel.showSnackbarMessage(it) }
+    }
+
+    /**
+     * This is the generic method from where the message will display if user verified or not.
+     * This will called based from the make Api called and decide the response with response code.
+     */
+    override fun verifyUser(message: String) {
+        viewModel.showSnackbarMessage(message)
+    }
+
+
+    override fun newVersionFound() {
+        //TODO::Redirect to play store
+        //TODO::IN App Update
+        var msg = "New Update Available"
+        if (msg.isBlank()) {
+            msg = getString(R.string.logout_401)
+        }
+        MaterialAlertDialogBuilder(
+            requireActivity(), R.style.CustomMaterialAlertDialog
+        ).setTitle(R.string.app_name).setMessage(msg)
+            .setPositiveButton(R.string.lbl_ok) { dialog, _ ->
+                dialog.dismiss()
+                try {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=${dataBinding.root.context.packageName}")
+                        )
+                    )
+                } catch (e: ActivityNotFoundException) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=${dataBinding.root.context.packageName}")
+                        )
+                    )
+                }
+
+            }.show()
+    }
+
+    /**
+     * This is the generic method from where the message will display if user is unauthorized.
+     * This will called based from the make Api called and decide the response with response code.
+     */
+    override fun unAuthorizationUser(message: String?, messageCode: String?) {
+        var msg = message
+        if (msg.isNullOrBlank()) {
+            msg = getString(R.string.logout_401)
+        }
+        MaterialAlertDialogBuilder(
+            requireActivity(), R.style.CustomMaterialAlertDialog
+        ).setTitle(R.string.app_name).setMessage(msg).setPositiveButton(R.string.lbl_ok) { _, _ ->
+                mPref.clearAllData()
+                activity?.finish()
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+            }.show()
+    }
+
+    /**
+     * Fetch FCM device token
+     *//* private fun getFCMToken() {
+        Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                DebugLog.e("Fetching FCM registration token failed : ${task.exception}")
+                return@OnCompleteListener
+            }
+            // Get new FCM registration token
+            val token = task.result
+
+            if (mPref.getValueBoolean(PrefKey.IS_LOGIN, false) == true) {
+                if (mPref.getValueString(PrefKey.DEVICE_TOKEN, "").equals(token)) {
+                    mPref.setValueString(PrefKey.DEVICE_TOKEN, token!!)
+                } else {
+                    mPref.getValueString(PrefKey.DEVICE_TOKEN, "")
+                        ?.let { mPref.setValueString(PrefKey.DEVICE_TOKEN_OLD, it) }
+                    mPref.getValueBoolean(PrefKey.IS_NEW_TOKEN, true)
+                    mPref.setValueString(PrefKey.DEVICE_TOKEN, token!!)
+                }
+            } else {
+                mPref.getValueBoolean(PrefKey.IS_NEW_TOKEN, false)
+                mPref.setValueString(PrefKey.DEVICE_TOKEN, token!!)
+            }
+
+            DebugLog.e(
+                " FCM Device Token : ${
+                    mPref.getValueString(
+                        PrefKey.DEVICE_TOKEN,
+                        ""
+                    )
+                }"
+            )
+        }
+        )
+    }*/
 
 
 }
