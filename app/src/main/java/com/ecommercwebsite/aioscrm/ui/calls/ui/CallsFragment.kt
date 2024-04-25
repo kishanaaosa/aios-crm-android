@@ -152,7 +152,7 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
                 }
 
                 override fun onItemClick(model: CallModel, position: Int) {
-
+                    CommonFunctionHelper.openWhatsAppChat(requireContext(),model.number)
                 }
             }
         }

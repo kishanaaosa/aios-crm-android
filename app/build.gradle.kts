@@ -66,14 +66,14 @@ android {
         abortOnError = false
         checkReleaseBuilds =  false
     }
-    externalNativeBuild {
+   /* externalNativeBuild {
         ndkBuild {
             path = file("src/main/jni/Android.mk") //path of Android.mk file
         }
     }
     android {
-        ndkVersion = "20.0.5594570"
-    }
+        ndkVersion = "27.0.11718014"
+    }*/
 }
 
 dependencies {

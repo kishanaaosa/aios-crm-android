@@ -1,9 +1,14 @@
 package com.ecommercwebsite.aioscrm.utils
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.widget.Toast
 
 
 object CommonFunctionHelper {
@@ -38,6 +43,37 @@ object CommonFunctionHelper {
 
         anim.duration = 300
         view.startAnimation(anim)
+    }
+
+    fun openWhatsAppChat(context: Context, phoneNumber: String) {
+        val packageManager = context.packageManager
+
+        // Check if WhatsApp is installed
+        val isWhatsAppInstalled = isAppInstalled(packageManager, "com.whatsapp")
+        if (!isWhatsAppInstalled) {
+            // WhatsApp is not installed, handle this case
+            Toast.makeText(context, "WhatsApp is not installed", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        try {
+            // Create intent to open WhatsApp with a specific phone number
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(context, "Failed to open WhatsApp", Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
+        }
+    }
+
+    private fun isAppInstalled(packageManager: PackageManager, packageName: String): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
     }
 
 }

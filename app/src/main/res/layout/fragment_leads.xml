@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.ecommercwebsite.aioscrm.ui.leads.viewmodel.LeadsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,12 +35,12 @@
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="Total:10"
-                app:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvTotalFiltersCount"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="false"
                 tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -48,12 +51,12 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                app:textAllCaps="false"
                 android:text="Filtered:10"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvTotalRecordsCount"
                 app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="false"
                 tools:text="@tools:sample/lorem" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
