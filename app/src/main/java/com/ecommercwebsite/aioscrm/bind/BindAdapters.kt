@@ -24,6 +24,19 @@ import com.google.android.material.textfield.TextInputLayout
 class BindAdapters {
     companion object {
 
+        /**
+         * Set first char
+         */
+        @BindingAdapter("firstChar")
+        @JvmStatic
+        fun setFirstCharacter(textView: TextView, text: String?) {
+            text?.let {
+                if (it.isNotEmpty()) {
+                    textView.text = it.substring(0, 1)
+                }
+            }
+        }
+
 
         /**
          * load image from url

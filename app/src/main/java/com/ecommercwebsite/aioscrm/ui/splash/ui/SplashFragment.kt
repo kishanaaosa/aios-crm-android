@@ -5,17 +5,19 @@ import android.os.Build
 import android.provider.Settings
 import android.view.animation.AnimationUtils
 import androidx.activity.addCallback
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.navigation.NavDirections
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.base.FragmentBase
 import com.ecommercwebsite.aioscrm.base.ToolbarModel
 import com.ecommercwebsite.aioscrm.base.ViewModelBase
 import com.ecommercwebsite.aioscrm.databinding.FragmentSplashBinding
-import com.ecommercwebsite.aioscrm.utils.PrefKey
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SplashFragment : FragmentBase<ViewModelBase, FragmentSplashBinding>() {
@@ -55,7 +57,7 @@ class SplashFragment : FragmentBase<ViewModelBase, FragmentSplashBinding>() {
         rotateLogo()
         GlobalScope.launch(context = Dispatchers.Main) {
             delay(2000)
-            navigateToScreen(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            navigateToScreen()
         }
     }
 
@@ -64,10 +66,16 @@ class SplashFragment : FragmentBase<ViewModelBase, FragmentSplashBinding>() {
         getDataBinding().imgAnimSplash?.startAnimation(animation)
     }
 
-    private fun navigateToScreen(action: NavDirections) {
-        (activity as MainActivity).navigateToNextScreenThroughDirections(
-            action
-        )
+    private fun navigateToScreen() {
+        if (mPref.getValueBoolean(PrefKey.IS_LOGIN, false) == true) {
+            (activity as MainActivity).navigateToNextScreenThroughDirections(
+                SplashFragmentDirections.actionSplashFragmentToHomeFragment()
+            )
+        } else {
+            (activity as MainActivity).navigateToNextScreenThroughDirections(
+                SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+            )
+        }
     }
 
 }

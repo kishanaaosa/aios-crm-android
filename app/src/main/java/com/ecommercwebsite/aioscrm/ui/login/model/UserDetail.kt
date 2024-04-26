@@ -25,7 +25,7 @@ data class UserDetail(
     @JsonProperty("facebook")
     var facebook: String?,
     @JsonProperty("firstname")
-    var firstname: String?,
+    var firstname: String? = "",
     @JsonProperty("hourly_rate")
     var hourlyRate: String?,
     @JsonProperty("identification")

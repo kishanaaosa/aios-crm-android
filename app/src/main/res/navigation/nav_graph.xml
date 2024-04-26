@@ -36,8 +36,7 @@
         android:id="@+id/homeFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/leadsFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.leads.ui.LeadsFragment"
@@ -83,4 +82,19 @@
         android:name="com.ecommercwebsite.aioscrm.ui.settings.ui.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.ecommercwebsite.aioscrm.ui.webview.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/fragment_web_view" />
+    <action
+        android:id="@+id/action_global_webViewFragment"
+        app:destination="@id/webViewFragment" >
+        <argument
+            android:name="WEB_URL"
+            app:argType="string" />
+        <argument
+            android:name="WEB_TITLE"
+            app:argType="string" />
+    </action>
 </navigation>

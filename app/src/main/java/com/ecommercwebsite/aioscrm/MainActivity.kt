@@ -29,8 +29,8 @@ import com.ecommercwebsite.aioscrm.databinding.ItemMenuBinding
 import com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel
 import com.ecommercwebsite.aioscrm.utils.DebugLog
 import com.ecommercwebsite.aioscrm.utils.HomeToolbarClickHandler
-import com.ecommercwebsite.aioscrm.utils.MyPreference
-import com.ecommercwebsite.aioscrm.utils.PrefKey
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import com.ecommercwebsite.aioscrm.utils.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
 
     fun setupSideMenu() {
         binding.layoutSideMenuDrawer.flag = mPref.getValueBoolean(PrefKey.IS_LOGIN, false)
-
+        binding.layoutSideMenuDrawer.tvName.text = mPref.getValueString(PrefKey.USER_NAME, "Guest")
         binding.layoutSideMenuDrawer.btnMyAccount.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             navHostFragment.findNavController().navigate(R.id.myAccountFragment)
@@ -126,8 +126,15 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                         }
 
                         "menuOption4" -> {
-                            viewModel.showSnackbarMessage("logout")
+                            navHostFragment.findNavController()
+                                .navigate(NavGraphDirections.actionGlobalWebViewFragment(
+                                    "https://softwareallin1.com/aios-privacy-policy/",
+                                    "Privacy Policy"
+                                ))
+                        }
 
+                        "menuOption5" -> {
+                            viewModel.showSnackbarMessage("logout")
                         }
 
                         else -> {
@@ -180,14 +187,26 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         val menuOption4 =
             SideMenuModel(
                 "menuOption4",
+                getDrawableValue(R.drawable.ic_settings),
+                "Privacy Policy",
+                true,
+                R.id.webViewFragment,
+                true
+            )
+        if (menuOption4.isVisible == true) {
+            mSideMenuList.add(menuOption4)
+        }
+        val menuOption5 =
+            SideMenuModel(
+                "menuOption5",
                 getDrawableValue(R.drawable.ic_logout),
                 "Logout",
                 true,
                 R.id.splashFragment,
                 true
             )
-        if (menuOption4.isVisible == true) {
-            mSideMenuList.add(menuOption4)
+        if (menuOption5.isVisible == true) {
+            mSideMenuList.add(menuOption5)
         }
         return mSideMenuList
     }

@@ -3,8 +3,8 @@ package com.ecommercwebsite.aioscrm.network
 import com.ecommercwebsite.aioscrm.BaseApp
 import com.ecommercwebsite.aioscrm.BuildConfig
 import com.ecommercwebsite.aioscrm.utils.DebugLog
-import com.ecommercwebsite.aioscrm.utils.PrefKey.ACCESS_TOKEN
-import com.ecommercwebsite.aioscrm.utils.PrefKey.IS_LOGIN
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey.ACCESS_TOKEN
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey.IS_LOGIN
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody

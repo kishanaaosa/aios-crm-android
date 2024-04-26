@@ -15,6 +15,11 @@
     <string name="internal_server_error_500">Oops!! There is some problem with request. Please try again</string>
     <string name="logout_401">You are not authorised to login or Your account is inactive.</string>
     <string name="no_internet">No Internet Connection</string>
+    <string name="dialog_permission_title">Permission required</string>
+    <string name="dialog_permission_default_message">Permission required for continue app</string>
+    <string name="dialog_permission_button_positive">OK</string>
+    <string name="post_notification">Permission Require for push notification</string>
+    <string name="calling">Permission Require for calling</string>
 
 
 </resources>

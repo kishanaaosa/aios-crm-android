@@ -1,6 +1,7 @@
 package com.ecommercwebsite.aioscrm.ui.calls.ui
 
 import android.view.View
+import androidx.lifecycle.Observer
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.base.FragmentBase
@@ -8,7 +9,10 @@ import com.ecommercwebsite.aioscrm.base.ToolbarModel
 import com.ecommercwebsite.aioscrm.bind.GenericRecyclerViewAdapter
 import com.ecommercwebsite.aioscrm.databinding.FragmentCallsBinding
 import com.ecommercwebsite.aioscrm.databinding.ItemCallsBinding
-import com.ecommercwebsite.aioscrm.ui.calls.model.CallModel
+import com.ecommercwebsite.aioscrm.network.ResponseData
+import com.ecommercwebsite.aioscrm.network.ResponseHandler
+import com.ecommercwebsite.aioscrm.ui.calls.model.CallLog
+import com.ecommercwebsite.aioscrm.ui.calls.model.CallLogListResponse
 import com.ecommercwebsite.aioscrm.ui.calls.viewmodel.CallsViewModel
 import com.ecommercwebsite.aioscrm.utils.CommonFunctionHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,117 +36,49 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
     }
 
     override fun initializeScreenVariables() {
-        var callList: ArrayList<CallModel> = arrayListOf()
-        callList.add(
-            CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-            )
-        )
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11"
-        ))
-        callList.add(CallModel(
-            "Hitesh Mehata",
-            "9726540727",
-            "missedcall",
-            "1:03 Min",
-            "24-04-2024 3:11PM"
-        ))
-        setUpCalls(callList)
+        viewModel.initVariables()
+        viewModel.getLeadsWisePhoneCallLog()
+        setUpObserver()
+        getDataBinding().viewModel = viewModel
     }
 
-    private fun setUpCalls(ledaList: ArrayList<CallModel>) {
-        if (ledaList.size == 0) {
+    private fun setUpObserver() {
+        viewModel.callLigListResponse.observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                return@Observer
+            }
+            when (it) {
+                is ResponseHandler.Loading -> {
+                    viewModel.showProgressBar(true)
+                }
+
+                is ResponseHandler.OnFailed -> {
+                    viewModel.showProgressBar(false)
+                    httpFailedHandler(it.code, it.message, it.messageCode)
+                    showNoDataFound()
+                }
+
+                is ResponseHandler.OnSuccessResponse<ResponseData<CallLogListResponse>?> -> {
+                    viewModel.showProgressBar(false)
+                    setUpCalls(it.response?.data?.callLogList)
+                }
+            }
+        })    }
+
+    private fun setUpCalls(callLogList: ArrayList<CallLog>?) {
+        if (callLogList?.size == 0) {
             showNoDataFound()
         } else {
             getDataBinding().rvCalls.adapter = object :
-                GenericRecyclerViewAdapter<CallModel, ItemCallsBinding>(
+                GenericRecyclerViewAdapter<CallLog, ItemCallsBinding>(
                     requireContext(),
-                    ledaList
+                    callLogList
                 ) {
                 override val layoutResId: Int
                     get() = R.layout.item_calls
 
                 override fun onBindData(
-                    model: CallModel,
+                    model: CallLog,
                     position: Int,
                     dataBinding: ItemCallsBinding
                 ) {
@@ -151,8 +87,7 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
                     dataBinding.executePendingBindings()
                 }
 
-                override fun onItemClick(model: CallModel, position: Int) {
-                    CommonFunctionHelper.openWhatsAppChat(requireContext(),model.number)
+                override fun onItemClick(model: CallLog, position: Int) {
                 }
             }
         }

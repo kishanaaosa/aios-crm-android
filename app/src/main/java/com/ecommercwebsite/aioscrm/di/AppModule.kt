@@ -6,8 +6,8 @@ import android.net.ConnectivityManager
 import android.os.Build
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.ecommercwebsite.aioscrm.utils.MyPreference
-import com.ecommercwebsite.aioscrm.utils.PrefKey
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -6,10 +6,9 @@ import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.base.ViewModelBase
 import com.ecommercwebsite.aioscrm.network.ResponseData
 import com.ecommercwebsite.aioscrm.network.ResponseHandler
-import com.ecommercwebsite.aioscrm.ui.login.model.LoginRequest
 import com.ecommercwebsite.aioscrm.ui.login.model.LoginResponse
 import com.ecommercwebsite.aioscrm.ui.login.repository.LoginRepository
-import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.ecommercwebsite.aioscrm.utils.SingleLiveEvent
 import com.ecommercwebsite.aioscrm.utils.Validation
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,15 +20,13 @@ class LoginViewModel @Inject constructor(
     private val repository: LoginRepository,
     private val myPreference: MyPreference
 ) : ViewModelBase() {
-    val email: MutableLiveData<String> = MutableLiveData("Kishan@gmail.com")
-    val password: MutableLiveData<String> = MutableLiveData("12345678")
+    val email: MutableLiveData<String> = MutableLiveData()
+    val password: MutableLiveData<String> = MutableLiveData()
     lateinit var onLogin: SingleLiveEvent<Boolean>
-    lateinit var loginRequest: LoginRequest
     lateinit var loginResponse: MutableLiveData<ResponseHandler<ResponseData<LoginResponse>?>>
 
     fun initVariables() {
         onLogin = SingleLiveEvent()
-        loginRequest = LoginRequest()
         loginResponse = MutableLiveData<ResponseHandler<ResponseData<LoginResponse>?>>()
     }
 
@@ -55,7 +52,7 @@ class LoginViewModel @Inject constructor(
 
             else -> {
                 onLogin.call()
-                //login()
+                login()
             }
         }
     }
@@ -63,7 +60,11 @@ class LoginViewModel @Inject constructor(
     private fun login() {
         viewModelScope.launch {
             loginResponse.postValue(ResponseHandler.Loading)
-            loginResponse.value = repository.login(loginRequest)
+            loginResponse.value =
+                repository.login(
+                    email.value.toString().trim(),
+                    password.value.toString().trim()
+                )
         }
     }
 

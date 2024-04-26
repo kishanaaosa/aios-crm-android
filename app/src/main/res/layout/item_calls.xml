@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.ecommercwebsite.aioscrm.ui.calls.model.CallModel" />
+            type="com.ecommercwebsite.aioscrm.ui.calls.model.CallLog" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -46,7 +46,7 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{model.name}"
+                android:text="@{model.leadName}"
                 app:layout_constraintBottom_toTopOf="@id/tvNumber"
                 app:layout_constraintEnd_toStartOf="@+id/tvDuration"
                 app:layout_constraintStart_toEndOf="@+id/tvUserProfile"
@@ -62,7 +62,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{model.callDuration}"
+                android:text="@{model.duration}"
                 app:layout_constraintBottom_toTopOf="@id/tvNumber"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{model.number}"
+                android:text="@{model.id}"
                 app:layout_constraintBottom_toBottomOf="@id/tvUserProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{model.callDateTime}"
+                android:text="@{model.createdAt}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tvNumber"
                 app:layout_constraintTop_toTopOf="@id/icCallType"

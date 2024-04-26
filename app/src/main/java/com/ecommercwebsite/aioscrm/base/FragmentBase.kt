@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.network.HttpErrorCode
-import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
@@ -109,6 +109,7 @@ abstract class FragmentBase<V : ViewModelBase, DataBinding : ViewDataBinding> :
         }
         setUpProgressBar()
         setUpSnackBar()
+        setUpHideKeyBoard()
         //getFCMToken()
     }
 

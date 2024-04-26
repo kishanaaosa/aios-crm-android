@@ -1,10 +1,11 @@
-package com.ecommercwebsite.aioscrm.utils
+package com.ecommercwebsite.aioscrm.utils.sharedpref
 
 import android.content.SharedPreferences
 import android.util.Base64
 import android.util.Base64InputStream
 import android.util.Base64OutputStream
 import androidx.core.content.edit
+import com.ecommercwebsite.aioscrm.utils.DebugLog
 import java.io.*
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -2,7 +2,7 @@ package com.ecommercwebsite.aioscrm.ui.settings.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.ecommercwebsite.aioscrm.base.ViewModelBase
-import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.ecommercwebsite.aioscrm.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

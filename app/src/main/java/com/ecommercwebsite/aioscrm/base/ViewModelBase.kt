@@ -2,8 +2,7 @@ package com.ecommercwebsite.aioscrm.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ecommercwebsite.aioscrm.base.ToolbarModel
-import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import javax.inject.Inject
 
 
@@ -43,6 +42,6 @@ open class ViewModelBase :
     }
 
     fun hideKeyboard() {
-        getHideKeyBoardEvent().value = true
+        getHideKeyBoardEvent().postValue(true)
     }
 }

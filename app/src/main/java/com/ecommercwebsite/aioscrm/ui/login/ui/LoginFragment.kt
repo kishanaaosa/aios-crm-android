@@ -9,8 +9,9 @@ import com.ecommercwebsite.aioscrm.databinding.FragmentLoginBinding
 import com.ecommercwebsite.aioscrm.network.ResponseData
 import com.ecommercwebsite.aioscrm.network.ResponseHandler
 import com.ecommercwebsite.aioscrm.ui.login.model.LoginResponse
+import com.ecommercwebsite.aioscrm.ui.login.model.UserDetail
 import com.ecommercwebsite.aioscrm.ui.login.viewmodel.LoginViewModel
-import com.ecommercwebsite.aioscrm.utils.PrefKey
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +30,6 @@ class LoginFragment : FragmentBase<LoginViewModel, FragmentLoginBinding>() {
     override fun initializeScreenVariables() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
-        setUpClickObserver()
         setUpObserver()
     }
 
@@ -50,20 +50,23 @@ class LoginFragment : FragmentBase<LoginViewModel, FragmentLoginBinding>() {
 
                 is ResponseHandler.OnSuccessResponse<ResponseData<LoginResponse>?> -> {
                     viewModel.showProgressBar(false)
-                    (activity as MainActivity).navigateToNextScreenThroughDirections(
-                        LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-                    )
+                    storeUserDataAndNavigateToNextScreen(it.response?.data?.userDetail)
                 }
             }
         })
     }
 
-    private fun setUpClickObserver() {
-        viewModel.onLogin.observe(viewLifecycleOwner) {
-            mPref.setValueBoolean(PrefKey.IS_LOGIN, true)
-            (activity as MainActivity).setupSideMenu()
-            (activity as MainActivity).navigateToNextScreenThroughDirections(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
-        }
+    private fun storeUserDataAndNavigateToNextScreen(userDetails: UserDetail?) {
+        mPref.setValueString(PrefKey.USER__FIRST_NAME, userDetails?.firstname.toString())
+        mPref.setValueString(PrefKey.USER_LAST_NAME, userDetails?.lastname.toString())
+        mPref.setValueString(
+            PrefKey.USER_NAME,
+            userDetails?.firstname.toString() + " " + userDetails?.lastname.toString()
+        )
+        mPref.setValueString(PrefKey.STAFF_ID, userDetails?.staffid.toString())
+        mPref.setValueBoolean(PrefKey.IS_LOGIN, true)
+        (activity as MainActivity).setupSideMenu()
+        (activity as MainActivity).navigateToNextScreenThroughDirections(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
     }
 
     override fun getViewModelClass(): Class<LoginViewModel> = LoginViewModel::class.java

@@ -1,7 +1,7 @@
 package com.ecommercwebsite.aioscrm
 
 import android.app.Application
-import com.ecommercwebsite.aioscrm.utils.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

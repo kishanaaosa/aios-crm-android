@@ -45,7 +45,23 @@ object CommonFunctionHelper {
         view.startAnimation(anim)
     }
 
-    fun openWhatsAppChat(context: Context, phoneNumber: String) {
+    fun openWhatsAppChat(context: Context,toNumber: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val uri = Uri.parse("https://wa.me/$toNumber")
+
+        intent.data = uri
+        intent.setPackage("com.whatsapp")
+
+        if (intent.resolveActivity(context.packageManager) != null) {
+            context.startActivity(intent)
+        } else {
+            Toast.makeText(context,"WhatsApp Not Installed",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+
+   /* fun openWhatsAppChat(context: Context, phoneNumber: String) {
         val packageManager = context.packageManager
 
         // Check if WhatsApp is installed
@@ -65,7 +81,7 @@ object CommonFunctionHelper {
             Toast.makeText(context, "Failed to open WhatsApp", Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
-    }
+    }*/
 
     private fun isAppInstalled(packageManager: PackageManager, packageName: String): Boolean {
         return try {
