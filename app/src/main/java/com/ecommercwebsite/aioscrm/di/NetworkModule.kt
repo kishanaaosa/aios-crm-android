@@ -34,17 +34,17 @@ class NetworkModule {
         //var baseUrl: String = ""
         val baseUrl = when (BuildConfig.FLAVOR) {
             "stag" -> {
-                "https://crm.ecommercwebsite.com/api/mapi/"
+                "https://crm.softwareallin1.com/api/mapi/"
                 // String(Base64.decode(getDevBaseUrl(), Base64.DEFAULT))
             }
 
             "prod" -> {
-                "https://crm.ecommercwebsite.com/api/mapi/"
+                "https://crm.softwareallin1.com/api/mapi/"
                 //String(Base64.decode(getProdBaseUrl(), Base64.DEFAULT))
             }
 
             else -> {
-                "https://crm.ecommercwebsite.com/api/mapi/"
+                "https://crm.softwareallin1.com/api/mapi/"
                 //String(Base64.decode(getDevBaseUrl(), Base64.DEFAULT))
             }
         }
