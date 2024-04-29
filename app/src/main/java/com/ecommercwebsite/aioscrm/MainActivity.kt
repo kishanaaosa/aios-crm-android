@@ -2,6 +2,7 @@ package com.ecommercwebsite.aioscrm
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -29,9 +30,9 @@ import com.ecommercwebsite.aioscrm.databinding.ItemMenuBinding
 import com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel
 import com.ecommercwebsite.aioscrm.utils.DebugLog
 import com.ecommercwebsite.aioscrm.utils.HomeToolbarClickHandler
+import com.ecommercwebsite.aioscrm.utils.Utils
 import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
-import com.ecommercwebsite.aioscrm.utils.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -127,14 +128,17 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
 
                         "menuOption4" -> {
                             navHostFragment.findNavController()
-                                .navigate(NavGraphDirections.actionGlobalWebViewFragment(
-                                    "https://softwareallin1.com/aios-privacy-policy/",
-                                    "Privacy Policy"
-                                ))
+                                .navigate(
+                                    NavGraphDirections.actionGlobalWebViewFragment(
+                                        "https://softwareallin1.com/aios-privacy-policy/",
+                                        "Privacy Policy"
+                                    )
+                                )
                         }
 
                         "menuOption5" -> {
-                            viewModel.showSnackbarMessage("logout")
+                            //viewModel.showSnackbarMessage("logout")
+                            logout()
                         }
 
                         else -> {
@@ -144,6 +148,13 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                     }
                 }
             }
+    }
+
+    private fun logout() {
+        mPref.clearAllData()
+        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getSideMenuList(): java.util.ArrayList<SideMenuModel> {
