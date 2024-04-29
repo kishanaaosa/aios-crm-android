@@ -19,6 +19,7 @@
     <string name="dialog_permission_default_message">Permission required for continue app</string>
     <string name="dialog_permission_button_positive">OK</string>
     <string name="post_notification">Permission Require for push notification</string>
+    <string name="permission_location">Permission Require for find location</string>
     <string name="calling">Permission Require for calling</string>
 
 

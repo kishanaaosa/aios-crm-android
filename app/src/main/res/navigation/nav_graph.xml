@@ -31,6 +31,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_fillAttendanceFragment"
+            app:destination="@id/fillAttendanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -97,4 +100,9 @@
             android:name="WEB_TITLE"
             app:argType="string" />
     </action>
+    <fragment
+        android:id="@+id/fillAttendanceFragment"
+        android:name="com.ecommercwebsite.aioscrm.ui.attendance.ui.FillAttendanceFragment"
+        android:label="FillAttendanceFragment"
+        tools:layout="@layout/fragment_fill_attendance"/>
 </navigation>

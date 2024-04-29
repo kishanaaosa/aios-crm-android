@@ -5,6 +5,7 @@ plugins {
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
+    //id("com.google.gms.google-services")
 }
 
 android {
@@ -128,8 +129,8 @@ dependencies {
     implementation("com.airbnb.android:lottie:5.0.3")
 
     //For Use Dependency on Activity and Fragment
-    implementation("androidx.activity:activity-ktx:1.7.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.6")
+    implementation(libs.androidx.activity.ktx.v170)
+    implementation(libs.androidx.fragment.ktx.v156)
 
     // Image downloading
     implementation("com.github.bumptech.glide:glide:4.12.0")
@@ -137,6 +138,9 @@ dependencies {
 
     //Coil Image Loader
     implementation("io.coil-kt:coil:1.2.0")
+
+    //location
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

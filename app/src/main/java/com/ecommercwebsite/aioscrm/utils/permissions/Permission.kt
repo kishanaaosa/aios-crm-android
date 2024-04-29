@@ -7,6 +7,7 @@ sealed class Permission(vararg val permissions: String) {
     object RecordAudio : Permission(RECORD_AUDIO)
     object Contact : Permission(READ_CONTACTS, WRITE_CONTACTS)
     object Location : Permission(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
+    object Camera : Permission(CAMERA)
     object Storage : Permission(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE)
     object PostNotification : Permission(POST_NOTIFICATIONS)
     object CallPhone : Permission(CALL_PHONE)
@@ -20,6 +21,7 @@ sealed class Permission(vararg val permissions: String) {
             WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE -> Storage
             POST_NOTIFICATIONS -> PostNotification
             CALL_PHONE -> CallPhone
+            CAMERA -> Camera
             else -> throw IllegalArgumentException("Unknown permission: $permission")
         }
     }

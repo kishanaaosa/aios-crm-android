@@ -31,6 +31,7 @@ class LoginFragment : FragmentBase<LoginViewModel, FragmentLoginBinding>() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
         setUpObserver()
+        (activity as MainActivity).navigateToNextScreenThroughDirections(LoginFragmentDirections.actionLoginFragmentToFillAttendanceFragment())
     }
 
     private fun setUpObserver() {
