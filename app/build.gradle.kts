@@ -129,8 +129,8 @@ dependencies {
     implementation("com.airbnb.android:lottie:5.0.3")
 
     //For Use Dependency on Activity and Fragment
-    implementation(libs.androidx.activity.ktx.v170)
-    implementation(libs.androidx.fragment.ktx.v156)
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     // Image downloading
     implementation("com.github.bumptech.glide:glide:4.12.0")
