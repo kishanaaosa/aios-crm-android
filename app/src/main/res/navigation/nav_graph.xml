@@ -35,13 +35,17 @@
             android:id="@+id/action_loginFragment_to_fillAttendanceFragment"
             app:destination="@id/fillAttendanceFragment"
             app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_autoCallFragment"
+            app:destination="@id/autoCallFragment" />
+    </fragment>
     <fragment
         android:id="@+id/leadsFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.leads.ui.LeadsFragment"
@@ -94,7 +98,7 @@
         tools:layout="@layout/fragment_web_view" />
     <action
         android:id="@+id/action_global_webViewFragment"
-        app:destination="@id/webViewFragment" >
+        app:destination="@id/webViewFragment">
         <argument
             android:name="WEB_URL"
             app:argType="string" />
@@ -106,5 +110,15 @@
         android:id="@+id/fillAttendanceFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.attendance.ui.FillAttendanceFragment"
         android:label="FillAttendanceFragment"
-        tools:layout="@layout/fragment_fill_attendance"/>
+        tools:layout="@layout/fragment_fill_attendance" />
+    <fragment
+        android:id="@+id/autoCallFragment"
+        android:name="com.ecommercwebsite.aioscrm.ui.autocall.ui.AutoCallFragment"
+        android:label="AutoCallFragment"
+        tools:layout="@layout/fragment_auto_call" />
+    <dialog
+        android:id="@+id/autoCallPopUpFragment"
+        android:name="com.ecommercwebsite.aioscrm.ui.autocall.ui.AutoCallPopUpFragment"
+        android:label="AutoCallPopUpFragment"
+        tools:layout="@layout/fragment_auto_call_pop_up"/>
 </navigation>

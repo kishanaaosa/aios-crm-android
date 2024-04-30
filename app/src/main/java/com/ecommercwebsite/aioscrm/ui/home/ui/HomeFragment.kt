@@ -8,6 +8,7 @@ import com.ecommercwebsite.aioscrm.databinding.FragmentHomeBinding
 import com.ecommercwebsite.aioscrm.ui.home.viewmodel.HomeViewModel
 import com.ecommercwebsite.aioscrm.utils.permissions.Permission
 import com.ecommercwebsite.aioscrm.utils.permissions.PermissionManager
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +34,15 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
     override fun initializeScreenVariables() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
+        setUpObserver()
         checkPermissions()
+    }
+
+    private fun setUpObserver() {
+        viewModel.onStartCalling.observe(this) {
+            mPref.setValueBoolean(PrefKey.IS_AUTO_CALLING, true)
+            (activity as MainActivity).navigateToNextScreenThroughDirections(HomeFragmentDirections.actionHomeFragmentToAutoCallFragment())
+        }
     }
 
     private fun checkPermissions() {
@@ -44,9 +53,9 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
             .rationale(getString(R.string.post_notification))
             .checkDetailedPermission { result ->
                 if (result.all { it.value }) {
-                   // viewModel.showSnackbarMessage("Permission Granted")
+                    // viewModel.showSnackbarMessage("Permission Granted")
                 } else {
-                   // viewModel.showSnackbarMessage("Permission Denied")
+                    // viewModel.showSnackbarMessage("Permission Denied")
                 }
             }
     }

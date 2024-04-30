@@ -1,5 +1,6 @@
 package com.ecommercwebsite.aioscrm.network
 
+import com.ecommercwebsite.aioscrm.ui.autocall.model.AutoCallLeadsResponse
 import com.ecommercwebsite.aioscrm.ui.calls.model.CallLogListResponse
 import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsResponse
 import com.ecommercwebsite.aioscrm.ui.login.model.LoginResponse
@@ -49,4 +50,9 @@ interface ApiInterface {
     suspend fun getLeadsWisePhoneCallLog(
         @Path("leadId") leadId: String
     ): Response<ResponseData<CallLogListResponse>>
+
+    @GET("get_leads/{staffId}")
+    suspend fun getAutoCallLeads(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<AutoCallLeadsResponse>>
 }
