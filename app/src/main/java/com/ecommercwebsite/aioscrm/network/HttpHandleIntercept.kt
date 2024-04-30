@@ -53,7 +53,7 @@ class HttpHandleIntercept : Interceptor {
 
         if (BaseApp.myPreference?.getValueBoolean(IS_LOGIN, false) == true) {
             BaseApp.myPreference?.getValueString(ACCESS_TOKEN, "")
-                ?.let { builder.add("access-token", it) }/*    BaseApp.myPreference?.getValueString(CLIENT, "")
+                ?.let { builder.add("Authorization", it) }/*    BaseApp.myPreference?.getValueString(CLIENT, "")
                 ?.let { builder.add("client", it) }
             BaseApp.myPreference?.getValueString(USER_ID, "")
                 ?.let { builder.add("uid", it) }*/
