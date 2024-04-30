@@ -3,11 +3,14 @@ package com.ecommercwebsite.aioscrm.network
 import com.ecommercwebsite.aioscrm.ui.calls.model.CallLogListResponse
 import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsResponse
 import com.ecommercwebsite.aioscrm.ui.login.model.LoginResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import javax.inject.Singleton
 
@@ -21,6 +24,15 @@ interface ApiInterface {
     suspend fun login(
         @Field("email") email: String?,
         @Field("password") password: String?
+    ): Response<ResponseData<LoginResponse>>
+
+    @Multipart
+    @POST("edit-profile-image/{staff_id}")
+    suspend fun fillAttendance(
+        @Path("staff_id") uuid: String?,
+        @Part image: MultipartBody.Part?,
+        @Path("lat") lat: String?,
+        @Path("long") long: String?,
     ): Response<ResponseData<LoginResponse>>
 
     @GET("get_leads/{staffId}")
