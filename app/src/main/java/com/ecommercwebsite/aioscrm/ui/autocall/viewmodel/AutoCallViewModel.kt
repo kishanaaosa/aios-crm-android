@@ -7,6 +7,7 @@ import com.ecommercwebsite.aioscrm.network.ResponseData
 import com.ecommercwebsite.aioscrm.network.ResponseHandler
 import com.ecommercwebsite.aioscrm.ui.autocall.model.AutoCallLeadsResponse
 import com.ecommercwebsite.aioscrm.ui.autocall.repository.AutoCallRepository
+import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsResponse
 import com.ecommercwebsite.aioscrm.utils.SingleLiveEvent
 import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
@@ -22,7 +23,7 @@ class AutoCallViewModel @Inject constructor(
     var timer: MutableLiveData<String> = MutableLiveData<String>("0")
      var onCancel = SingleLiveEvent<Boolean>()
     lateinit var leadListResponse: MutableLiveData<ResponseHandler<ResponseData<AutoCallLeadsResponse>?>>
-
+    var leadsList: AutoCallLeadsResponse = AutoCallLeadsResponse(arrayListOf())
 
     fun initVariables() {
         onCancel = SingleLiveEvent()

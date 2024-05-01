@@ -2,6 +2,7 @@ package com.ecommercwebsite.aioscrm.ui.autocall.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -87,6 +88,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
 
                 is ResponseHandler.OnSuccessResponse<ResponseData<AutoCallLeadsResponse>?> -> {
                     viewModel.showProgressBar(false)
+                    viewModel.leadsList.leads = it.response?.data?.leads
                     setUpLeads(it.response?.data?.leads)
                 }
             }
@@ -138,7 +140,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
 
     private fun openAutoCallPopUp() {
         autoCallPopUpFragment = AutoCallPopUpFragment()
-        autoCallPopUpFragment.setCancelable(false);
+        autoCallPopUpFragment.setCancelable(false)
         autoCallPopUpFragment.show(requireActivity().supportFragmentManager, "AutoCallPopUp")
     }
 
