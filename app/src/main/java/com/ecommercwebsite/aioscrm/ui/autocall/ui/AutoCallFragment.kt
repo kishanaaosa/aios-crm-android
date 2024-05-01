@@ -68,6 +68,19 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
                     // viewModel.showSnackbarMessage("Permission Denied")
                 }
             }
+
+        permissionManager
+            .request(
+                Permission.ReadPhoneState
+            )
+            .rationale(getString(R.string.calling))
+            .checkDetailedPermission { result ->
+                if (result.all { it.value }) {
+                    // viewModel.showSnackbarMessage("Permission Granted")
+                } else {
+                    // viewModel.showSnackbarMessage("Permission Denied")
+                }
+            }
     }
 
     private fun setUpObserver() {
