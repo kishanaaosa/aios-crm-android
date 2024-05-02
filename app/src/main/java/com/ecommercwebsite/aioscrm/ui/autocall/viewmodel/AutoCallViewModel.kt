@@ -22,16 +22,17 @@ class AutoCallViewModel @Inject constructor(
 ) : ViewModelBase() {
     var timer: MutableLiveData<String> = MutableLiveData<String>("0")
     var onCancel = SingleLiveEvent<Boolean>()
+    var onNext = SingleLiveEvent<Boolean>()
     lateinit var leadListResponse: MutableLiveData<ResponseHandler<ResponseData<AutoCallLeadsResponse>?>>
     var leadsList: AutoCallLeadsResponse = AutoCallLeadsResponse(arrayListOf())
     var randomList: MutableList<Int> = mutableListOf()
     var isCallStarted: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    //var random: MutableLiveData<Int> = MutableLiveData(0)
+    var isCallFinished: MutableLiveData<Boolean> = MutableLiveData(false)
     var selectedLead: MutableLiveData<LeadsList?> = MutableLiveData()
 
     fun initVariables() {
         onCancel = SingleLiveEvent()
+        onNext = SingleLiveEvent()
         leadListResponse = MutableLiveData<ResponseHandler<ResponseData<AutoCallLeadsResponse>?>>()
     }
 
@@ -48,10 +49,6 @@ class AutoCallViewModel @Inject constructor(
             random = null
         }
         return random
-    }
-
-    fun onCancel() {
-        onCancel.value = true
     }
 
     fun getAutoCallLeads() {

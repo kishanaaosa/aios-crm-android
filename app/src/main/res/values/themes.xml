@@ -265,6 +265,18 @@
         <item name="backgroundTint">@color/white</item>
     </style>
 
+    <!-- Button font family montserrat(bold) font size 12 font color color6E394A -->
+    <style name="ButtonWithStroke.bold.12.color6E394A" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color6E394A</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+        <item name="strokeColor">@color/color6E394A</item>
+        <item name="strokeWidth">@dimen/_1sdp</item>
+        <item name="android:padding">@dimen/_12sdp</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
 
     <!-- Round Imageview -->
     <!-- Round Imageview -->

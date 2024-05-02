@@ -21,6 +21,7 @@
     <string name="post_notification">Permission Require for push notification</string>
     <string name="permission_location">Permission Require for find location</string>
     <string name="calling">Permission Require for calling</string>
+    <string name="company">Company: %s</string>
 
 
 </resources>

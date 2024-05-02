@@ -5,6 +5,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="android.text.Html" />
+
         <variable
             name="viewModel"
             type="com.ecommercwebsite.aioscrm.ui.autocall.viewmodel.AutoCallViewModel" />
@@ -24,30 +28,17 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/bg_dialog_top_round"
             android:backgroundTint="@color/color6DC99B"
-            android:visibility="visible"
-            tools:text="Timer"
             android:gravity="center"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-       <!-- <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvAutoCallTimer"
-            style="@style/TextView.regular.14.color6E394A"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:padding="@dimen/_5sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCancel"
-            tools:text="Timer" />-->
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Timer" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_16sdp"
+            android:padding="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAutoCallTimer">
@@ -59,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{`Company Name: `+viewModel.selectedLead.company}"
+                android:text="@{@string/company(viewModel.selectedLead.company)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -70,7 +61,7 @@
                 style="@style/TextView.regular.12.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="@{`Name: `+viewModel.selectedLead.name}"
@@ -85,7 +76,7 @@
                 style="@style/TextView.regular.12.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="@{`Mobile: `+viewModel.selectedLead.phonenumber}"
@@ -99,7 +90,7 @@
                 style="@style/TextView.regular.12.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="@{`Email: `+viewModel.selectedLead.email}"
@@ -113,7 +104,7 @@
                 style="@style/TextView.regular.12.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="@{`Status: `+viewModel.selectedLead.status}"
@@ -127,7 +118,7 @@
                 style="@style/TextView.regular.12.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="2"
                 android:text="Notes(Demo): manufacturer - Disposal, Staff- 50, want 20 user plan of SCMS"
@@ -136,27 +127,157 @@
                 app:layout_constraintTop_toBottomOf="@id/tvStatus"
                 tools:text="@tools:sample/lorem" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnStop"
-                style="@style/ButtonWithStroke.bold.14.color6E394A"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clLeadContactOptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20ssp"
-                android:onClick="@{()->viewModel.onCancel()}"
-                android:padding="@dimen/_10sdp"
-                android:text="Stop Calling"
+                android:layout_marginTop="@dimen/_16sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNotes" />
+                app:layout_constraintTop_toBottomOf="@+id/tvNotes">
 
-            <!--   <View
-                   android:layout_width="match_parent"
-                   android:layout_height="@dimen/_15sdp"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   app:layout_constraintTop_toBottomOf="@id/btnStop" />-->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivCall"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_call"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ivMail"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivMail"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivWhatsApp"
+                    app:layout_constraintStart_toEndOf="@id/ivCall"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivWhatsApp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_whatsapp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivMail"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAfterCallOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:visibility="@{viewModel.isCallFinished?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clLeadContactOptions">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvChangeStatus"
+                    style="@style/TextView.bold.10.colorWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:background="@color/color6DC99B"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Change Status"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAddNote"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAddNote"
+                    style="@style/TextView.bold.10.colorWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@color/color6DC99B"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Add Note"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvChangeStatus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCreateTask"
+                    style="@style/TextView.bold.10.colorWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:background="@color/color6DC99B"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Create Task"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/tvCreateAppointment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvChangeStatus" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCreateAppointment"
+                    style="@style/TextView.bold.10.colorWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@color/color6DC99B"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Create Appointment"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvCreateTask"
+                    app:layout_constraintTop_toBottomOf="@id/tvChangeStatus" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStop"
+                style="@style/ButtonWithStroke.bold.12.color6E394A"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="@dimen/_10sdp"
+                android:text="Stop Calling"
+                app:layout_constraintEnd_toStartOf="@id/viewSeparator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clAfterCallOptions" />
+
+            <View
+                android:id="@+id/viewSeparator"
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="0dp"
+                android:visibility="@{viewModel.isCallFinished?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/btnStop"
+                app:layout_constraintEnd_toStartOf="@id/btnNext"
+                app:layout_constraintStart_toEndOf="@id/btnStop"
+                app:layout_constraintTop_toTopOf="@id/btnStop" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNext"
+                style="@style/ButtonWithStroke.bold.12.color6E394A"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="@dimen/_10sdp"
+                android:text="Next Call"
+                android:visibility="@{viewModel.isCallFinished?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewSeparator"
+                app:layout_constraintTop_toBottomOf="@id/clAfterCallOptions" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

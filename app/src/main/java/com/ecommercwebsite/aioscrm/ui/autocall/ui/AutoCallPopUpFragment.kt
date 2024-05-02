@@ -70,11 +70,20 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[AutoCallViewModel::class.java]
         dataBinding.viewModel = viewModel
-        //viewmodel.initVariables()
-        viewModel.onCancel.observe(this, Observer {
+        dataBinding.lifecycleOwner = this
+        dataBinding.executePendingBindings()
+
+        dataBinding.btnStop.setOnClickListener {
             viewModel.myPreference.setValueBoolean(PrefKey.IS_AUTO_CALLING, false)
+            viewModel.isCallFinished.value = false
             this.dismiss()
-        })
+            viewModel.getAutoCallLeads()
+        }
+        dataBinding.btnNext.setOnClickListener {
+            viewModel.isCallFinished.value = false
+            this.dismiss()
+            viewModel.getAutoCallLeads()
+        }
         startTimer()
     }
 
@@ -126,6 +135,7 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
                 if (viewModel.isCallStarted.value == true) {
                     dataBinding.tvAutoCallTimer.text = "Call Finished"
                     viewModel.isCallStarted.value = false
+                    viewModel.isCallFinished.value = true
                 }
                 DebugLog.print("::::: call state idle")
             }
