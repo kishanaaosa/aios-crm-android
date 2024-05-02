@@ -1,17 +1,27 @@
 package com.ecommercwebsite.aioscrm.ui.attendance.viewmodel
 
-import android.net.Uri
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.ecommercwebsite.aioscrm.base.ViewModelBase
+import com.ecommercwebsite.aioscrm.network.ResponseData
+import com.ecommercwebsite.aioscrm.network.ResponseHandler
+import com.ecommercwebsite.aioscrm.ui.attendance.model.FillAttendanceResponse
+import com.ecommercwebsite.aioscrm.ui.attendance.repository.AttendanceRepository
 import com.ecommercwebsite.aioscrm.utils.SingleLiveEvent
 import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class FillAttendanceViewModel @Inject constructor(
-    private val myPreference: MyPreference
+    private val myPreference: MyPreference,
+    private val repository: AttendanceRepository
 ) : ViewModelBase() {
 
     lateinit var onFillAttendanceClick: SingleLiveEvent<Boolean>
@@ -20,6 +30,7 @@ class FillAttendanceViewModel @Inject constructor(
     lateinit var long: MutableLiveData<String>
     lateinit var userProfile: MutableLiveData<String>
     var imageFile: File? = null
+    lateinit var fillAttendanceResponse: MutableLiveData<ResponseHandler<ResponseData<FillAttendanceResponse>?>>
 
 
     fun initVariables() {
@@ -28,6 +39,8 @@ class FillAttendanceViewModel @Inject constructor(
         lat = MutableLiveData<String>()
         long = MutableLiveData<String>()
         userProfile = MutableLiveData()
+        fillAttendanceResponse =
+            MutableLiveData<ResponseHandler<ResponseData<FillAttendanceResponse>?>>()
     }
 
     fun onTakePhotoClick() {
@@ -36,6 +49,28 @@ class FillAttendanceViewModel @Inject constructor(
 
     fun onFillAttendanceClick() {
         onFillAttendanceClick.call()
+    }
+
+    fun fillAttendance() {
+        viewModelScope.launch {
+            fillAttendanceResponse.value = ResponseHandler.Loading
+            val responseFromApi =
+                repository.fillAttendance(
+                    myPreference.getValueString(PrefKey.STAFF_ID, "0").toString(),
+                    lat.value.toString(),
+                    long.value.toString(),
+                    imageFile?.asRequestBody(
+                        "image/*".toMediaType()
+                    )?.let {
+                        MultipartBody.Part.createFormData(
+                            "image",
+                            imageFile?.name,
+                            it
+                        )
+                    }
+                )
+            fillAttendanceResponse.value = responseFromApi!!
+        }
     }
 
 }

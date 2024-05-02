@@ -104,7 +104,7 @@
             android:name="WEB_TITLE"
             app:argType="string" />
     </action>
-    <fragment
+    <dialog
         android:id="@+id/fillAttendanceFragment"
         android:name="com.ecommercwebsite.aioscrm.ui.attendance.ui.FillAttendanceFragment"
         android:label="FillAttendanceFragment"

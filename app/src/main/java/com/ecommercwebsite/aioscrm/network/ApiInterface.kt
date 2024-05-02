@@ -1,7 +1,9 @@
 package com.ecommercwebsite.aioscrm.network
 
+import com.ecommercwebsite.aioscrm.ui.attendance.model.FillAttendanceResponse
 import com.ecommercwebsite.aioscrm.ui.autocall.model.AutoCallLeadsResponse
 import com.ecommercwebsite.aioscrm.ui.calls.model.CallLogListResponse
+import com.ecommercwebsite.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsResponse
 import com.ecommercwebsite.aioscrm.ui.login.model.LoginResponse
 import okhttp3.MultipartBody
@@ -13,6 +15,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 import javax.inject.Singleton
 
 /**
@@ -27,14 +30,20 @@ interface ApiInterface {
         @Field("password") password: String?
     ): Response<ResponseData<LoginResponse>>
 
+
     @Multipart
-    @POST("edit-profile-image/{staff_id}")
+    @POST("staff_attendance_store")
     suspend fun fillAttendance(
-        @Path("staff_id") uuid: String?,
-        @Part image: MultipartBody.Part?,
-        @Path("lat") lat: String?,
-        @Path("long") long: String?,
-    ): Response<ResponseData<LoginResponse>>
+        @Query("staffid") staffid: String?,
+        @Query("lat") lat: String?,
+        @Query("long") long: String?,
+        @Part image: MultipartBody.Part?
+        ): Response<ResponseData<FillAttendanceResponse>>
+
+    @GET("staff_attendance_get/{staffId}")
+    suspend fun checkAttendance(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<CheckAttendanceResponse>>
 
     @GET("get_leads/{staffId}")
     suspend fun getLeads(

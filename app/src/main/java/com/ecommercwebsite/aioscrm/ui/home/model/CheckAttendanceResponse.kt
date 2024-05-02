@@ -1,4 +1,4 @@
-package com.ecommercwebsite.aioscrm.ui.autocall.model
+package com.ecommercwebsite.aioscrm.ui.home.model
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class AutoCallLeadsResponse(
-    @JsonProperty("lead_list")
-    var leads: ArrayList<LeadsList>?
+data class CheckAttendanceResponse(
+    @JsonProperty("is_attendance")
+    var isAttendance: Boolean?
 )

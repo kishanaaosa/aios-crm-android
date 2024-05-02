@@ -1,35 +1,35 @@
 package com.ecommercwebsite.aioscrm.ui.attendance.ui
 
 import android.app.Activity.RESULT_OK
-import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Intent
-import android.graphics.Bitmap
-import android.hardware.Camera.CameraInfo.CAMERA_FACING_BACK
 import android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
-import com.ecommercwebsite.aioscrm.MainActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.ecommercwebsite.aioscrm.R
-import com.ecommercwebsite.aioscrm.base.FragmentBase
-import com.ecommercwebsite.aioscrm.base.ToolbarModel
+import com.ecommercwebsite.aioscrm.base.DialogFragmentBase
 import com.ecommercwebsite.aioscrm.databinding.FragmentFillAttendanceBinding
+import com.ecommercwebsite.aioscrm.network.ResponseData
+import com.ecommercwebsite.aioscrm.network.ResponseHandler
+import com.ecommercwebsite.aioscrm.ui.attendance.model.FillAttendanceResponse
 import com.ecommercwebsite.aioscrm.ui.attendance.viewmodel.FillAttendanceViewModel
+import com.ecommercwebsite.aioscrm.utils.FillUtils
 import com.ecommercwebsite.aioscrm.utils.LocationProvider
 import com.ecommercwebsite.aioscrm.utils.permissions.Permission
 import com.ecommercwebsite.aioscrm.utils.permissions.PermissionManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.zelory.compressor.Compressor
+import id.zelory.compressor.constraint.default
+import id.zelory.compressor.constraint.quality
+import kotlinx.coroutines.launch
 import java.io.File
-import java.io.OutputStream
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 @AndroidEntryPoint
 class FillAttendanceFragment :
-    FragmentBase<FillAttendanceViewModel, FragmentFillAttendanceBinding>() {
+    DialogFragmentBase<FillAttendanceViewModel, FragmentFillAttendanceBinding>() {
     private val permissionManager = PermissionManager.from(this)
     private var imageUri: Uri? = null
 
@@ -37,6 +37,31 @@ class FillAttendanceFragment :
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 //val imageUri: Uri? = result.data?.data
+                //  val uri = Uri.fromFile(File(imageUri?.path))
+                /*  viewModel.imageFile = imageUri?.let {
+                      FillUtils.getPathFromUri(requireContext(), it)
+                          ?.let { File(it) }
+                  }*/
+
+                /* viewModel.imageFile = imageUri?.let {
+                     FillUtils.getPathFromUri(requireContext(), it)
+                         ?.let { FillUtils.compressOriginalImage(requireContext(), it) }
+                 }?.let { File(it) }
+ */
+                val actualImageFile = imageUri?.let {
+                    FillUtils.getPathFromUri(requireContext(), it)
+                        ?.let { File(it) }
+                }
+
+                lifecycleScope.launch {
+                    viewModel.imageFile =
+                        actualImageFile?.let {
+                            Compressor.compress(requireContext(), it) {
+                                quality(80) // Set desired image quality (0-100)
+                                default()
+                            }
+                        }
+                }
                 getDataBinding().ivProfile.setImageURI(imageUri)
             } else {
                 viewModel.showSnackbarMessage("Image capture failed")
@@ -48,17 +73,17 @@ class FillAttendanceFragment :
     override fun getLayoutId() = R.layout.fragment_fill_attendance
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
-        viewModel.setToolbarItems(
-            ToolbarModel(
-                isVisible = true,
-                title = "Attendance",
-                isBackButtonVisible = true,
-                isBottomNavVisible = false,
-                isNotificationVisible = false,
-                isMenuVisible = false
-            )
-        )
+        /*  (activity as MainActivity).setStatusBarColor(R.color.white, true)
+          viewModel.setToolbarItems(
+              ToolbarModel(
+                  isVisible = true,
+                  title = "Attendance",
+                  isBackButtonVisible = true,
+                  isBottomNavVisible = false,
+                  isNotificationVisible = false,
+                  isMenuVisible = false
+              )
+          )*/
     }
 
     override fun initializeScreenVariables() {
@@ -73,25 +98,53 @@ class FillAttendanceFragment :
             checkPermissionAndOpenCamera()
         }
         viewModel.onFillAttendanceClick.observe(this) {
-
+            if (viewModel.imageFile != null) {
+                viewModel.fillAttendance()
+            } else {
+                viewModel.showSnackbarMessage("Please take photo")
+            }
         }
+        viewModel.fillAttendanceResponse.observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                return@Observer
+            }
+            when (it) {
+                is ResponseHandler.Loading -> {
+                    viewModel.showProgressBar(true)
+                }
+
+                is ResponseHandler.OnFailed -> {
+                    viewModel.showProgressBar(false)
+                    httpFailedHandler(it.code, it.message, it.messageCode)
+                }
+
+                is ResponseHandler.OnSuccessResponse<ResponseData<FillAttendanceResponse>?> -> {
+                    viewModel.showProgressBar(false)
+                    viewModel.showSnackbarMessage(it.response?.meta?.message.toString())
+                    dialog?.dismiss()
+                }
+            }
+        })
     }
 
     private fun checkPermissionAndOpenCamera() {
         permissionManager.request(
-                Permission.Camera
-            ).rationale(getString(R.string.permission_location)).checkDetailedPermission { result ->
-                if (result.all { it.value }) {
-                    openCamera()
-                }
+            Permission.Camera
+        ).rationale(getString(R.string.permission_location)).checkDetailedPermission { result ->
+            if (result.all { it.value }) {
+                openCamera()
             }
+        }
     }
 
     private fun openCamera() {
         val values = ContentValues().apply {
             put(MediaStore.Images.Media.TITLE, "New Picture")
             put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
-            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/AIOS-CRM") // Optional, but recommended.
+            put(
+                MediaStore.Images.Media.RELATIVE_PATH,
+                "Pictures/AIOS-CRM"
+            ) // Optional, but recommended.
         }
         imageUri = activity?.contentResolver?.insert(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -112,15 +165,15 @@ class FillAttendanceFragment :
 
     private fun checkPermissionsAndGetLocation() {
         permissionManager.request(
-                Permission.Location
-            ).rationale(getString(R.string.permission_location)).checkDetailedPermission { result ->
-                if (result.all { it.value }) {
-                    getLocation()
-                    // viewModel.showSnackbarMessage("Permission Granted")
-                } else {
-                    // viewModel.showSnackbarMessage("Permission Denied")
-                }
+            Permission.Location
+        ).rationale(getString(R.string.permission_location)).checkDetailedPermission { result ->
+            if (result.all { it.value }) {
+                getLocation()
+                // viewModel.showSnackbarMessage("Permission Granted")
+            } else {
+                // viewModel.showSnackbarMessage("Permission Denied")
             }
+        }
     }
 
     private fun getLocation() {

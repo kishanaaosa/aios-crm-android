@@ -36,6 +36,7 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
         viewModel.initVariables()
         setUpObserver()
         checkPermissions()
+        (activity as MainActivity).navigateToNextScreenThroughDirections(HomeFragmentDirections.actionHomeFragmentToFillAttendanceFragment())
     }
 
     private fun setUpObserver() {

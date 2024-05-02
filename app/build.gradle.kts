@@ -65,16 +65,16 @@ android {
     lint {
         disable += "MissingTranslation" + "TypographyFractions"
         abortOnError = false
-        checkReleaseBuilds =  false
+        checkReleaseBuilds = false
     }
-   /* externalNativeBuild {
-        ndkBuild {
-            path = file("src/main/jni/Android.mk") //path of Android.mk file
-        }
-    }
-    android {
-        ndkVersion = "27.0.11718014"
-    }*/
+    /* externalNativeBuild {
+         ndkBuild {
+             path = file("src/main/jni/Android.mk") //path of Android.mk file
+         }
+     }
+     android {
+         ndkVersion = "27.0.11718014"
+     }*/
 }
 
 dependencies {
@@ -141,6 +141,10 @@ dependencies {
 
     //location
     implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    //Image Compress
+    val compressorVersion = "3.0.1"
+    implementation ("id.zelory:compressor:$compressorVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
