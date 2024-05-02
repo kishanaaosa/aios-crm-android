@@ -49,7 +49,6 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
     override fun initializeScreenVariables() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
-        viewModel.getAutoCallLeads()
         setUpObserver()
         checkPermissions()
     }
@@ -63,13 +62,14 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
             .rationale(getString(R.string.calling))
             .checkDetailedPermission { result ->
                 if (result.all { it.value }) {
+                    viewModel.getAutoCallLeads()
                     // viewModel.showSnackbarMessage("Permission Granted")
                 } else {
                     // viewModel.showSnackbarMessage("Permission Denied")
                 }
             }
 
-        permissionManager
+       /* permissionManager
             .request(
                 Permission.ReadPhoneState
             )
@@ -80,7 +80,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
                 } else {
                     // viewModel.showSnackbarMessage("Permission Denied")
                 }
-            }
+            }*/
     }
 
     private fun setUpObserver() {
@@ -112,6 +112,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
         if (leads?.size == 0) {
             showNoDataFound()
         } else {
+            viewModel.generateRandomList()
             getDataBinding().rvLeads.adapter = object :
                 GenericRecyclerViewAdapter<LeadsList, ItemAutoCallBinding>(
                     requireContext(),
@@ -152,9 +153,13 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
     }
 
     private fun openAutoCallPopUp() {
-        autoCallPopUpFragment = AutoCallPopUpFragment()
-        autoCallPopUpFragment.setCancelable(false)
-        autoCallPopUpFragment.show(requireActivity().supportFragmentManager, "AutoCallPopUp")
+        val pos = viewModel.nextRandom()
+        if (pos!=null){
+            viewModel.selectedLead.value = viewModel.leadsList.leads?.get(pos)
+            autoCallPopUpFragment = AutoCallPopUpFragment()
+            autoCallPopUpFragment.setCancelable(false)
+            autoCallPopUpFragment.show(requireActivity().supportFragmentManager, "AutoCallPopUp")
+        }
     }
 
     private fun makeMail(email: String?) {

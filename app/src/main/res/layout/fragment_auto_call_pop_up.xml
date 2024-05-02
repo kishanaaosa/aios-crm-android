@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Company Name: Demo Company"
+                android:text="@{`Company Name: `+viewModel.selectedLead.company}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -73,7 +73,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Name: Demo User"
+                android:text="@{`Name: `+viewModel.selectedLead.name}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
@@ -88,10 +88,24 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Mobile: 9726540727"
+                android:text="@{`Mobile: `+viewModel.selectedLead.phonenumber}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvEmail"
+                style="@style/TextView.regular.12.color444444"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{`Email: `+viewModel.selectedLead.email}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNumber"
                 tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -102,10 +116,10 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Status: New"
+                android:text="@{`Status: `+viewModel.selectedLead.status}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNumber"
+                app:layout_constraintTop_toBottomOf="@id/tvEmail"
                 tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -116,7 +130,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:lines="2"
-                android:text="Notes: manufacturer - Disposal, Staff- 50, want 20 user plan of SCMS"
+                android:text="Notes(Demo): manufacturer - Disposal, Staff- 50, want 20 user plan of SCMS"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvStatus"

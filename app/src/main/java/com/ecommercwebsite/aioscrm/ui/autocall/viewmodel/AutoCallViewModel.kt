@@ -6,8 +6,8 @@ import com.ecommercwebsite.aioscrm.base.ViewModelBase
 import com.ecommercwebsite.aioscrm.network.ResponseData
 import com.ecommercwebsite.aioscrm.network.ResponseHandler
 import com.ecommercwebsite.aioscrm.ui.autocall.model.AutoCallLeadsResponse
+import com.ecommercwebsite.aioscrm.ui.autocall.model.LeadsList
 import com.ecommercwebsite.aioscrm.ui.autocall.repository.AutoCallRepository
-import com.ecommercwebsite.aioscrm.ui.leads.model.LeadsResponse
 import com.ecommercwebsite.aioscrm.utils.SingleLiveEvent
 import com.ecommercwebsite.aioscrm.utils.sharedpref.MyPreference
 import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
@@ -18,26 +18,48 @@ import javax.inject.Inject
 @HiltViewModel
 class AutoCallViewModel @Inject constructor(
     private val repository: AutoCallRepository,
-    private val myPreference: MyPreference
+    val myPreference: MyPreference
 ) : ViewModelBase() {
     var timer: MutableLiveData<String> = MutableLiveData<String>("0")
-     var onCancel = SingleLiveEvent<Boolean>()
+    var onCancel = SingleLiveEvent<Boolean>()
     lateinit var leadListResponse: MutableLiveData<ResponseHandler<ResponseData<AutoCallLeadsResponse>?>>
     var leadsList: AutoCallLeadsResponse = AutoCallLeadsResponse(arrayListOf())
+    var randomList: MutableList<Int> = mutableListOf()
+    var isCallStarted: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    //var random: MutableLiveData<Int> = MutableLiveData(0)
+    var selectedLead: MutableLiveData<LeadsList?> = MutableLiveData()
 
     fun initVariables() {
         onCancel = SingleLiveEvent()
         leadListResponse = MutableLiveData<ResponseHandler<ResponseData<AutoCallLeadsResponse>?>>()
     }
 
-    fun onCancel(){
+    fun generateRandomList() {
+        randomList = (0..(leadsList.leads?.size?.minus(1) ?: 0)).shuffled().toMutableList()
+    }
+
+    fun nextRandom(): Int? {
+        var random: Int? = null
+        if (randomList.isNotEmpty()) {
+            random = randomList.random()
+            randomList.remove(random)
+        } else {
+            random = null
+        }
+        return random
+    }
+
+    fun onCancel() {
         onCancel.value = true
     }
 
     fun getAutoCallLeads() {
         viewModelScope.launch {
             leadListResponse.postValue(ResponseHandler.Loading)
-            leadListResponse.value = repository.getAutoCallLeads(myPreference.getValueString(PrefKey.STAFF_ID,"0").toString())
+            leadListResponse.value = repository.getAutoCallLeads(
+                myPreference.getValueString(PrefKey.STAFF_ID, "0").toString()
+            )
         }
     }
 

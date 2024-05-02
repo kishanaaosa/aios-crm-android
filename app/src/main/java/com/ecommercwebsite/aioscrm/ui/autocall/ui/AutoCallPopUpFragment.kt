@@ -1,5 +1,7 @@
 package com.ecommercwebsite.aioscrm.ui.autocall.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +9,7 @@ import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -18,6 +21,7 @@ import com.ecommercwebsite.aioscrm.ui.autocall.viewmodel.AutoCallViewModel
 import com.ecommercwebsite.aioscrm.utils.CallStateFinder
 import com.ecommercwebsite.aioscrm.utils.CommonCallStateFinder
 import com.ecommercwebsite.aioscrm.utils.DebugLog
+import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -68,28 +72,13 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         dataBinding.viewModel = viewModel
         //viewmodel.initVariables()
         viewModel.onCancel.observe(this, Observer {
+            viewModel.myPreference.setValueBoolean(PrefKey.IS_AUTO_CALLING, false)
             this.dismiss()
         })
-        //other code
         startTimer()
     }
 
-    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[AutoCallViewModel::class.java]
-        dataBinding.viewModel = viewModel
-        //viewmodel.initVariables()
-        viewModel.onCancel.observe(this, Observer {
-            this.dismiss()
-        })
-        //other code
-        startTimer()
-    }*/
-
     private fun startTimer() {
-
-        //dataBinding.tvName.text = viewModel.leadsList.leads?.get(0)?.name.toString()
-
         countDownTimer = object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
@@ -99,11 +88,29 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
             override fun onFinish() {
                 dataBinding.tvAutoCallTimer.text = "Call Started"
                 timerRunning = false
+                //makeCall(viewModel.selectedLead.value?.phonenumber)
+                makeCall("9726540727")
             }
         }
 
         countDownTimer.start()
         timerRunning = true
+    }
+
+    private fun makeCall(phoneNumber: String?) {
+        if (phoneNumber != "") {
+            try {
+                viewModel.isCallStarted.value = true
+                val intent = Intent(Intent.ACTION_CALL)
+                intent.data = Uri.parse("tel:$phoneNumber")
+                requireContext().startActivity(intent)
+            } catch (e: Exception) {
+                Toast.makeText(context, "Invalid PhoneNumber", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            viewModel.isCallStarted.value = false
+            viewModel.showSnackbarMessage("Invalid PhoneNumber")
+        }
     }
 
     override fun onDestroy() {
@@ -116,6 +123,10 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
     override fun onCallStateChanged(state: Int) {
         when (state) {
             TelephonyManager.CALL_STATE_IDLE -> {
+                if (viewModel.isCallStarted.value == true) {
+                    dataBinding.tvAutoCallTimer.text = "Call Finished"
+                    viewModel.isCallStarted.value = false
+                }
                 DebugLog.print("::::: call state idle")
             }
 
