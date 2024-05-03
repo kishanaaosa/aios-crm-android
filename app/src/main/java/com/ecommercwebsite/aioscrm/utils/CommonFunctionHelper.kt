@@ -45,6 +45,12 @@ object CommonFunctionHelper {
         view.startAnimation(anim)
     }
 
+    fun formatSecondsToMinutes(seconds: Int): String {
+        val minutes = seconds / 60
+        val remainingSeconds = seconds % 60
+        return String.format("%d:%02d", minutes, remainingSeconds)
+    }
+
     fun openWhatsAppChat(context: Context,toNumber: String) {
         val intent = Intent(Intent.ACTION_VIEW)
         val uri = Uri.parse("https://wa.me/$toNumber")

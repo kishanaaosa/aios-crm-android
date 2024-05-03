@@ -1,5 +1,12 @@
 package com.ecommercwebsite.aioscrm.ui.home.ui
 
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Build
+import android.provider.CallLog
+import android.util.Log
 import androidx.lifecycle.Observer
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
@@ -10,15 +17,28 @@ import com.ecommercwebsite.aioscrm.network.ResponseData
 import com.ecommercwebsite.aioscrm.network.ResponseHandler
 import com.ecommercwebsite.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.ecommercwebsite.aioscrm.ui.home.viewmodel.HomeViewModel
+import com.ecommercwebsite.aioscrm.utils.DebugLog
 import com.ecommercwebsite.aioscrm.utils.permissions.Permission
 import com.ecommercwebsite.aioscrm.utils.permissions.PermissionManager
 import com.ecommercwebsite.aioscrm.utils.sharedpref.PrefKey
+import com.example.android_practical.ui.home.CallerModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @AndroidEntryPoint
 class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
     private val permissionManager = PermissionManager.from(this)
-
+    var missed = 0
+    var incoming = 0
+    var outgoing = 0
+    var unAnswered = 0
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun setupToolbar() {
@@ -72,6 +92,18 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
                 }
             }
         })
+        /* viewModel.missCallList.observe(viewLifecycleOwner) {
+             getDataBinding().tvMissedCallsCount.text = it.size.toString()
+         }
+         viewModel.dialCallList.observe(viewLifecycleOwner) {
+             getDataBinding().tvDialCallsCount.text = it.size.toString()
+         }
+         viewModel.inComingCallList.observe(viewLifecycleOwner) {
+             getDataBinding().tvInComingCallCount.text = it.size.toString()
+         }
+         viewModel.outGoingCallList.observe(viewLifecycleOwner) {
+             getDataBinding().tvUnAnsweredCallsCount.text = it.size.toString()
+         }*/
     }
 
     private fun checkPermissions() {
@@ -82,11 +114,111 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
             .rationale(getString(R.string.post_notification))
             .checkDetailedPermission { result ->
                 if (result.all { it.value }) {
+                    checkPermissionforLog()
                     // viewModel.showSnackbarMessage("Permission Granted")
                 } else {
                     // viewModel.showSnackbarMessage("Permission Denied")
                 }
             }
+    }
+
+    private fun checkPermissionforLog() {
+        permissionManager
+            .request(
+                Permission.ReadWriteLog
+            )
+            .rationale(getString(R.string.post_notification))
+            .checkDetailedPermission { result ->
+                if (result.all { it.value }) {
+                    getCallLogList()
+                    // viewModel.showSnackbarMessage("Permission Granted")
+                } else {
+                    // viewModel.showSnackbarMessage("Permission Denied")
+                }
+            }
+    }
+
+    private fun getCallLogList() {
+
+            viewModel.showProgressBar(true)
+            Log.i("readContacts", "Reading Contacts")
+            val contentResolver = context?.contentResolver
+            val callLogsUri: Uri = Uri.parse("content://call_log/calls")
+            val callLogsCursor: Cursor? =
+                contentResolver?.query(
+                    callLogsUri,
+                    null,
+                    null,
+                    null,
+                    android.provider.CallLog.Calls.DEFAULT_SORT_ORDER
+                )
+            if (callLogsCursor!!.moveToFirst()) {
+                do {
+                    val name: String? =
+                        callLogsCursor.getString(callLogsCursor.getColumnIndex(android.provider.CallLog.Calls.CACHED_NAME))
+                    val photoUri: String? =
+                        callLogsCursor.getString(callLogsCursor.getColumnIndex(android.provider.CallLog.Calls.CACHED_PHOTO_URI))
+                    var photo: Bitmap? = null
+                    val number: String =
+                        callLogsCursor.getString(callLogsCursor.getColumnIndex(android.provider.CallLog.Calls.NUMBER))
+                    val date: Long =
+                        callLogsCursor.getLong(callLogsCursor.getColumnIndex(android.provider.CallLog.Calls.DATE))
+                    val callType: Int =
+                        Integer.parseInt(
+                            callLogsCursor.getString(
+                                callLogsCursor.getColumnIndex(
+                                    android.provider.CallLog.Calls.TYPE
+                                )
+                            )
+                        )
+
+                    val duration: String =
+                        callLogsCursor.getString(callLogsCursor.getColumnIndex(android.provider.CallLog.Calls.DURATION))
+
+                    Log.i("photoURI", "photoUri: $photoUri")
+
+                    val formatter: SimpleDateFormat = SimpleDateFormat("dd/MM/YYYY, hh:mm a")
+                    val dateString: String = formatter.format(Date(date))
+
+                    if (photoUri != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && Files.exists(
+                            Paths.get(photoUri)
+                        )
+                    ) {
+                        photo = BitmapFactory.decodeFile(photoUri)
+                    }
+                    Log.i("photo BITMAP", "photo : $photo")
+
+                    viewModel.logsList?.add(
+                        CallerModel(
+                            name,
+                            number,
+                            dateString.split(",")[0],
+                            dateString.split(",")[1],
+                            callType,
+                            photo,
+                            duration
+                        )
+                    )
+                    when (callType) {
+                        CallLog.Calls.INCOMING_TYPE -> incoming+=1
+                            CallLog.Calls.OUTGOING_TYPE->outgoing+=1
+                            CallLog.Calls.MISSED_TYPE->missed+=1
+                            CallLog.Calls.REJECTED_TYPE->unAnswered+=1
+                    }
+                } while (callLogsCursor.moveToNext())
+
+            }
+            callLogsCursor.close()
+            DebugLog.d("SIZE:" + viewModel.logsList?.size.toString())
+            GlobalScope.launch(context = Dispatchers.Main) {
+                getDataBinding().tvMissedCallsCount.text =missed.toString()
+                getDataBinding().tvDialCallsCount.text = outgoing.toString()
+                getDataBinding().tvInComingCallCount.text = incoming.toString()
+                getDataBinding().tvUnAnsweredCallsCount.text = unAnswered.toString()
+
+            }
+
+
     }
 
 

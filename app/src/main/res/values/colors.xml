@@ -44,10 +44,16 @@
     <color name="color_F50057">#F50057</color>
     <color name="color_1976D2">#1976D2</color>
 
-    <color name="colorGradientStart">#093028</color>
+    <color name="colorGradientStart">#004D40</color>
     <color name="colorGradientEnd">#237A57</color>
 
     <color name="colorGradientStartC73B1C">#C73B1C</color>
     <color name="colorGradientEnd611C0E">#611C0E</color>
+
+    <color name="colorGradientStart3B5998">#3B5998</color>
+    <color name="colorGradientEnd131D32">#131D32</color>
+
+    <color name="colorGradientStart6DC89C">#6DC89C</color>
+    <color name="colorGradientEnd35624C">#35624C</color>
 
 </resources>

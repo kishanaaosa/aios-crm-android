@@ -12,6 +12,7 @@ sealed class Permission(vararg val permissions: String) {
     object PostNotification : Permission(POST_NOTIFICATIONS)
     object CallPhone : Permission(CALL_PHONE)
     object ReadPhoneState : Permission(READ_PHONE_STATE)
+    object ReadWriteLog : Permission(READ_CALL_LOG, WRITE_CALL_LOG)
 
 
     companion object {
@@ -24,6 +25,7 @@ sealed class Permission(vararg val permissions: String) {
             CALL_PHONE -> CallPhone
             CAMERA -> Camera
             READ_PHONE_STATE -> ReadPhoneState
+            READ_CALL_LOG,WRITE_CALL_LOG -> ReadWriteLog
             else -> throw IllegalArgumentException("Unknown permission: $permission")
         }
     }

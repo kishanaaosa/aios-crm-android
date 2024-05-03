@@ -1,5 +1,6 @@
 package com.ecommercwebsite.aioscrm.ui.autocall.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -13,7 +14,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.databinding.FragmentAutoCallPopUpBinding
@@ -53,10 +53,8 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_auto_call_pop_up, container, false)
         return dataBinding.root
@@ -83,6 +81,31 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
             viewModel.isCallFinished.value = false
             this.dismiss()
             viewModel.getAutoCallLeads()
+        }
+        dataBinding.ivCall.setOnClickListener {
+            makeCall(viewModel.selectedLead.value?.phonenumber)
+        }
+        dataBinding.ivMail.setOnClickListener {
+            makeMail(viewModel.selectedLead.value?.email)
+        }
+        dataBinding.ivWhatsApp.setOnClickListener {
+            viewModel.selectedLead.value?.phonenumber?.let { it1 ->
+                openWhatsAppChat(requireContext(),
+                    it1
+                )
+            }
+        }
+        dataBinding.btnChangeStatus.setOnClickListener {
+            viewModel.showSnackbarMessage("Coming soon!!")
+        }
+        dataBinding.ivAddNote.setOnClickListener {
+        viewModel.showSnackbarMessage("Coming soon!!")
+        }
+        dataBinding.ivCreateTask.setOnClickListener {
+            viewModel.showSnackbarMessage("Coming soon!!")
+        }
+        dataBinding.ivCreateAppointment.setOnClickListener {
+            viewModel.showSnackbarMessage("Coming soon!!")
         }
         startTimer()
     }
@@ -119,6 +142,30 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         } else {
             viewModel.isCallStarted.value = false
             viewModel.showSnackbarMessage("Invalid PhoneNumber")
+        }
+    }
+
+    private fun makeMail(email: String?) {
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.setData(Uri.parse("mailto:")) // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, email.toString())
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        if (intent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    fun openWhatsAppChat(context: Context?, toNumber: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val uri = Uri.parse("https://wa.me/$toNumber")
+
+        intent.data = uri
+        intent.setPackage("com.whatsapp")
+
+        if (context?.packageManager?.let { intent.resolveActivity(it) } != null) {
+            context.startActivity(intent)
+        } else {
+            Toast.makeText(context,"WhatsApp Not Installed",Toast.LENGTH_SHORT).show()
         }
     }
 

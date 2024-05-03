@@ -27,10 +27,12 @@ class BindAdapters {
          */
         @BindingAdapter("firstChar")
         @JvmStatic
-        fun setFirstCharacter(textView: TextView, text: String?) {
+        fun setFirstCharacter(textView: TextView, text: String? = "A") {
             text?.let {
                 if (it.isNotEmpty()) {
                     textView.text = it.substring(0, 1)
+                } else {
+                    textView.text = "A"
                 }
             }
         }

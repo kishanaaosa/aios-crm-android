@@ -47,7 +47,6 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
     override fun initializeScreenVariables() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
-        viewModel.getLeads()
         setUpObserver()
         checkPermissions()
     }
@@ -60,6 +59,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
             .rationale(getString(R.string.calling))
             .checkDetailedPermission { result ->
                 if (result.all { it.value }) {
+                    viewModel.getLeads()
                     // viewModel.showSnackbarMessage("Permission Granted")
                 } else {
                     // viewModel.showSnackbarMessage("Permission Denied")
