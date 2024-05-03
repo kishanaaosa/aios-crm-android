@@ -13,10 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@color/colorF8F5F6"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_dialog"
-        android:paddingBottom="@dimen/_8sdp"
         tools:context=".ui.attendance.ui.FillAttendanceFragment">
 
         <com.google.android.material.textview.MaterialTextView
@@ -25,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/bg_dialog_top_round"
-            android:backgroundTint="@color/color6DC99B"
             android:gravity="center"
             android:visibility="visible"
             android:text="Attendance"
@@ -62,8 +59,6 @@
             app:layout_constraintTop_toBottomOf="@id/ivProfile"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
-
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvLocation"
             style="@style/TextView.regular.12.color6DC99B"
@@ -80,9 +75,13 @@
             style="@style/Button.bold.12.colorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color6DC99B"
             android:layout_marginTop="@dimen/_16sdp"
-            android:text="Fill Attendance"
+            android:background="@drawable/button_gradient"
+            android:text="Mark Attendance"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_16sdp"
+            app:cornerRadius="@dimen/_8sdp"
             android:onClick="@{()->viewModel.onFillAttendanceClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

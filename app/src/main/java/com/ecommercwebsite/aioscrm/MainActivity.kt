@@ -89,7 +89,8 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         binding.layoutSideMenuDrawer.tvName.text = mPref.getValueString(PrefKey.USER_NAME, "Guest")
         binding.layoutSideMenuDrawer.btnMyAccount.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-            navHostFragment.findNavController().navigate(R.id.myAccountFragment)
+            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+            //navHostFragment.findNavController().navigate(R.id.myAccountFragment)
         }
 
         sideMenuList = getSideMenuList()
@@ -117,16 +118,19 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                     when (model.id) {
 
                         "menuOption1" -> {
-                            navHostFragment.findNavController().navigate(R.id.toDoFragment)
+                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            //  navHostFragment.findNavController().navigate(R.id.toDoFragment)
                         }
 
                         "menuOption2" -> {
-                            navHostFragment.findNavController().navigate(R.id.salesFragment)
+                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                           // navHostFragment.findNavController().navigate(R.id.salesFragment)
 
                         }
 
                         "menuOption3" -> {
-                            navHostFragment.findNavController().navigate(R.id.settingsFragment)
+                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            //navHostFragment.findNavController().navigate(R.id.settingsFragment)
                         }
 
                         "menuOption4" -> {

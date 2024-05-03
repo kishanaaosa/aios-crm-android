@@ -30,13 +30,12 @@ interface ApiInterface {
         @Field("password") password: String?
     ): Response<ResponseData<LoginResponse>>
 
-
     @Multipart
     @POST("staff_attendance_store")
     suspend fun fillAttendance(
-        @Query("staffid") staffid: String?,
-        @Query("lat") lat: String?,
-        @Query("long") long: String?,
+        @Part("staffid") staffid: String?,
+        @Part("lat") lat: String?,
+        @Part("long") long: String?,
         @Part image: MultipartBody.Part?
         ): Response<ResponseData<FillAttendanceResponse>>
 

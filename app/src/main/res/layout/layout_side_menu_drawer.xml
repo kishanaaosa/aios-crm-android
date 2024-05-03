@@ -79,7 +79,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_29sdp"
             android:backgroundTint="@color/white"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
             android:text="My Account"
@@ -139,7 +139,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvLogInWith"
-                style="@style/TextView.regular.12.color444444"
+                style="@style/TextView.montserrat.semi.bold.12.color444444"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"

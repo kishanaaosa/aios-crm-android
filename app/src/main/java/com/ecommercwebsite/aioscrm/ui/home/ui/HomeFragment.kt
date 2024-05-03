@@ -1,10 +1,14 @@
 package com.ecommercwebsite.aioscrm.ui.home.ui
 
+import androidx.lifecycle.Observer
 import com.ecommercwebsite.aioscrm.MainActivity
 import com.ecommercwebsite.aioscrm.R
 import com.ecommercwebsite.aioscrm.base.FragmentBase
 import com.ecommercwebsite.aioscrm.base.ToolbarModel
 import com.ecommercwebsite.aioscrm.databinding.FragmentHomeBinding
+import com.ecommercwebsite.aioscrm.network.ResponseData
+import com.ecommercwebsite.aioscrm.network.ResponseHandler
+import com.ecommercwebsite.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.ecommercwebsite.aioscrm.ui.home.viewmodel.HomeViewModel
 import com.ecommercwebsite.aioscrm.utils.permissions.Permission
 import com.ecommercwebsite.aioscrm.utils.permissions.PermissionManager
@@ -36,7 +40,7 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
         viewModel.initVariables()
         setUpObserver()
         checkPermissions()
-        (activity as MainActivity).navigateToNextScreenThroughDirections(HomeFragmentDirections.actionHomeFragmentToFillAttendanceFragment())
+        viewModel.checkAttendance()
     }
 
     private fun setUpObserver() {
@@ -44,6 +48,30 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
             mPref.setValueBoolean(PrefKey.IS_AUTO_CALLING, true)
             (activity as MainActivity).navigateToNextScreenThroughDirections(HomeFragmentDirections.actionHomeFragmentToAutoCallFragment())
         }
+        viewModel.checkAttendanceResponse.observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                return@Observer
+            }
+            when (it) {
+                is ResponseHandler.Loading -> {
+                    viewModel.showProgressBar(true)
+                }
+
+                is ResponseHandler.OnFailed -> {
+                    viewModel.showProgressBar(false)
+                    httpFailedHandler(it.code, it.message, it.messageCode)
+                }
+
+                is ResponseHandler.OnSuccessResponse<ResponseData<CheckAttendanceResponse>?> -> {
+                    viewModel.showProgressBar(false)
+                    if (it.response?.data?.isAttendance == false) {
+                        (activity as MainActivity).navigateToNextScreenThroughDirections(
+                            HomeFragmentDirections.actionHomeFragmentToFillAttendanceFragment()
+                        )
+                    }
+                }
+            }
+        })
     }
 
     private fun checkPermissions() {

@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="5/25"
+                        android:text="18/25"
                         app:layout_constraintBottom_toBottomOf="@id/ivFinishedTasks"
                         app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
                         app:layout_constraintStart_toEndOf="@id/lblTaskNotFinished"
@@ -96,7 +96,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:progress="10"
+                        android:progress="70"
                         app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
                         app:layout_constraintStart_toStartOf="@id/ivFinishedTasks"
                         app:layout_constraintTop_toBottomOf="@id/ivFinishedTasks" />
@@ -155,7 +155,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="5/25"
+                        android:text="22/25"
                         app:layout_constraintBottom_toBottomOf="@id/ivOpenedTask"
                         app:layout_constraintEnd_toEndOf="@id/clOpenedTask"
                         app:layout_constraintStart_toEndOf="@id/lblOpenedTask"
@@ -166,7 +166,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:progress="10"
+                        android:progress="80"
                         app:layout_constraintEnd_toEndOf="@id/clOpenedTask"
                         app:layout_constraintStart_toStartOf="@id/ivOpenedTask"
                         app:layout_constraintTop_toBottomOf="@id/ivOpenedTask" />
@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="5/25"
+                        android:text="10/30"
                         app:layout_constraintBottom_toBottomOf="@id/ivConvertedLeads"
                         app:layout_constraintEnd_toEndOf="@id/clConvertedLeads"
                         app:layout_constraintStart_toEndOf="@id/lblConvertedLeads"
@@ -236,11 +236,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:progress="10"
+                        android:progress="30"
                         app:layout_constraintEnd_toEndOf="@id/clConvertedLeads"
                         app:layout_constraintStart_toStartOf="@id/ivConvertedLeads"
                         app:layout_constraintTop_toBottomOf="@id/ivConvertedLeads" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -268,7 +267,7 @@
                         android:id="@+id/ivInComingCallBackGround"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:background="@color/color6DC99B"
+                        android:background="@drawable/toolbar_gradient"
                         app:layout_constraintBottom_toBottomOf="@id/ivInComingCall"
                         app:layout_constraintEnd_toEndOf="@+id/ivInComingCall"
                         app:layout_constraintStart_toStartOf="parent"
@@ -283,7 +282,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_call"
+                        app:srcCompat="@drawable/ic_incoming"
                         app:tint="@color/white" />
 
 
@@ -338,7 +337,7 @@
                         android:id="@+id/ivDialCallsBackGround"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:background="@color/color6DC99B"
+                        android:background="@drawable/toolbar_gradient"
                         app:layout_constraintBottom_toBottomOf="@id/ivDialCalls"
                         app:layout_constraintEnd_toEndOf="@+id/ivDialCalls"
                         app:layout_constraintStart_toStartOf="parent"
@@ -353,7 +352,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_call"
+                        app:srcCompat="@drawable/ic_dial"
                         app:tint="@color/white" />
 
 
@@ -409,7 +408,7 @@
                         android:id="@+id/ivMissedCallsBackGround"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:background="@color/color6DC99B"
+                        android:background="@drawable/toolbar_gradient"
                         app:layout_constraintBottom_toBottomOf="@id/ivMissedCalls"
                         app:layout_constraintEnd_toEndOf="@+id/ivMissedCalls"
                         app:layout_constraintStart_toStartOf="parent"
@@ -424,7 +423,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_call"
+                        app:srcCompat="@drawable/ic_missed"
                         app:tint="@color/white" />
 
 
@@ -479,7 +478,7 @@
                         android:id="@+id/ivUnAnsweredCallsGround"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:background="@color/color6DC99B"
+                        android:background="@drawable/toolbar_gradient"
                         app:layout_constraintBottom_toBottomOf="@id/ivUnAnsweredCalls"
                         app:layout_constraintEnd_toEndOf="@+id/ivUnAnsweredCalls"
                         app:layout_constraintStart_toStartOf="parent"
@@ -494,7 +493,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_call"
+                        app:srcCompat="@drawable/ic_unanswered"
                         app:tint="@color/white" />
 
 
@@ -534,7 +533,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_4sdp"
-                app:cardBackgroundColor="@color/color_8B513E"
+                app:cardBackgroundColor="@color/color_F9A825"
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:layout_constraintEnd_toStartOf="@id/cvLowPriorityTasks"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -554,7 +553,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="0"
+                        android:text="10"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -582,7 +581,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                app:cardBackgroundColor="@color/color_d1b452"
+                app:cardBackgroundColor="@color/color_F50057"
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                 app:layout_constraintStart_toEndOf="@id/cvHighPriorityTasks"
@@ -601,7 +600,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="0"
+                        android:text="15"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -623,18 +622,17 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvStartCall"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                app:cardBackgroundColor="@color/color6DC99B"
-                app:cardCornerRadius="@dimen/_8sdp"
                 android:onClick="@{()->viewModel.onStartCalling()}"
-                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:cardBackgroundColor="@color/color_1976D2"
+                app:cardCornerRadius="@dimen/_8sdp"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@id/cvHighPriorityTasks">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -655,11 +653,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

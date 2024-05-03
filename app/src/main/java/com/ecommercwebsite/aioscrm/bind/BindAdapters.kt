@@ -1,11 +1,9 @@
 package com.ecommercwebsite.aioscrm.bind
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.ImageView
@@ -15,8 +13,8 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import com.bumptech.glide.Glide
 import com.ecommercwebsite.aioscrm.R
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 
 /**
  * Bind data used for data binding
@@ -63,8 +61,7 @@ class BindAdapters {
                     }
                     request.into(view)
                 }
-            }
-            else{
+            } else {
                 view.setImageResource(R.mipmap.ic_launcher)
             }
         }
@@ -103,9 +100,10 @@ class BindAdapters {
             }
         }
 
+        /*   */
         /**
          * set drawable tint & background tint
-         */
+         *//*
         @JvmStatic
         @BindingAdapter("bind:setTint")
         fun setTint(view: MaterialButton, isSelected: Boolean) {
@@ -143,6 +141,27 @@ class BindAdapters {
                     )
                 }
             }
+        }*/
+
+        @JvmStatic
+        @BindingAdapter("bind:setTintToMTV")
+        fun setTintToMTV(view: MaterialTextView, text: String) {
+            val colorList = arrayListOf(
+                "#0070FF",
+                "#00B140",
+                "#FF6EC7",
+                "#FFD100",
+                "#9D50FF",
+                "#FFA500",
+                "#000000",
+                "#008080"
+            )
+            colorList.random().let {
+                //val color = ContextCompat.getColor(view.context, it)
+                val color = Color.parseColor(it) // Example color, you can use any color
+                view.backgroundTintList = ColorStateList.valueOf(color)
+            }
+
         }
 
         /**
@@ -158,8 +177,6 @@ class BindAdapters {
                 placeholder(R.drawable.ic_profile)
             }
         }
-
-
 
 
     }

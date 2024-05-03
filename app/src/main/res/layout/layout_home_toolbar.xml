@@ -21,7 +21,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color6DC99B"
+        android:background="@drawable/toolbar_gradient"
         android:visibility="@{toolbarModel.isVisible ? View.VISIBLE : View.GONE}">
 
 

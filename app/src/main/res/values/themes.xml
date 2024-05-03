@@ -93,6 +93,13 @@
         <item name="android:textColor">@color/color444444</item>
     </style>
 
+    <!-- Text view font family montserrat(semi) font size 12 font color color444444 -->
+    <style name="TextView.montserrat.semi.bold.12.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
     <!-- Text view font family montserrat(bold) font size 12 font color color444444 -->
     <style name="TextView.bold.12.color444444" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/montserrat_bold</item>
@@ -225,6 +232,9 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:textSize">@dimen/_14ssp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:startColor">@color/colorGradientStart</item>
+        <item name="android:endColor">@color/colorGradientEnd</item>
+        <item name="android:angle">90</item>
         <item name="cornerRadius">@dimen/_8sdp</item>
     </style>
 
@@ -233,6 +243,9 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:startColor">@color/colorGradientStart</item>
+        <item name="android:endColor">@color/colorGradientEnd</item>
+        <item name="android:angle">90</item>
         <item name="cornerRadius">@dimen/_8sdp</item>
     </style>
 
@@ -269,9 +282,9 @@
     <style name="ButtonWithStroke.bold.12.color6E394A" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:textSize">@dimen/_12ssp</item>
-        <item name="android:textColor">@color/color6E394A</item>
+        <item name="android:textColor">@color/colorGradientStart</item>
         <item name="cornerRadius">@dimen/_8sdp</item>
-        <item name="strokeColor">@color/color6E394A</item>
+        <item name="strokeColor">@color/colorGradientStart</item>
         <item name="strokeWidth">@dimen/_1sdp</item>
         <item name="android:padding">@dimen/_12sdp</item>
         <item name="backgroundTint">@color/white</item>
@@ -302,6 +315,8 @@
         <item name="bottomSheetStyle">@style/MYBottomSheetStyle</item>
         <item name="android:windowMinWidthMajor">90%</item>
         <item name="android:windowMinWidthMinor">90%</item>
+        <item name="materialButtonStyle">@style/Button.bold.12.colorWhite</item>
+
     </style>
 
     <style name="MYBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
