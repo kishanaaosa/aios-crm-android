@@ -103,8 +103,10 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
 
                 is ResponseHandler.OnSuccessResponse<ResponseData<AutoCallLeadsResponse>?> -> {
                     viewModel.showProgressBar(false)
-                    viewModel.leadsList.leads = it.response?.data?.leads
-                    setUpLeads(it.response?.data?.leads)
+                    if (it.response?.data?.leads!=null) {
+                        viewModel.leadsList.leads = it.response?.data?.leads
+                        setUpLeads(it.response.data?.leads)
+                    }
                 }
             }
         })

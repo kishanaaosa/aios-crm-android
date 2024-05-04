@@ -86,8 +86,10 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
 
                 is ResponseHandler.OnSuccessResponse<ResponseData<LeadsResponse>?> -> {
                     viewModel.showProgressBar(false)
-                    setUpLeads(it.response?.data?.leads)
-                    checkPermissions()
+                    if (it.response?.data?.leads != null) {
+                        setUpLeads(it.response.data?.leads)
+                        checkPermissions()
+                    }
                 }
             }
         })

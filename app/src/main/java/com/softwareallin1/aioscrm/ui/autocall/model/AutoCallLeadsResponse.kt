@@ -8,5 +8,5 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class AutoCallLeadsResponse(
     @JsonProperty("lead_list")
-    var leads: ArrayList<LeadsList>?
+    var leads: ArrayList<LeadsList>? = arrayListOf()
 )
