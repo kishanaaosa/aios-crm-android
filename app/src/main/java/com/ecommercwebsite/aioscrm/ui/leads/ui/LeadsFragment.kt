@@ -54,7 +54,8 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
     private fun checkPermissions() {
         permissionManager
             .request(
-                Permission.CallPhone
+                Permission.CallPhone,
+                Permission.ReadPhoneState
             )
             .rationale(getString(R.string.calling))
             .checkDetailedPermission { result ->

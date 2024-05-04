@@ -120,8 +120,8 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
             override fun onFinish() {
                 dataBinding.tvAutoCallTimer.text = "Call Started"
                 timerRunning = false
-                //makeCall(viewModel.selectedLead.value?.phonenumber)
-                makeCall("9726540727")
+                makeCall(viewModel.selectedLead.value?.phonenumber)
+                //makeCall("9726540727")
             }
         }
 

@@ -125,11 +125,14 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
     private fun checkPermissionforLog() {
         permissionManager
             .request(
-                Permission.ReadWriteLog
+                Permission.ReadWriteLog,
+                Permission.ReadPhoneState,
+                Permission.CallPhone
             )
             .rationale(getString(R.string.post_notification))
             .checkDetailedPermission { result ->
                 if (result.all { it.value }) {
+
                     getCallLogList()
                     // viewModel.showSnackbarMessage("Permission Granted")
                 } else {
@@ -140,7 +143,7 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
 
     private fun getCallLogList() {
 
-            viewModel.showProgressBar(true)
+            //viewModel.showProgressBar(true)
             Log.i("readContacts", "Reading Contacts")
             val contentResolver = context?.contentResolver
             val callLogsUri: Uri = Uri.parse("content://call_log/calls")

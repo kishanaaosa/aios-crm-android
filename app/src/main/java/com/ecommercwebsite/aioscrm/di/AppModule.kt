@@ -21,14 +21,14 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
-        if (Build.VERSION.SDK_INT >= 23) {
-            /*  EncryptedSharedPreferences.create(
+      /*  if (Build.VERSION.SDK_INT >= 23) {
+            *//*  EncryptedSharedPreferences.create(
                 PrefKey.PREFERENCE_NAME,
                 MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
                 context,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )*/
+            )*//*
 
             val keyGenParameterSpec = MasterKey.Builder(context)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
@@ -43,11 +43,11 @@ class AppModule {
                     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
                 )
 
-        } else {
+        } else {*/
             context.getSharedPreferences(
                 PrefKey.PREFERENCE_NAME, Context.MODE_PRIVATE
             )
-        }
+        //}
 
     @Singleton
     @Provides
