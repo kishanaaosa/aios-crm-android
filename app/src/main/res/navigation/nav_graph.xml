@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.splash.ui.SplashFragment"
+        android:name="com.softwareallin1.aioscrm.ui.splash.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.login.ui.LoginFragment"
+        android:name="com.softwareallin1.aioscrm.ui.login.ui.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.home.ui.HomeFragment"
+        android:name="com.softwareallin1.aioscrm.ui.home.ui.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -46,52 +46,52 @@
     </fragment>
     <fragment
         android:id="@+id/leadsFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.leads.ui.LeadsFragment"
+        android:name="com.softwareallin1.aioscrm.ui.leads.ui.LeadsFragment"
         android:label="fragment_leads"
         tools:layout="@layout/fragment_leads" />
     <fragment
         android:id="@+id/callsFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.calls.ui.CallsFragment"
+        android:name="com.softwareallin1.aioscrm.ui.calls.ui.CallsFragment"
         android:label="CallsFragment"
         tools:layout="@layout/fragment_calls" />
     <fragment
         android:id="@+id/appointlyFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.appointly.ui.AppointlyFragment"
+        android:name="com.softwareallin1.aioscrm.ui.appointly.ui.AppointlyFragment"
         android:label="AppointlyFragment"
         tools:layout="@layout/fragment_appointly" />
     <fragment
         android:id="@+id/tasksFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.tasks.ui.TasksFragment"
+        android:name="com.softwareallin1.aioscrm.ui.tasks.ui.TasksFragment"
         android:label="TasksFragment"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.notification.ui.NotificationFragment"
+        android:name="com.softwareallin1.aioscrm.ui.notification.ui.NotificationFragment"
         android:label="NotificationFragment"
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/myAccountFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.myaccount.ui.MyAccountFragment"
+        android:name="com.softwareallin1.aioscrm.ui.myaccount.ui.MyAccountFragment"
         android:label="MyAccountFragment"
         tools:layout="@layout/fragment_my_account" />
     <fragment
         android:id="@+id/toDoFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.todo.ui.ToDoFragment"
+        android:name="com.softwareallin1.aioscrm.ui.todo.ui.ToDoFragment"
         android:label="ToDoFragment"
         tools:layout="@layout/fragment_to_do" />
     <fragment
         android:id="@+id/salesFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.sales.ui.SalesFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.SalesFragment"
         android:label="SalesFragment"
         tools:layout="@layout/fragment_sales" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.settings.ui.SettingsFragment"
+        android:name="com.softwareallin1.aioscrm.ui.settings.ui.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.webview.WebViewFragment"
+        android:name="com.softwareallin1.aioscrm.ui.webview.WebViewFragment"
         android:label="WebViewFragment"
         tools:layout="@layout/fragment_web_view" />
     <action
@@ -106,17 +106,17 @@
     </action>
     <dialog
         android:id="@+id/fillAttendanceFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.attendance.ui.FillAttendanceFragment"
+        android:name="com.softwareallin1.aioscrm.ui.attendance.ui.FillAttendanceFragment"
         android:label="FillAttendanceFragment"
         tools:layout="@layout/fragment_fill_attendance" />
     <fragment
         android:id="@+id/autoCallFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.autocall.ui.AutoCallFragment"
+        android:name="com.softwareallin1.aioscrm.ui.autocall.ui.AutoCallFragment"
         android:label="AutoCallFragment"
         tools:layout="@layout/fragment_auto_call" />
     <dialog
         android:id="@+id/autoCallPopUpFragment"
-        android:name="com.ecommercwebsite.aioscrm.ui.autocall.ui.AutoCallPopUpFragment"
+        android:name="com.softwareallin1.aioscrm.ui.autocall.ui.AutoCallPopUpFragment"
         android:label="AutoCallPopUpFragment"
         tools:layout="@layout/fragment_auto_call_pop_up"/>
 </navigation>

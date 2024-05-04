@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ecommercwebsite.aioscrm.ui.attendance.viewmodel.FillAttendanceViewModel" />
+            type="com.softwareallin1.aioscrm.ui.attendance.viewmodel.FillAttendanceViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

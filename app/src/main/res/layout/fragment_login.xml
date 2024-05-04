@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.ecommercwebsite.aioscrm.utils.Utils"/>
+        <import type="com.softwareallin1.aioscrm.utils.Utils"/>
 
         <variable
             name="viewModel"
-            type="com.ecommercwebsite.aioscrm.ui.login.viewmodel.LoginViewModel" />
+            type="com.softwareallin1.aioscrm.ui.login.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

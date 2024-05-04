@@ -10,11 +10,11 @@
 
         <variable
             name="toolbarModel"
-            type="com.ecommercwebsite.aioscrm.base.ToolbarModel" />
+            type="com.softwareallin1.aioscrm.base.ToolbarModel" />
 
         <variable
             name="clickListener"
-            type="com.ecommercwebsite.aioscrm.utils.HomeToolbarClickHandler" />
+            type="com.softwareallin1.aioscrm.utils.HomeToolbarClickHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

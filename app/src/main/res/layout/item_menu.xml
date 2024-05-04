@@ -9,7 +9,7 @@
 
         <variable
             name="menu"
-            type="com.ecommercwebsite.aioscrm.ui.slidermenu.SideMenuModel" />
+            type="com.softwareallin1.aioscrm.ui.slidermenu.SideMenuModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

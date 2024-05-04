@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.ecommercwebsite.aioscrm.ui.home.viewmodel.HomeViewModel" />
+            type="com.softwareallin1.aioscrm.ui.home.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

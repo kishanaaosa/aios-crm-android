@@ -5,15 +5,17 @@ plugins {
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
-    //id("com.google.gms.google-services")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
-    namespace = "com.ecommercwebsite.aioscrm"
+    namespace = "com.softwareallin1.aioscrm"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ecommercwebsite.aioscrm"
+        applicationId = "com.softwareallin1.aioscrm"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -145,6 +147,13 @@ dependencies {
     //Image Compress
     val compressorVersion = "3.0.1"
     implementation ("id.zelory:compressor:$compressorVersion")
+
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-perf-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

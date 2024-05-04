@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.ecommercwebsite.aioscrm.ui.autocall.viewmodel.AutoCallViewModel" />
+            type="com.softwareallin1.aioscrm.ui.autocall.viewmodel.AutoCallViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

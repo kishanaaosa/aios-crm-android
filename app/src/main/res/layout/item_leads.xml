@@ -8,7 +8,7 @@
 
         <variable
             name="model"
-            type="com.ecommercwebsite.aioscrm.ui.leads.model.LeadsList" />
+            type="com.softwareallin1.aioscrm.ui.leads.model.LeadsList" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868477526914",
+    "project_id": "aios---crm",
+    "storage_bucket": "aios---crm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868477526914:android:454670939fee79ef38a59b",
+        "android_client_info": {
+          "package_name": "com.softwareallin1.aioscrm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoaGF5SUGjFAeBEyThCohfJuuyLqWnzMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

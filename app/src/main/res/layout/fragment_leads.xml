@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.ecommercwebsite.aioscrm.ui.leads.viewmodel.LeadsViewModel" />
+            type="com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

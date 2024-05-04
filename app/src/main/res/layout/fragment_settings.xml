@@ -6,7 +6,7 @@
     <data>
 <variable
     name="viewModel"
-    type="com.ecommercwebsite.aioscrm.ui.settings.viewmodel.SettingsViewModel" />
+    type="com.softwareallin1.aioscrm.ui.settings.viewmodel.SettingsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
