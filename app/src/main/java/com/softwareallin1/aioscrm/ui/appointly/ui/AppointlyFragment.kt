@@ -1,5 +1,6 @@
 package com.softwareallin1.aioscrm.ui.appointly.ui
 
+import android.view.View
 import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
@@ -27,6 +28,14 @@ class AppointlyFragment : FragmentBase<AppointlyViewModel, FragmentAppointlyBind
     }
 
     override fun initializeScreenVariables() {
+        getDataBinding().viewModel = viewModel
+        viewModel.initVariables()
+        showNoDataFound()
+    }
+
+    private fun showNoDataFound() {
+        getDataBinding().clNoDataFound.visibility = View.VISIBLE
+        getDataBinding().rvAppoints.visibility = View.GONE
     }
 
     override fun getViewModelClass(): Class<AppointlyViewModel> = AppointlyViewModel::class.java

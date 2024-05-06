@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.databinding.FragmentAutoCallPopUpBinding
 import com.softwareallin1.aioscrm.ui.autocall.viewmodel.AutoCallViewModel
@@ -32,6 +33,8 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
     private lateinit var countDownTimer: CountDownTimer
     private var timerRunning = false
     lateinit var callStateFinder: CallStateFinder
+    lateinit var addNotesPopUpFragment: AddNotesPopUpFragment
+    lateinit var changeLeadStatusPopUpFragment: ChangeLeadStatusPopUpFragment
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +52,6 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
     override fun onStop() {
         super.onStop()
         callStateFinder.stopCallStateListener()
-
     }
 
     override fun onCreateView(
@@ -90,16 +92,21 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         }
         dataBinding.ivWhatsApp.setOnClickListener {
             viewModel.selectedLead.value?.phonenumber?.let { it1 ->
-                openWhatsAppChat(requireContext(),
+                openWhatsAppChat(
+                    requireContext(),
                     it1
                 )
             }
         }
         dataBinding.btnChangeStatus.setOnClickListener {
-            viewModel.showSnackbarMessage("Coming soon!!")
+            changeLeadStatusPopUpFragment = ChangeLeadStatusPopUpFragment()
+            changeLeadStatusPopUpFragment.setCancelable(false)
+            changeLeadStatusPopUpFragment.show(requireActivity().supportFragmentManager, "ChangeStatusPopUp")
         }
         dataBinding.ivAddNote.setOnClickListener {
-        viewModel.showSnackbarMessage("Coming soon!!")
+            addNotesPopUpFragment = AddNotesPopUpFragment()
+            addNotesPopUpFragment.setCancelable(false)
+            addNotesPopUpFragment.show(requireActivity().supportFragmentManager, "AutoNotesPopUp")
         }
         dataBinding.ivCreateTask.setOnClickListener {
             viewModel.showSnackbarMessage("Coming soon!!")
@@ -165,7 +172,7 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         if (context?.packageManager?.let { intent.resolveActivity(it) } != null) {
             context.startActivity(intent)
         } else {
-            Toast.makeText(context,"WhatsApp Not Installed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "WhatsApp Not Installed", Toast.LENGTH_SHORT).show()
         }
     }
 

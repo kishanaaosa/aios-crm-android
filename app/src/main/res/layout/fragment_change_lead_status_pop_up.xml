@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog"
+        android:backgroundTint="@color/white"
+        tools:context=".ui.autocall.ui.ChangeLeadStatusPopUpFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            style="@style/TextView.regular.14.colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_dialog_top_round"
+            android:gravity="center"
+            android:text="Change Lead Status"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Change Lead Status" />
+
+        <RadioGroup
+            android:id="@+id/rgStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Not Reachable" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Not Recived" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Intrested" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Busy Now" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Future Purchase" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Other Service" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="May be interested" />
+
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangeStatus"
+            style="@style/Button.bold.12.colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:background="@drawable/button_gradient_red"
+            android:fontFamily="@font/montserrat_bold"
+            android:padding="@dimen/_10sdp"
+            android:text="Change Status"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgStatus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -118,5 +118,14 @@
         android:id="@+id/autoCallPopUpFragment"
         android:name="com.softwareallin1.aioscrm.ui.autocall.ui.AutoCallPopUpFragment"
         android:label="AutoCallPopUpFragment"
-        tools:layout="@layout/fragment_auto_call_pop_up"/>
+        tools:layout="@layout/fragment_auto_call_pop_up">
+        <action
+            android:id="@+id/action_autoCallPopUpFragment_to_addNotesPopUpFragment"
+            app:destination="@id/addNotesPopUpFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/addNotesPopUpFragment"
+        android:name="com.softwareallin1.aioscrm.ui.autocall.ui.AddNotesPopUpFragment"
+        android:label="AddNotesPopUpFragment"
+        tools:layout="@layout/fragment_add_notes_pop_up" />
 </navigation>

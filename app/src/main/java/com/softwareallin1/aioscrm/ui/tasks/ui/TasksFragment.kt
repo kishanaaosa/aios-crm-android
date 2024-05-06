@@ -1,5 +1,6 @@
 package com.softwareallin1.aioscrm.ui.tasks.ui
 
+import android.view.View
 import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
@@ -9,7 +10,7 @@ import com.softwareallin1.aioscrm.ui.tasks.viewmodel.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TasksFragment : FragmentBase<TasksViewModel,FragmentTasksBinding>() {
+class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_tasks
 
     override fun setupToolbar() {
@@ -27,6 +28,14 @@ class TasksFragment : FragmentBase<TasksViewModel,FragmentTasksBinding>() {
     }
 
     override fun initializeScreenVariables() {
+        getDataBinding().viewModel = viewModel
+        viewModel.initVariables()
+        showNoDataFound()
+    }
+
+    private fun showNoDataFound() {
+        getDataBinding().clNoDataFound.visibility = View.VISIBLE
+        getDataBinding().rvTasks.visibility = View.GONE
     }
 
     override fun getViewModelClass(): Class<TasksViewModel> = TasksViewModel::class.java
