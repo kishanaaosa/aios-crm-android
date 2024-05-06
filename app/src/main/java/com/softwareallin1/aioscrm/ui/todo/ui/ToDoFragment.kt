@@ -31,6 +31,6 @@ class ToDoFragment : FragmentBase<ToDoViewModel, FragmentToDoBinding>() {
 
     override fun getViewModelClass(): Class<ToDoViewModel> = ToDoViewModel::class.java
 
-    override fun getViewModelIsSharedViewModel(): Boolean = false
+    override fun getViewModelIsSharedViewModel(): Boolean = true
 
 }
