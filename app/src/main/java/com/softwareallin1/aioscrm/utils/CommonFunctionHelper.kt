@@ -9,9 +9,25 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.Toast
+import com.softwareallin1.aioscrm.R
 
 
 object CommonFunctionHelper {
+
+    fun getLeadStatusId(value: Int): String {
+        return when (value) {
+            R.id.rbNotReachable -> "1"
+            R.id.rbNotInterested -> "2"
+            R.id.rbNew -> "3"
+            R.id.rbNotReceived -> "4"
+            R.id.rbInterested -> "5"
+            R.id.rbBusyNow -> "6"
+            R.id.rbFuturePurchase -> "7"
+            R.id.rbOtherService -> "8"
+            R.id.rbMayBeInterested -> "9"
+            else -> "0"
+        }
+    }
 
     fun getUniqueId(): String {
         return (Build.BOARD.length % 10).toString() +
@@ -51,7 +67,7 @@ object CommonFunctionHelper {
         return String.format("%d:%02d", minutes, remainingSeconds)
     }
 
-    fun openWhatsAppChat(context: Context,toNumber: String) {
+    fun openWhatsAppChat(context: Context, toNumber: String) {
         val intent = Intent(Intent.ACTION_VIEW)
         val uri = Uri.parse("https://wa.me/$toNumber")
 
@@ -61,33 +77,32 @@ object CommonFunctionHelper {
         if (intent.resolveActivity(context.packageManager) != null) {
             context.startActivity(intent)
         } else {
-            Toast.makeText(context,"WhatsApp Not Installed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "WhatsApp Not Installed", Toast.LENGTH_SHORT).show()
         }
     }
 
 
+    /* fun openWhatsAppChat(context: Context, phoneNumber: String) {
+         val packageManager = context.packageManager
 
-   /* fun openWhatsAppChat(context: Context, phoneNumber: String) {
-        val packageManager = context.packageManager
+         // Check if WhatsApp is installed
+         val isWhatsAppInstalled = isAppInstalled(packageManager, "com.whatsapp")
+         if (!isWhatsAppInstalled) {
+             // WhatsApp is not installed, handle this case
+             Toast.makeText(context, "WhatsApp is not installed", Toast.LENGTH_SHORT).show()
+             return
+         }
 
-        // Check if WhatsApp is installed
-        val isWhatsAppInstalled = isAppInstalled(packageManager, "com.whatsapp")
-        if (!isWhatsAppInstalled) {
-            // WhatsApp is not installed, handle this case
-            Toast.makeText(context, "WhatsApp is not installed", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        try {
-            // Create intent to open WhatsApp with a specific phone number
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(context, "Failed to open WhatsApp", Toast.LENGTH_SHORT).show()
-            e.printStackTrace()
-        }
-    }*/
+         try {
+             // Create intent to open WhatsApp with a specific phone number
+             val intent = Intent(Intent.ACTION_VIEW)
+             intent.data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
+             context.startActivity(intent)
+         } catch (e: Exception) {
+             Toast.makeText(context, "Failed to open WhatsApp", Toast.LENGTH_SHORT).show()
+             e.printStackTrace()
+         }
+     }*/
 
     private fun isAppInstalled(packageManager: PackageManager, packageName: String): Boolean {
         return try {

@@ -89,9 +89,6 @@ class BindAdapters {
         }
 
 
-        /**
-         * load image from url
-         */
         @JvmStatic
         @BindingAdapter("isStrikeThruText")
         fun isStrikeThruText(

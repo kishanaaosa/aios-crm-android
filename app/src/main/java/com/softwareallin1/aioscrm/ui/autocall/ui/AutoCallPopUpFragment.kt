@@ -82,6 +82,7 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
         dataBinding.btnNext.setOnClickListener {
             viewModel.isCallFinished.value = false
             this.dismiss()
+            viewModel.isLeadStatusChanged.value = false
             viewModel.getAutoCallLeads()
         }
         dataBinding.ivCall.setOnClickListener {
@@ -99,11 +100,13 @@ class AutoCallPopUpFragment : DialogFragment(), CommonCallStateFinder {
             }
         }
         dataBinding.btnChangeStatus.setOnClickListener {
+            viewModel.isLeadStatusChanged.value = false
             changeLeadStatusPopUpFragment = ChangeLeadStatusPopUpFragment()
             changeLeadStatusPopUpFragment.setCancelable(false)
             changeLeadStatusPopUpFragment.show(requireActivity().supportFragmentManager, "ChangeStatusPopUp")
         }
         dataBinding.ivAddNote.setOnClickListener {
+            viewModel.isNotAdded.value = false
             addNotesPopUpFragment = AddNotesPopUpFragment()
             addNotesPopUpFragment.setCancelable(false)
             addNotesPopUpFragment.show(requireActivity().supportFragmentManager, "AutoNotesPopUp")

@@ -14,7 +14,9 @@ import com.softwareallin1.aioscrm.databinding.FragmentAutoCallBinding
 import com.softwareallin1.aioscrm.databinding.ItemAutoCallBinding
 import com.softwareallin1.aioscrm.network.ResponseData
 import com.softwareallin1.aioscrm.network.ResponseHandler
+import com.softwareallin1.aioscrm.ui.autocall.model.AddNoteOnLeadResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.AutoCallLeadsResponse
+import com.softwareallin1.aioscrm.ui.autocall.model.ChangeLeadStatusResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.LeadsList
 import com.softwareallin1.aioscrm.ui.autocall.viewmodel.AutoCallViewModel
 import com.softwareallin1.aioscrm.utils.CommonFunctionHelper
@@ -69,7 +71,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
             }
     }
 
-    fun checkPhoneStatePermission(){
+    fun checkPhoneStatePermission() {
         permissionManager
             .request(
                 Permission.ReadPhoneState
@@ -91,6 +93,9 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
                 return@Observer
             }
             when (it) {
+                is ResponseHandler.Empty -> {
+
+                }
                 is ResponseHandler.Loading -> {
                     viewModel.showProgressBar(true)
                 }
@@ -103,7 +108,7 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
 
                 is ResponseHandler.OnSuccessResponse<ResponseData<AutoCallLeadsResponse>?> -> {
                     viewModel.showProgressBar(false)
-                    if (it.response?.data?.leads!=null) {
+                    if (it.response?.data?.leads != null) {
                         viewModel.leadsList.leads = it.response?.data?.leads
                         setUpLeads(it.response.data?.leads)
                     }
@@ -151,14 +156,14 @@ class AutoCallFragment : FragmentBase<AutoCallViewModel, FragmentAutoCallBinding
                 }
             }
         }
-        if (mPref.getValueBoolean(PrefKey.IS_AUTO_CALLING,false)==true){
+        if (mPref.getValueBoolean(PrefKey.IS_AUTO_CALLING, false) == true) {
             openAutoCallPopUp()
         }
     }
 
     private fun openAutoCallPopUp() {
         val pos = viewModel.nextRandom()
-        if (pos!=null){
+        if (pos != null) {
             viewModel.selectedLead.value = viewModel.leadsList.leads?.get(pos)
             autoCallPopUpFragment = AutoCallPopUpFragment()
             autoCallPopUpFragment.setCancelable(false)

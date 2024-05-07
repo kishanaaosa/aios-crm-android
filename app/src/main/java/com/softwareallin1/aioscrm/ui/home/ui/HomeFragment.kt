@@ -72,6 +72,9 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
                 return@Observer
             }
             when (it) {
+                is ResponseHandler.Empty -> {
+
+                }
                 is ResponseHandler.Loading -> {
                     viewModel.showProgressBar(true)
                 }

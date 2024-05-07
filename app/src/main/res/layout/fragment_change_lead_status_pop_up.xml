@@ -39,48 +39,65 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbNew"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
+                android:visibility="visible"
+                android:checked="true"
                 android:layout_height="wrap_content"
                 android:text="New" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbNotReachable"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Not Reachable" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbNotInterested"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Not Recived" />
+                android:text="Not Interested" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbNotReceived"
+                style="@style/TextView.bold.10.color6DC99B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Not Received" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbInterested"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Intrested" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbBusyNow"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Busy Now" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbFuturePurchase"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Future Purchase" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOtherService"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Other Service" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbMayBeInterested"
                 style="@style/TextView.bold.10.color6DC99B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

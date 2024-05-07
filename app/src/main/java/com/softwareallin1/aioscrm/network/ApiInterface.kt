@@ -1,7 +1,9 @@
 package com.softwareallin1.aioscrm.network
 
 import com.softwareallin1.aioscrm.ui.attendance.model.FillAttendanceResponse
+import com.softwareallin1.aioscrm.ui.autocall.model.AddNoteOnLeadResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.AutoCallLeadsResponse
+import com.softwareallin1.aioscrm.ui.autocall.model.ChangeLeadStatusResponse
 import com.softwareallin1.aioscrm.ui.calls.model.CallLogListResponse
 import com.softwareallin1.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.softwareallin1.aioscrm.ui.leads.model.LeadsResponse
@@ -62,4 +64,19 @@ interface ApiInterface {
     suspend fun getAutoCallLeads(
         @Path("staffId") staffId: String
     ): Response<ResponseData<AutoCallLeadsResponse>>
+
+    @FormUrlEncoded
+    @POST("lead_status_change_post")
+    suspend fun changeLeadStatus(
+        @Field("leadid") leadId: String?,
+        @Field("status_id") statusId: String?
+    ): Response<ResponseData<ChangeLeadStatusResponse>>
+
+    @FormUrlEncoded
+    @POST("addNotes_post")
+    suspend fun addNotesOnLead(
+        @Field("leadid") leadId: String?,
+        @Field("description") description: String?,
+        @Field("is_from_autocall") isFromAutoCall: Boolean?
+    ): Response<ResponseData<AddNoteOnLeadResponse>>
 }

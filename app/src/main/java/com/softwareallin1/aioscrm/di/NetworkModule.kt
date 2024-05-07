@@ -33,13 +33,14 @@ class NetworkModule {
 //        System.loadLibrary("keys")
         //var baseUrl: String = ""
         val baseUrl = when (BuildConfig.FLAVOR) {
+            //https://crm.amazonsellers.in/mapi/lead_status_change_post
             "stag" -> {
                 "https://crm.softwareallin1.com/mapi/"
                 // String(Base64.decode(getDevBaseUrl(), Base64.DEFAULT))
             }
 
             "prod" -> {
-                "https://crm.softwareallin1.com/mapi/"
+                "https://crm.amazonsellers.in/mapi/"
                 //String(Base64.decode(getProdBaseUrl(), Base64.DEFAULT))
             }
 

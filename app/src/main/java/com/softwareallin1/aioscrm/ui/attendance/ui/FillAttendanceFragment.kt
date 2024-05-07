@@ -109,6 +109,9 @@ class FillAttendanceFragment :
                 return@Observer
             }
             when (it) {
+                is ResponseHandler.Empty -> {
+
+                }
                 is ResponseHandler.Loading -> {
                     viewModel.showProgressBar(true)
                 }

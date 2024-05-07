@@ -100,6 +100,13 @@
         <item name="android:textColor">@color/color444444</item>
     </style>
 
+    <!-- Text view font family montserrat(semi) font size 10 font color color444444 -->
+    <style name="TextView.montserrat.semi.bold.10.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
     <!-- Text view font family montserrat(bold) font size 12 font color color444444 -->
     <style name="TextView.bold.12.color444444" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/montserrat_bold</item>
@@ -196,6 +203,20 @@
     <style name="TextView.regular.10.color444444" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 08 font color444444 -->
+    <style name="TextView.regular.08.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:textColor">@color/color444444</item>
+    </style>
+
+    <!-- Text view font family montserrat(regular) font size 09 font color444444 -->
+    <style name="TextView.regular.09.color444444" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_9ssp</item>
         <item name="android:textColor">@color/color444444</item>
     </style>
 
