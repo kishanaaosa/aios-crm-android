@@ -115,8 +115,13 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     when (model.id) {
 
+                        "menuOption0" -> {
+                            //Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            //navHostFragment.findNavController().navigate(R.id.toDoFragment)
+                        }
+
                         "menuOption1" -> {
-                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            //Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
                               navHostFragment.findNavController().navigate(R.id.toDoFragment)
                         }
 
@@ -127,8 +132,8 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                         }
 
                         "menuOption3" -> {
-                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
-                            //navHostFragment.findNavController().navigate(R.id.settingsFragment)
+                            //Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            navHostFragment.findNavController().navigate(R.id.settingsFragment)
                         }
 
                         "menuOption4" -> {
@@ -163,11 +168,25 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
     }
 
     private fun getSideMenuList(): java.util.ArrayList<SideMenuModel> {
+
         val mSideMenuList = ArrayList<SideMenuModel>()
+        val menuOption0 =
+            SideMenuModel(
+                "menuOption0",
+                getDrawableValue(R.drawable.ic_home),
+                "Home",
+                true,
+                R.id.homeFragment,
+                true
+            )
+        if (menuOption0.isVisible == true) {
+            mSideMenuList.add(menuOption0)
+        }
+
         val menuOption1 =
             SideMenuModel(
                 "menuOption1",
-                getDrawableValue(R.drawable.tmp_ic_home),
+                getDrawableValue(R.drawable.ic_todo),
                 "ToDo",
                 true,
                 R.id.toDoFragment,
@@ -179,7 +198,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         val menuOption2 =
             SideMenuModel(
                 "menuOption2",
-                getDrawableValue(R.drawable.tmp_ic_home),
+                getDrawableValue(R.drawable.ic_sales),
                 "Sales",
                 true,
                 R.id.salesFragment,
@@ -203,7 +222,7 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         val menuOption4 =
             SideMenuModel(
                 "menuOption4",
-                getDrawableValue(R.drawable.ic_settings),
+                getDrawableValue(R.drawable.ic_privacy),
                 "Privacy Policy",
                 true,
                 R.id.webViewFragment,

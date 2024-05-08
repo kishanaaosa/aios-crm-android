@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.softwareallin1.aioscrm.ui.leads.viewmodel.AddLeadViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorF8F5F6"
+        tools:context=".ui.leads.ui.AddLeadFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintGuide_begin="@dimen/_8sdp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_end="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddLead"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorF8F5F6"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutStyleWithDropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_status"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_status2"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:inputType="none"
+                        android:textColor="@color/color444444"
+                        android:textSize="@dimen/_12ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddLead"
+            style="@style/Button.bold.12.colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:padding="@dimen/_8sdp"
+            android:text="Add Lead"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart" />
+
+
+        <!--  <androidx.appcompat.widget.LinearLayoutCompat
+              android:id="@+id/lyRootView"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+              app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <androidx.core.widget.NestedScrollView
+                  android:id="@+id/svFillForm"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:paddingVertical="5dp">
+
+                  <androidx.appcompat.widget.LinearLayoutCompat
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:padding="10dp">
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginVertical="@dimen/_5sdp"
+                          app:startIconDrawable="@drawable/ic_status2">
+
+                          <AutoCompleteTextView
+                              android:id="@+id/atStatus"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_status"
+                              android:inputType="none"
+                              android:text="@={viewModel.status}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginVertical="@dimen/_5sdp"
+                          app:startIconDrawable="@drawable/ic_source">
+
+                          <AutoCompleteTextView
+                              android:id="@+id/atSource"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_source"
+                              android:inputType="none"
+                              android:text="@={viewModel.source}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginVertical="@dimen/_5sdp"
+                          app:startIconDrawable="@drawable/ic_assigned">
+
+                          <AutoCompleteTextView
+                              android:id="@+id/atAssigned"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_assigned"
+                              android:inputType="none"
+                              android:text="@={viewModel.staff}" />
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlName"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="30"
+                          app:endIconMode="clear_text"
+                          app:startIconDrawable="@drawable/ic_person">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/edName"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_name"
+                              android:inputType="textPersonName"
+                              android:maxLength="30"
+                              android:text="@={viewModel.name}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlPosition"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_position"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_position"
+                          app:startIconDrawable="@drawable/ic_board_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etPosition"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_position"
+                              android:inputType="textPersonName"
+                              android:maxLength="20"
+                              android:text="@={viewModel.position}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlEmail"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_email"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="40"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_email"
+                          app:startIconDrawable="@drawable/ic_mail_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/edEmail"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_email"
+                              android:inputType="textEmailAddress"
+                              android:maxLength="40"
+                              android:text="@={viewModel.email}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlWebsite"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_website"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_website"
+                          app:startIconDrawable="@drawable/ic_web_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etWebsite"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_website"
+                              android:inputType="textUri"
+                              android:maxLength="20"
+                              android:text="@={viewModel.website}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlPhone"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_phone"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="12"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_phone"
+                          app:startIconDrawable="@drawable/ic_phone_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etPhone"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_phone"
+                              android:inputType="phone"
+                              android:maxLength="12"
+                              android:text="@={viewModel.phoneNumber}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlLeadValue"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_lead_value"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:prefixText="$"
+                          app:startIconContentDescription="@string/lbl_lead_value"
+                          app:startIconDrawable="@drawable/ic_monetization_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etLeadValue"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_lead_value"
+                              android:inputType="numberSigned"
+                              android:maxLength="20"
+                              android:text="@={viewModel.leadValue}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlCompany"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_company"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="100"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_company"
+                          app:startIconDrawable="@drawable/ic_work_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etCompany"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_company"
+                              android:inputType="textPersonName"
+                              android:maxLength="100"
+                              android:text="@={viewModel.companyName}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlAddress"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_address"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="100"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_address"
+                          app:startIconDrawable="@drawable/ic_location_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etAddress"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_address"
+                              android:maxLength="100"
+                              android:text="@={viewModel.address}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlCity"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_city"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_city"
+                          app:startIconDrawable="@drawable/ic_location_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etCity"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_city"
+                              android:inputType="text"
+                              android:maxLength="20"
+                              android:text="@={viewModel.city}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlState"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_state"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_state"
+                          app:startIconDrawable="@drawable/ic_location_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etState"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_state"
+                              android:inputType="text"
+                              android:maxLength="20"
+                              android:text="@={viewModel.state}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          app:startIconDrawable="@drawable/ic_location_24">
+
+                          <AutoCompleteTextView
+                              android:id="@+id/atCountry"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_country"
+                              android:inputType="none"
+                              android:labelFor="@id/atCountry"
+                              android:text="@={viewModel.country}" />
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlZipCode"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:hint="@string/lbl_zip_code"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="20"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_zip_code"
+                          app:startIconDrawable="@drawable/ic_my_location_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etZipCode"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_zip_code"
+                              android:inputType="numberSigned"
+                              android:maxLength="20"
+                              android:text="@={viewModel.zipCode}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.textfield.TextInputLayout
+                          android:id="@+id/tlDescription"
+                          style="@style/TextInputLayoutStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:hint="@string/lbl_description"
+                          app:counterEnabled="true"
+                          app:counterMaxLength="200"
+                          app:endIconMode="clear_text"
+                          app:startIconContentDescription="@string/lbl_description"
+                          app:startIconDrawable="@drawable/ic_note_24">
+
+                          <com.google.android.material.textfield.TextInputEditText
+                              android:id="@+id/etDescription"
+                              style="@style/TextInputEditText.regular.11.color444444"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="@string/lbl_description"
+                              android:inputType="textMultiLine"
+                              android:maxLength="200"
+                              android:text="@={viewModel.desc}" />
+
+                      </com.google.android.material.textfield.TextInputLayout>
+
+                      <com.google.android.material.checkbox.MaterialCheckBox
+                          android:id="@+id/contactedToday"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:checked="@={viewModel.isContractToday()}"
+                          android:text="@string/lbl_contacted_today"
+                          app:buttonTint="@color/color6DC99B" />
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:id="@+id/tvLastContact"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginBottom="15dp"
+                          android:drawableStart="@drawable/ic_calendar_24"
+                          android:drawablePadding="5dp"
+                          android:padding="13dp"
+                          android:text="@string/lbl_set_date"
+                          android:visibility="gone" />
+
+                      <com.google.android.material.checkbox.MaterialCheckBox
+                          android:id="@+id/cbIsPublic"
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:checked="@={viewModel.isPublic()}"
+                          android:text="@string/lbl_is_public"
+                          app:buttonTint="@color/color6DC99B" />
+
+                      <androidx.appcompat.widget.LinearLayoutCompat
+                          android:id="@+id/lyCustomField"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:visibility="gone">
+
+                          <View
+                              android:layout_width="match_parent"
+                              android:layout_height="2dp"
+                              android:layout_marginTop="10dp"
+                              android:background="@color/grey_300" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="5dp"
+                              android:layout_marginBottom="5dp"
+                              android:text="@string/lbl_custom_fields"
+                              android:textSize="16sp"
+                              android:textStyle="bold" />
+
+                      </androidx.appcompat.widget.LinearLayoutCompat>
+
+                  </androidx.appcompat.widget.LinearLayoutCompat>
+
+              </androidx.core.widget.NestedScrollView>
+
+              <com.google.android.material.button.MaterialButton
+                  android:id="@+id/btnSave"
+                  style="@style/Button.bold.12.colorWhite"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/_5sdp"
+                  android:onClick="@{()-> viewModel.validationLeadForm()}"
+                  android:padding="@dimen/_10sdp"
+                  android:text="@string/lbl_save" />
+
+          </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -23,6 +23,66 @@
     <string name="calling">Permission Require for calling</string>
     <string name="company">Company: %s</string>
     <string name="default_notification_channel_id">aios_crm_default_notification</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_status">Please Select Status</string>
+    <string name="lbl_source">Please Select Source</string>
+    <string name="lbl_assigned">Assign a staff</string>
+    <string name="lbl_position">Position</string>
+    <string name="lbl_website">Website</string>
+    <string name="lbl_phone">PhoneNumber</string>
+    <string name="lbl_lead_value">Lead Value</string>
+    <string name="lbl_company">Company Name</string>
+    <string name="lbl_address">Address</string>
+    <string name="lbl_city">City</string>
+    <string name="lbl_state">State</string>
+    <string name="lbl_zip_code">Zip Code</string>
+    <string name="lbl_description">Please enter description</string>
+    <string name="lbl_country">Please select Country</string>
+    <string name="lbl_contacted_today">Contacted Today</string>
+    <string name="lbl_is_public">Is Public</string>
+    <string name="lbl_custom_fields">Custom Fields</string>
+    <string name="lbl_set_date">Select Date</string>
+    <string name="lbl_select_priority" translatable="false">Please select priority</string>
+    <string name="lbl_select_subject" translatable="false">Please enter subject</string>
+    <string name="lbl_hourly_rate" translatable="false">Hourly Rate</string>
+    <string name="lbl_due_date" translatable="false">Due Date</string>
+    <string name="lbl_start_date" translatable="false">Start Date</string>
+    <string name="lbl_repeat_every" translatable="false">Repeat Every</string>
+    <string name="lbl_total_cycles" translatable="false">Total Cycles(0) for infinite</string>
+    <string name="lbl_related_to_type" translatable="false">Related To</string>
+    <string name="lbl_search" translatable="false">Search</string>
+    <string name="lbl_billable" translatable="false">Billable</string>
+    <string name="lbl_count" translatable="false">Enter Count</string>
+
+    <string name="error_enter_name">Please enter name</string>
+    <string name="error_enter_pos">Please enter subject</string>
+    <string name="error_enter_web">Please enter website</string>
+    <string name="error_enter_number">Please enter phone Number</string>
+    <string name="error_enter_leadvalue">Please enter lead Value</string>
+    <string name="error_enter_companyName">Please enter company name</string>
+    <string name="error_enter_address">Please enter address</string>
+    <string name="error_enter_city">Please enter city</string>
+    <string name="error_enter_state">Please enter state</string>
+    <string name="error_enter_country">Please enter country</string>
+    <string name="error_enter_zipcode">Please enter zip code</string>
+    <string name="error_enter_desc">Please enter description</string>
+
+    <string name="error_enter_priority">Please enter priority</string>
+    <string name="error_enter_sub">Please enter subject</string>
+    <string name="error_enter_hourlyRate">Please enter hourly rate</string>
+    <string name="error_enter_startDate">Please enter start date</string>
+    <string name="error_enter_dueDate">Please enter due date</string>
+    <string name="error_enter_related">Please enter related</string>
+    <string name="error_enter_repeat">Please enter repeat</string>
+    <string name="error_enter_search">Please enter search</string>
+    <string name="error_enter_total">Please enter total</string>
+    <string name="lbl_save">Save</string>
+
+
+
+
+    <string name="error_enter_save">saved</string>
+    <string name="add_task">Add Task</string>
 
 
 </resources>

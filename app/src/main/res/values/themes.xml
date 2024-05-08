@@ -26,6 +26,18 @@
         <item name="hintEnabled">false</item>
     </style>
 
+    <!-- Text input layout -->
+    <style name="TextInputLayoutStyleWithDropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomEnd">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_8sdp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_8sdp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeColor">@color/color6E394A</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
     <!-- Text input edit text font family montserrat(regular)  font size 14 font color color444444 -->
     <style name="TextInputEditText.regular.14.color444444" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:fontFamily">@font/montserrat</item>

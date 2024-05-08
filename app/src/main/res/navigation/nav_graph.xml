@@ -48,7 +48,11 @@
         android:id="@+id/leadsFragment"
         android:name="com.softwareallin1.aioscrm.ui.leads.ui.LeadsFragment"
         android:label="fragment_leads"
-        tools:layout="@layout/fragment_leads" />
+        tools:layout="@layout/fragment_leads">
+        <action
+            android:id="@+id/action_leadsFragment_to_addLeadFragment"
+            app:destination="@id/addLeadFragment" />
+    </fragment>
     <fragment
         android:id="@+id/callsFragment"
         android:name="com.softwareallin1.aioscrm.ui.calls.ui.CallsFragment"
@@ -128,4 +132,9 @@
         android:name="com.softwareallin1.aioscrm.ui.autocall.ui.AddNotesPopUpFragment"
         android:label="AddNotesPopUpFragment"
         tools:layout="@layout/fragment_add_notes_pop_up" />
+    <fragment
+        android:id="@+id/addLeadFragment"
+        android:name="com.softwareallin1.aioscrm.ui.leads.ui.AddLeadFragment"
+        android:label="AddLeadFragment"
+        tools:layout="@layout/fragment_add_lead" />
 </navigation>

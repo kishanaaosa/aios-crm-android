@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="viewModel"
-    type="com.softwareallin1.aioscrm.ui.settings.viewmodel.SettingsViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.softwareallin1.aioscrm.ui.settings.viewmodel.SettingsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -137,6 +138,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:background="@color/white"
             android:text="Change Language"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvNotificationAndAleart" />
 
@@ -149,6 +151,7 @@
             android:layout_marginEnd="@dimen/_12sdp"
             android:background="@color/white"
             android:elevation="@dimen/_5sdp"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -171,8 +174,8 @@
                     android:background="@{viewModel.language==`hi`? @drawable/bg_text_view_active: @drawable/bg_text_view_inactive}"
                     android:drawableEnd="@{viewModel.language==`hi`? @drawable/ic_mark: null}"
                     android:fontFamily="@font/montserrat"
-                    android:text="Hindi"
                     android:onClick="@{()->viewModel.hindiClick()}"
+                    android:text="Hindi"
                     android:textColor="@{viewModel.language==`hi`? @color/color6DC99B : @color/color444444}"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -185,10 +188,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:onClick="@{()->viewModel.englishClick()}"
                     android:background="@{viewModel.language==`en`? @drawable/bg_text_view_active: @drawable/bg_text_view_inactive}"
                     android:drawableEnd="@{viewModel.language==`en`? @drawable/ic_mark: null}"
                     android:fontFamily="@font/montserrat"
+                    android:onClick="@{()->viewModel.englishClick()}"
                     android:text="English"
                     android:textColor="@{viewModel.language==`en`? @color/color6DC99B : @color/color444444}"
                     android:textSize="@dimen/_14ssp"

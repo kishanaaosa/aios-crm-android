@@ -52,13 +52,9 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
     }
 
     private fun checkPermissions() {
-        permissionManager
-            .request(
-                Permission.CallPhone,
-                Permission.ReadPhoneState
-            )
-            .rationale(getString(R.string.calling))
-            .checkDetailedPermission { result ->
+        permissionManager.request(
+                Permission.CallPhone, Permission.ReadPhoneState
+            ).rationale(getString(R.string.calling)).checkDetailedPermission { result ->
                 if (result.all { it.value }) {
 
                     // viewModel.showSnackbarMessage("Permission Granted")
@@ -69,6 +65,11 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
     }
 
     private fun setUpObserver() {
+
+        getDataBinding().fabAddLead.setOnClickListener {
+            (activity as MainActivity).navigateToNextScreenThroughDirections(LeadsFragmentDirections.actionLeadsFragmentToAddLeadFragment())
+        }
+
         viewModel.leadsResponse.observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 return@Observer
@@ -77,6 +78,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
                 is ResponseHandler.Empty -> {
 
                 }
+
                 is ResponseHandler.Loading -> {
                     viewModel.showProgressBar(true)
                 }
@@ -103,36 +105,33 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
         if (leads?.size == 0) {
             showNoDataFound()
         } else {
-            getDataBinding().rvLeads.adapter = object :
-                GenericRecyclerViewAdapter<LeadsList, ItemLeadsBinding>(
-                    requireContext(),
-                    leads
+            getDataBinding().rvLeads.adapter =
+                object : GenericRecyclerViewAdapter<LeadsList, ItemLeadsBinding>(
+                    requireContext(), leads
                 ) {
-                override val layoutResId: Int
-                    get() = R.layout.item_leads
+                    override val layoutResId: Int
+                        get() = R.layout.item_leads
 
-                override fun onBindData(
-                    model: LeadsList,
-                    position: Int,
-                    dataBinding: ItemLeadsBinding
-                ) {
-                    CommonFunctionHelper.setFadeAnimation(dataBinding.root)
-                    dataBinding.model = model
-                    dataBinding.ivWhatsApp.setOnClickListener {
-                        openWhatsAppChat(requireContext(), model.phonenumber.toString())
+                    override fun onBindData(
+                        model: LeadsList, position: Int, dataBinding: ItemLeadsBinding
+                    ) {
+                        CommonFunctionHelper.setFadeAnimation(dataBinding.root)
+                        dataBinding.model = model
+                        dataBinding.ivWhatsApp.setOnClickListener {
+                            openWhatsAppChat(requireContext(), model.phonenumber.toString())
+                        }
+                        dataBinding.ivCall.setOnClickListener {
+                            makeCall(model.phonenumber)
+                        }
+                        dataBinding.ivMail.setOnClickListener {
+                            makeMail(model.email)
+                        }
+                        dataBinding.executePendingBindings()
                     }
-                    dataBinding.ivCall.setOnClickListener {
-                        makeCall(model.phonenumber)
-                    }
-                    dataBinding.ivMail.setOnClickListener {
-                        makeMail(model.email)
-                    }
-                    dataBinding.executePendingBindings()
-                }
 
-                override fun onItemClick(model: LeadsList, position: Int) {
+                    override fun onItemClick(model: LeadsList, position: Int) {
+                    }
                 }
-            }
         }
     }
 

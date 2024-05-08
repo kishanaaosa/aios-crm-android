@@ -24,22 +24,23 @@
             android:layout_height="@dimen/_30sdp"
             android:background="@{menu.isSelected?@drawable/bg_round_menu_selected:@drawable/bg_round_menu_unselected}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivFacebook"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivMenuIcon"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:src="@{menu.imageId}"
             android:tint="@{menu.isSelected? @color/white: @color/color6E394A}"
+            app:layout_constraintBottom_toBottomOf="@id/view"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="@+id/view"
             app:layout_constraintStart_toStartOf="@id/view"
             app:layout_constraintTop_toTopOf="@+id/view"
-            app:layout_constraintBottom_toBottomOf="@id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
             tools:src="@drawable/tmp_ic_home" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvLogInWith"
+            android:id="@+id/tvMenuTitle"
             style="@style/TextView.regular.12.color6E394A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,9 +49,9 @@
             android:singleLine="true"
             android:text="@{menu.name}"
             android:textColor="@{menu.isSelected? @color/color6DC99B:@color/color6E394A}"
-            app:layout_constraintBottom_toBottomOf="@+id/ivFacebook"
-            app:layout_constraintStart_toEndOf="@+id/ivFacebook"
-            app:layout_constraintTop_toTopOf="@+id/ivFacebook"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMenuIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivMenuIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivMenuIcon"
             tools:text="Home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

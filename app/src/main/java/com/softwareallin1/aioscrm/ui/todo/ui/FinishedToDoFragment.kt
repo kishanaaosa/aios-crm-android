@@ -31,10 +31,10 @@ class FinishedToDoFragment : FragmentBase<ToDoViewModel,FragmentFinishedToDoBind
         todoList.add(ToDoModel("3","This is the todo Title","10:25 PM 21 Jan 2024",true))
         todoList.add(ToDoModel("4","This is the todo Title","10:25 PM 21 Jan 2024",true))
         todoList.add(ToDoModel("5","This is the todo Title","10:25 PM 21 Jan 2024",true))
-        todoList.add(ToDoModel("6","This is the todo Title","10:25 PM 21 Jan 2024",true))
+       /* todoList.add(ToDoModel("6","This is the todo Title","10:25 PM 21 Jan 2024",true))
         todoList.add(ToDoModel("7","This is the todo Title","10:25 PM 21 Jan 2024",true))
         todoList.add(ToDoModel("8","This is the todo Title","10:25 PM 21 Jan 2024",true))
-        todoList.add(ToDoModel("9","This is the todo Title","10:25 PM 21 Jan 2024",true))
+        todoList.add(ToDoModel("9","This is the todo Title","10:25 PM 21 Jan 2024",true))*/
         setUpToDo(todoList)
     }
 

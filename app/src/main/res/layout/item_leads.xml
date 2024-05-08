@@ -44,7 +44,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCompanyName"
-                style="@style/TextView.regular.12.color444444"
+                style="@style/TextView.montserrat.semi.bold.10.color444444"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"

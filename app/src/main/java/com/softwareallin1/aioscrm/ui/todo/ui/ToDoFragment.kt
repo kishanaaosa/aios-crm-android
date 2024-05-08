@@ -41,8 +41,8 @@ class ToDoFragment : FragmentBase<ToDoViewModel, FragmentToDoBinding>() {
         fragmentArrayList.add(UnfinishedToDoFragment())
         fragmentArrayList.add(FinishedToDoFragment())
 
-        fragmentNameArrayList.add("Unfinished")
-        fragmentNameArrayList.add("Finished")
+        fragmentNameArrayList.add("Unfinished(9)")
+        fragmentNameArrayList.add("Finished(5)")
 
         val adapter =
             ToDoTabsViewPagerAdapter(

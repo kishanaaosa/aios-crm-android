@@ -154,7 +154,7 @@
                     style="@style/Button.bold.12.colorWhite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_gradientcolor_blue"
+                    android:background="@drawable/button_gradient_orange"
                     android:fontFamily="@font/montserrat_bold"
                     android:padding="@dimen/_10sdp"
                     android:text="Change Status"
