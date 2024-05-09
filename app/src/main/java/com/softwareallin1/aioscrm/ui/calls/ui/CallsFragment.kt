@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.view.View
+import com.example.android_practical.ui.home.CallerModel
 import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
@@ -19,7 +20,6 @@ import com.softwareallin1.aioscrm.utils.CommonFunctionHelper
 import com.softwareallin1.aioscrm.utils.DebugLog
 import com.softwareallin1.aioscrm.utils.permissions.Permission
 import com.softwareallin1.aioscrm.utils.permissions.PermissionManager
-import com.example.android_practical.ui.home.CallerModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -117,24 +117,26 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
                 }
                 Log.i("photo BITMAP", "photo : $photo")
 
-                viewModel.logsList?.add(
-                    CallerModel(
-                        name,
-                        number,
-                        dateString.split(",")[0],
-                        dateString.split(",")[1],
-                        callType,
-                        photo,
-                        duration
+                if (viewModel.logsList.size <= 50) {
+                    viewModel.logsList.add(
+                        CallerModel(
+                            name,
+                            number,
+                            dateString.split(",")[0],
+                            dateString.split(",")[1],
+                            callType,
+                            photo,
+                            duration
+                        )
                     )
-                )
+                }
             } while (callLogsCursor.moveToNext())
 
         }
         callLogsCursor.close()
         DebugLog.d("SIZE:" + viewModel.logsList?.size.toString())
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(3000)
+            delay(1000)
             setUpRecyclerViews()
         }
     }
@@ -160,18 +162,20 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
                 position: Int,
                 dataBinding: ItemCallsBinding
             ) {
+                CommonFunctionHelper.setFadeAnimation(dataBinding.root)
                 dataBinding.model = model
 
                 val img = when (model?.callType) {
-                    android.provider.CallLog.Calls.INCOMING_TYPE -> R.drawable.ic_incoming
-                    android.provider.CallLog.Calls.OUTGOING_TYPE -> R.drawable.ic_dial
-                    android.provider.CallLog.Calls.MISSED_TYPE -> R.drawable.ic_missed
-                    android.provider.CallLog.Calls.REJECTED_TYPE -> R.drawable.ic_unanswered
+                    android.provider.CallLog.Calls.INCOMING_TYPE -> R.drawable.ic_incoming_small
+                    android.provider.CallLog.Calls.OUTGOING_TYPE -> R.drawable.ic_dial_small
+                    android.provider.CallLog.Calls.MISSED_TYPE -> R.drawable.ic_missed_small
+                    android.provider.CallLog.Calls.REJECTED_TYPE -> R.drawable.ic_unanswered_small
                     else -> R.drawable.ic_incoming
                 }
-                dataBinding.icCallType.setImageDrawable(resources.getDrawable(img))
+                dataBinding.icCallType.setImageDrawable(viewModel.resourcesProvider.getDrawable(img))
                 dataBinding.tvDuration.text = model?.duration?.toInt()
                     ?.let { CommonFunctionHelper.formatSecondsToMinutes(it) }
+
                 dataBinding.executePendingBindings()
             }
 

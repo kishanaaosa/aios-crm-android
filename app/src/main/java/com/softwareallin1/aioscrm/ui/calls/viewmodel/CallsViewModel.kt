@@ -9,6 +9,7 @@ import com.softwareallin1.aioscrm.ui.calls.model.CallLogListResponse
 import com.softwareallin1.aioscrm.ui.calls.repository.CallsRepository
 import com.softwareallin1.aioscrm.utils.sharedpref.MyPreference
 import com.example.android_practical.ui.home.CallerModel
+import com.softwareallin1.aioscrm.base.ResourcesProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,10 +17,11 @@ import javax.inject.Inject
 @HiltViewModel
 class CallsViewModel @Inject constructor(
     private val repository: CallsRepository,
-    private val myPreference: MyPreference
+    private val myPreference: MyPreference,
+   val resourcesProvider: ResourcesProvider
 ) : ViewModelBase() {
 
-    var logsList: ArrayList<CallerModel?>? = null
+    var logsList: ArrayList<CallerModel?> = arrayListOf()
     lateinit var totalRecords: MutableLiveData<String>
     lateinit var totalFilters: MutableLiveData<String>
 
@@ -29,7 +31,6 @@ class CallsViewModel @Inject constructor(
     fun initVariables() {
         totalRecords = MutableLiveData("0")
         totalFilters = MutableLiveData("0")
-        logsList = arrayListOf()
         callLigListResponse = MutableLiveData<ResponseHandler<ResponseData<CallLogListResponse>?>>()
     }
 

@@ -1,7 +1,10 @@
 package com.softwareallin1.aioscrm.base
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.appcompat.content.res.AppCompatResources
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,5 +15,9 @@ class ResourcesProvider @Inject constructor(
 ) {
     fun getString(@StringRes stringResId: Int): String {
         return context.getString(stringResId)
+    }
+
+    fun getDrawable(@DrawableRes stringResId: Int): Drawable? {
+        return AppCompatResources.getDrawable(context, stringResId)
     }
 }
