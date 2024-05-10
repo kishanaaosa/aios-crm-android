@@ -6,6 +6,7 @@ import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
 import com.softwareallin1.aioscrm.databinding.FragmentTasksBinding
+import com.softwareallin1.aioscrm.ui.leads.ui.LeadsFragmentDirections
 import com.softwareallin1.aioscrm.ui.tasks.viewmodel.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +32,15 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
         showNoDataFound()
+        clickListner()
+    }
+
+    private fun clickListner() {
+
+        getDataBinding().fabAddTask.setOnClickListener {
+            (activity as MainActivity).navigateToNextScreenThroughDirections(TasksFragmentDirections.actionTasksFragmentToAddTaskFragment())
+        }
+
     }
 
     private fun showNoDataFound() {

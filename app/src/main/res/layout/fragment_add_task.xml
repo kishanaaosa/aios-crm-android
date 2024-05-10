@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.softwareallin1.aioscrm.ui.tasks.viewmodel.AddTaskViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorF8F5F6"
+        tools:context=".ui.leads.ui.AddLeadFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineStart"
+            app:layout_constraintGuide_begin="@dimen/_8sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineEnd"
+            app:layout_constraintGuide_end="@dimen/_8sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toTopOf="@id/btnAddTask"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/colorF8F5F6">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/lbl_select_priority"
+                    app:startIconDrawable="@drawable/ic_assigned"
+                    app:startIconTint="@color/color6E394A"
+                    style="@style/TextInputLayoutStyleWithDropDown">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/actPriority"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/color444444"
+                        android:textSize="@dimen/_12sdp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlSubject"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/lbl_select_subject"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_file_copy_24"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30"
+                    app:endIconMode="clear_text"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etSubject"
+                        android:maxLength="30"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputLayoutStyle"
+                    android:id="@+id/tlRate"
+                    app:hintEnabled="true"
+                    android:hint="@string/lbl_hourly_rate"
+                    app:startIconDrawable="@drawable/ic_monetization_24"
+                    app:startIconTint="@color/color6E394A"
+                    app:counterEnabled="true"
+                    android:maxLength="20"
+                    app:counterMaxLength="20">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etRate"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlStartDate"
+                    android:hint="@string/lbl_start_date"
+                    style="@style/TextInputLayoutStyle"
+                    app:hintEnabled="true"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:endIconMode="clear_text"
+                    app:startIconContentDescription="@string/lbl_start_date"
+                    app:startIconTint="@color/color6E394A"
+                    app:startIconDrawable="@drawable/ic_web_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etStartDate"
+                        android:maxLength="20"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12sdp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlDueDate"
+                    android:hint="@string/lbl_due_date"
+                    style="@style/TextInputLayoutStyle"
+                    app:hintEnabled="true"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:endIconMode="clear_text"
+                    app:startIconContentDescription="@string/lbl_due_date"
+                    app:startIconTint="@color/color6E394A"
+                    app:startIconDrawable="@drawable/ic_web_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etDueDate"
+                        android:maxLength="20"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12sdp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutStyleWithDropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_repeat_every"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_time_24"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actRepeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:inputType="none"
+                        android:textColor="@color/color444444"
+                        android:textSize="@dimen/_12ssp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlTotal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/lbl_total_cycles"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_file_copy_24"
+                    app:startIconTint="@color/color6E394A"
+                    app:endIconMode="clear_text"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="40">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etTotal"
+                        android:maxLength="40"
+                        style="@style/TextInputEditText.regular.11.color444444" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlRelated"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/lbl_related_to_type"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_time_24"
+                    app:startIconTint="@color/color6E394A"
+                    app:endIconMode="clear_text"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etPos"
+                        android:maxLength="50"
+                        style="@style/TextInputEditText.regular.11.color444444"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlSearch"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/lbl_search"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_search_24"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etSearch"
+                        android:maxLength="50"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tlDesc"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/lbl_description"
+                    app:counterMaxLength="200"
+                    app:counterEnabled="true"
+                    style="@style/TextInputLayoutStyle"
+                    app:hintEnabled="true"
+                    app:endIconMode="clear_text"
+                    app:startIconTint="@color/color6E394A"
+                    app:startIconContentDescription="@string/lbl_description"
+                    app:startIconDrawable="@drawable/ic_file_copy_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etDesc"
+                        android:maxLength="200"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:inputType="textMultiLine"
+                        android:textSize="@dimen/_12sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/cbBillable"
+                    android:checked="true"
+                    android:text="@string/lbl_billable"
+                    app:buttonTint="@color/color6DC99B" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddTask"
+            style="@style/Button.bold.12.colorWhite"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Add Task"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toEndOf="@id/guidelineStart"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
