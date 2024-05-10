@@ -37,7 +37,7 @@ class CallsFragment : FragmentBase<CallsViewModel, FragmentCallsBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_calls
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

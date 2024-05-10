@@ -27,7 +27,7 @@ class WebViewFragment : FragmentBase<ViewModelBase, FragmentWebViewBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_web_view
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

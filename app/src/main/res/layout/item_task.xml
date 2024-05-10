@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,13 +20,148 @@
         app:cardCornerRadius="@dimen/_8sdp"
         app:cardElevation="@dimen/_3sdp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_8sdp">
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPriority"
+                style="@style/TextView.montserrat.semi.bold.12.white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{model.priority.equals(`High`)?@drawable/bg_priority_high:@drawable/bg_priority_low}"
+                android:ellipsize="end"
+                android:lines="1"
+                android:padding="@dimen/_4sdp"
+                android:text="@{model.priority}"
+                android:textAlignment="center"
+                tools:background="@drawable/bg_priority_high"
+                tools:text="@tools:sample/lorem" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_8sdp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitle"
+                    style="@style/TextView.montserrat.semi.bold.12.color444444"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.title}"
+                    app:layout_constraintEnd_toStartOf="@id/tvStatus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/lorem" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvStatus"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@{model.status.equals(`Pending`)?@drawable/outline_pink:@drawable/outline_blue}"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_8sdp"
+                    android:text="@{model.status}"
+                    android:textColor="@{model.status.equals(`Pending`)?@color/color_F50057:@color/color_1976D2}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/lorem" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescription"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="@{model.description}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <HorizontalScrollView
+                    android:id="@+id/hsChip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescription">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:singleLine="true" />
+
+                </HorizontalScrollView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblStartDate"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Start Date:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hsChip" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvStartDate"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.startDate}"
+                    app:layout_constraintEnd_toStartOf="@id/tvLblEndDate"
+                    app:layout_constraintStart_toEndOf="@id/tvLblStartDate"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStartDate"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEndDate"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.endDate}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStartDate"
+                    tools:text="@tools:sample/first_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblEndDate"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="End Date:"
+                    app:layout_constraintEnd_toStartOf="@+id/tvEndDate"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStartDate" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </com.google.android.material.card.MaterialCardView>
 

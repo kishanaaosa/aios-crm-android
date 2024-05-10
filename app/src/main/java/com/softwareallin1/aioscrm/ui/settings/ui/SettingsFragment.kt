@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SettingsFragment : FragmentBase<SettingsViewModel, FragmentSettingsBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_settings
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

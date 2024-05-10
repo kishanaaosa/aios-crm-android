@@ -61,4 +61,7 @@
     <color name="colorGradientStart6DC89C">#6DC89C</color>
     <color name="colorGradientEnd35624C">#35624C</color>
 
+    <color name="colorGradientStartEF473A">#EF473A</color>
+    <color name="colorGradientEndCB2D3E">#CB2D3E</color>
+
 </resources>

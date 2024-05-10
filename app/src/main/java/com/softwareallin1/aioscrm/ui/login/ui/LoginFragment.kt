@@ -19,7 +19,7 @@ class LoginFragment : FragmentBase<LoginViewModel, FragmentLoginBinding>() {
     override fun getLayoutId() = R.layout.fragment_login
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = false, title = "", isBottomNavVisible = false

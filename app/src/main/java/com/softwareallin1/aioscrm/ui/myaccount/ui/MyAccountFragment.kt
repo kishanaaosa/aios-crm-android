@@ -13,7 +13,7 @@ class MyAccountFragment : FragmentBase<MyAccountViewModel,FragmentMyAccountBindi
     override fun getLayoutId(): Int = R.layout.fragment_my_account
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

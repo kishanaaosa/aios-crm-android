@@ -16,7 +16,7 @@ class ToDoFragment : FragmentBase<ToDoViewModel, FragmentToDoBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_to_do
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

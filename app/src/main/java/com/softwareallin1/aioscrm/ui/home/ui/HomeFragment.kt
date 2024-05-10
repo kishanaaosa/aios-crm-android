@@ -41,7 +41,7 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

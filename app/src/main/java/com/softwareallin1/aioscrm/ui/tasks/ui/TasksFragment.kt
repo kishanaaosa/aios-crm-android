@@ -1,15 +1,15 @@
 package com.softwareallin1.aioscrm.ui.tasks.ui
 
 import android.view.View
+import androidx.core.content.ContextCompat
+import com.google.android.material.chip.Chip
 import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
 import com.softwareallin1.aioscrm.bind.GenericRecyclerViewAdapter
 import com.softwareallin1.aioscrm.databinding.FragmentTasksBinding
-import com.softwareallin1.aioscrm.databinding.ItemAppointlyBinding
 import com.softwareallin1.aioscrm.databinding.ItemTaskBinding
-import com.softwareallin1.aioscrm.ui.appointly.model.AppointmentModel
 import com.softwareallin1.aioscrm.ui.tasks.model.TaskModel
 import com.softwareallin1.aioscrm.ui.tasks.viewmodel.TasksViewModel
 import com.softwareallin1.aioscrm.utils.CommonFunctionHelper
@@ -20,7 +20,7 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_tasks
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,
@@ -45,7 +45,7 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
                         "Lorem is simply dummy.",
                         "Lorem is simply dummy text of the printing and typesetting industry...",
                         "Pending",
-                        arrayListOf("Appointment", " Interview ", "Shaps", "Closed","maintain"),
+                        arrayListOf("Appointment", " Interview ", "Shaps", "Closed", "maintain"),
                         "2 Feb 2023",
                         "16 Feb 2023"
                     )
@@ -53,18 +53,19 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
             } else {
                 list.add(
                     TaskModel(
-                        "Medium",
+                        "Low",
                         "Lorem is simply dummy.",
                         "Lorem is simply dummy text of the printing and typesetting industry...",
-                        "Pending",
-                        arrayListOf("Appointment", " Interview ", "Shaps", "Closed","maintain"),
+                        "Completed",
+                        arrayListOf("Appointment", " Interview ", "Shaps", "Closed", "maintain"),
                         "2 Feb 2023",
                         "16 Feb 2023"
                     )
                 )
             }
         }
-        showNoDataFound()
+        setUpAppointments(list)
+        //showNoDataFound()
     }
 
     private fun setUpAppointments(list: ArrayList<TaskModel>?) {
@@ -86,6 +87,28 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
                 ) {
                     CommonFunctionHelper.setFadeAnimation(dataBinding.root)
                     dataBinding.model = model
+
+                    for (item in model.tags) {
+                        val chip = Chip(requireContext())
+                        chip.text = item
+                        chip.chipStrokeWidth = resources.getDimension(com.intuit.sdp.R.dimen._1sdp)
+                        chip.chipBackgroundColor =
+                            ContextCompat.getColorStateList(context, R.color.white)
+                        chip.chipStrokeColor = ContextCompat.getColorStateList(
+                            context,
+                            R.color.colorGradientStartC73B1C
+                        )
+                        chip.setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.colorGradientStartC73B1C
+                            )
+                        )
+
+                        chip.chipCornerRadius = resources.getDimension(com.intuit.sdp.R.dimen._8sdp)
+                        dataBinding.chipGroup.addView(chip)
+                    }
+
                     dataBinding.executePendingBindings()
                 }
 

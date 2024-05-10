@@ -103,7 +103,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvNotificationDateTime"
-                    style="@style/TextView.regular.10.color7D7D7D"
+                    style="@style/TextView.regular.08.color7D7D7D"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"

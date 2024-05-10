@@ -13,7 +13,7 @@ class SalesFragment : FragmentBase<SalesViewModel,FragmentSalesBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_sales
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

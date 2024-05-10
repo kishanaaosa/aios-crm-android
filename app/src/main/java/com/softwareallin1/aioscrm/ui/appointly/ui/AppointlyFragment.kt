@@ -18,7 +18,7 @@ class AppointlyFragment : FragmentBase<AppointlyViewModel, FragmentAppointlyBind
     override fun getLayoutId(): Int = R.layout.fragment_appointly
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,

@@ -14,7 +14,7 @@ class AddLeadFragment : FragmentBase<AddLeadViewModel, FragmentAddLeadBinding>()
     override fun getLayoutId() = R.layout.fragment_add_lead
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,
