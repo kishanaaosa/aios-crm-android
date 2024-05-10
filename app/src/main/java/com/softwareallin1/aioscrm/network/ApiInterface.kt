@@ -7,6 +7,7 @@ import com.softwareallin1.aioscrm.ui.autocall.model.ChangeLeadStatusResponse
 import com.softwareallin1.aioscrm.ui.calls.model.CallLogListResponse
 import com.softwareallin1.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.softwareallin1.aioscrm.ui.leads.model.LeadsResponse
+import com.softwareallin1.aioscrm.ui.leads.model.StaffListResponse
 import com.softwareallin1.aioscrm.ui.login.model.LoginResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -79,4 +80,7 @@ interface ApiInterface {
         @Field("description") description: String?,
         @Field("is_from_autocall") isFromAutoCall: Boolean?
     ): Response<ResponseData<AddNoteOnLeadResponse>>
+
+    @GET("staff_list_get")
+    suspend fun getStaffList(): Response<ResponseData<StaffListResponse>>
 }

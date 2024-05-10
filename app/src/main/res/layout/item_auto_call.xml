@@ -29,18 +29,18 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvUserProfile"
                 style="@style/TextView.bold.14.colorWhite"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/bg_round_menu_selected"
                 android:gravity="center"
-                bind:setTintToMTV="@{`TEXT`}"
-                app:textAllCaps="true"
                 android:text="@{model.company}"
-                app:firstChar="@{model.company}"
-                tools:text="A"
                 android:textAlignment="center"
+                app:firstChar="@{model.company}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="true"
+                bind:setTintToMTV="@{`TEXT`}"
+                tools:text="A" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvCompanyName"
@@ -58,7 +58,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvName"
-                style="@style/TextView.regular.10.color444444"
+                style="@style/TextView.regular.10.color7D7D7D"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -69,52 +69,81 @@
                 app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
                 tools:text="@tools:sample/lorem" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tvUserProfile"
+                android:layout_marginTop="@dimen/_2sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvCompanyName"
                 app:layout_constraintTop_toBottomOf="@id/tvName">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvStatus"
-                    style="@style/TextView.regular.10.color444444"
-                    android:layout_width="0dp"
+                    android:id="@+id/tvLblStatus"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Status:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvStatus"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:ellipsize="end"
                     android:lines="1"
                     android:text="@{model.status}"
-                    tools:text="@tools:sample/lorem" />
+                    app:layout_constraintStart_toEndOf="@id/tvLblStatus"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStatus"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblSource"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Source:"
+                    app:layout_constraintStart_toEndOf="@+id/tvStatus"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStatus" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvSource"
-                    style="@style/TextView.regular.10.color444444"
-                    android:layout_width="0dp"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:ellipsize="end"
                     android:lines="1"
                     android:text="@{model.source}"
-                    tools:text="@tools:sample/lorem" />
+                    app:layout_constraintStart_toEndOf="@id/tvLblSource"
+                    app:layout_constraintTop_toTopOf="@id/tvLblStatus"
+                    tools:text="@tools:sample/first_names" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@color/colorF8F5F6"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@color/grey_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tvUserProfile"
-                app:layout_constraintTop_toBottomOf="@id/tvUserProfile" />
+                app:layout_constraintTop_toBottomOf="@id/clStatus" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,48 +151,103 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivCall"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_call"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/button_gradient_red2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call2"
+                    app:contentPadding="@dimen/_6sdp"
                     app:layout_constraintEnd_toStartOf="@id/ivMail"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <!--  <com.google.android.material.imageview.ShapeableImageView
+                      android:id="@+id/ivCall"
+                      android:layout_width="@dimen/_22sdp"
+                      android:layout_height="@dimen/_22sdp"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/ic_call"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toStartOf="@id/ivMail"
+                      app:layout_constraintHorizontal_chainStyle="spread"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />-->
+
+                <!--    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivMail"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_email"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivWhatsApp"
+                        app:layout_constraintStart_toEndOf="@id/ivCall"
+                        app:layout_constraintTop_toTopOf="parent" />-->
+
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivMail"
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_email"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/button_gradient_blue"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_email3"
+                    app:contentPadding="@dimen/_6sdp"
                     app:layout_constraintEnd_toStartOf="@+id/ivWhatsApp"
                     app:layout_constraintStart_toEndOf="@id/ivCall"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <!--   <com.google.android.material.imageview.ShapeableImageView
+                       android:id="@+id/ivWhatsApp"
+                       android:layout_width="@dimen/_20sdp"
+                       android:layout_height="@dimen/_20sdp"
+                       android:scaleType="fitXY"
+                       android:src="@drawable/ic_whatsapp"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toStartOf="@+id/ivEdit"
+                       app:layout_constraintStart_toEndOf="@id/ivMail"
+                       app:layout_constraintTop_toTopOf="parent" />-->
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivWhatsApp"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_whatsapp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ivEdit"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/button_gradient_light_green"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_whatsapp2"
+                    app:contentPadding="@dimen/_6sdp"
+                    app:layout_constraintEnd_toStartOf="@id/ivEdit"
                     app:layout_constraintStart_toEndOf="@id/ivMail"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivEdit"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:scaleType="fitXY"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/button_gradient_orange"
+                    android:scaleType="centerInside"
                     android:src="@drawable/ic_edit"
+                    app:contentPadding="@dimen/_6sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ivWhatsApp"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <!--   <com.google.android.material.imageview.ShapeableImageView
+                       android:id="@+id/ivEdit"
+                       android:layout_width="@dimen/_20sdp"
+                       android:layout_height="@dimen/_20sdp"
+                       android:scaleType="fitXY"
+                       android:src="@drawable/ic_edit"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toEndOf="@id/ivWhatsApp"
+                       app:layout_constraintTop_toTopOf="parent" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

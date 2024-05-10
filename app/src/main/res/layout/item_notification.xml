@@ -69,7 +69,6 @@
                     bind:setTintToMTV="@{`TEXT`}"
                     tools:text="A" />
 
-
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvNotificationTitle"
                     style="@style/TextView.montserrat.semi.bold.12.color545353"
@@ -79,8 +78,6 @@
                     android:lines="1"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:text="@{model.title}"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    app:layout_constraintBottom_toTopOf="@id/tvNotificationDescription"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvUserProfile"
                     app:layout_constraintTop_toTopOf="@id/tvUserProfile"
@@ -98,7 +95,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvNotificationTitle"
                     app:layout_constraintStart_toEndOf="@+id/tvUserProfile"
-                    app:layout_constraintBottom_toBottomOf="@id/tvUserProfile"
                     tools:text="@tools:sample/lorem" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -108,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
+                    android:visibility="visible"
                     android:text="@{model.timeDate}"
                     android:textColor="@color/color7D7D7D"
                     app:layout_constraintEnd_toEndOf="parent"
