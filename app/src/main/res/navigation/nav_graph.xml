@@ -67,7 +67,11 @@
         android:id="@+id/tasksFragment"
         android:name="com.softwareallin1.aioscrm.ui.tasks.ui.TasksFragment"
         android:label="TasksFragment"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks" >
+        <action
+            android:id="@+id/action_tasksFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.softwareallin1.aioscrm.ui.notification.ui.NotificationFragment"
@@ -137,4 +141,8 @@
         android:name="com.softwareallin1.aioscrm.ui.leads.ui.AddLeadFragment"
         android:label="AddLeadFragment"
         tools:layout="@layout/fragment_add_lead" />
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.softwareallin1.aioscrm.ui.tasks.ui.AddTaskFragment"
+        android:label="AddTaskFragment" />
 </navigation>

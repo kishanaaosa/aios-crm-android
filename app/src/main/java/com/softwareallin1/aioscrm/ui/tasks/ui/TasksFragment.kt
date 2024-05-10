@@ -11,6 +11,7 @@ import com.softwareallin1.aioscrm.bind.GenericRecyclerViewAdapter
 import com.softwareallin1.aioscrm.databinding.FragmentTasksBinding
 import com.softwareallin1.aioscrm.databinding.ItemTaskBinding
 import com.softwareallin1.aioscrm.ui.tasks.model.TaskModel
+import com.softwareallin1.aioscrm.ui.leads.ui.LeadsFragmentDirections
 import com.softwareallin1.aioscrm.ui.tasks.viewmodel.TasksViewModel
 import com.softwareallin1.aioscrm.utils.CommonFunctionHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,9 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
     override fun initializeScreenVariables() {
         getDataBinding().viewModel = viewModel
         viewModel.initVariables()
+        getDataBinding().fabAddTask.setOnClickListener {
+            (activity as MainActivity).navigateToNextScreenThroughDirections(TasksFragmentDirections.actionTasksFragmentToAddTaskFragment())
+        }
         val list: ArrayList<TaskModel> = arrayListOf()
         for (i in 0..100) {
             if (i % 2 == 0) {

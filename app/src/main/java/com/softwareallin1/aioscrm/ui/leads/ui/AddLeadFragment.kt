@@ -37,14 +37,42 @@ class AddLeadFragment : FragmentBase<AddLeadViewModel, FragmentAddLeadBinding>()
     }
 
     private fun setUpAllDropDowns() {
-        val items = arrayListOf<String>()
-        items.add("New")
-        items.add("New")
-        items.add("New")
-        items.add("New")
-        items.add("New")
-        val adapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, items) }
-        getDataBinding().actStatus.setAdapter(adapter)
+
+        val statusItems = arrayListOf<String>()
+        statusItems.add("New")
+        statusItems.add("New")
+        statusItems.add("New")
+        statusItems.add("New")
+        statusItems.add("New")
+        val statusAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, statusItems) }
+        getDataBinding().actStatus.setAdapter(statusAdapter)
+
+        val sourceItems = arrayListOf<String>()
+        sourceItems.add("New")
+        sourceItems.add("New")
+        sourceItems.add("New")
+        sourceItems.add("New")
+        sourceItems.add("New")
+        val sourceAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, sourceItems) }
+        getDataBinding().actSource.setAdapter(sourceAdapter)
+
+        val staffItems = arrayListOf<String>()
+        staffItems.add("New")
+        staffItems.add("New")
+        staffItems.add("New")
+        staffItems.add("New")
+        staffItems.add("New")
+        val staffAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, staffItems) }
+        getDataBinding().actStaff.setAdapter(staffAdapter)
+
+        val countryItems = arrayListOf<String>()
+        countryItems.add("New")
+        countryItems.add("New")
+        countryItems.add("New")
+        countryItems.add("New")
+        countryItems.add("New")
+        val countryAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, countryItems) }
+        getDataBinding().actCountry.setAdapter(countryAdapter)
 
     }
 

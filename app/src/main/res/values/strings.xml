@@ -54,8 +54,11 @@
     <string name="lbl_billable" translatable="false">Billable</string>
     <string name="lbl_count" translatable="false">Enter Count</string>
 
+    <string name="error_enter_status">Please enter status</string>
+    <string name="error_enter_source">Please enter source</string>
+    <string name="error_enter_staff">Please enter staff</string>
     <string name="error_enter_name">Please enter name</string>
-    <string name="error_enter_pos">Please enter subject</string>
+    <string name="error_enter_pos">Please enter position</string>
     <string name="error_enter_web">Please enter website</string>
     <string name="error_enter_number">Please enter phone Number</string>
     <string name="error_enter_leadvalue">Please enter lead Value</string>
@@ -77,8 +80,6 @@
     <string name="error_enter_search">Please enter search</string>
     <string name="error_enter_total">Please enter total</string>
     <string name="lbl_save">Save</string>
-
-
 
 
     <string name="error_enter_save">saved</string>
