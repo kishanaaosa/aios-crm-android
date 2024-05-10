@@ -4,10 +4,10 @@
     <corners
         android:bottomLeftRadius="@dimen/_17sdp"
         android:bottomRightRadius="@dimen/_17sdp" />
-    <solid
-        android:color="@color/colorGradientStart"/>
-   <!-- <gradient
+   <!-- <solid
+        android:color="@color/colorGradientStart"/>-->
+    <gradient
         android:angle="90"
         android:endColor="@color/colorGradientEnd"
-        android:startColor="@color/colorGradientStart" />-->
+        android:startColor="@color/colorGradientStart" />
 </shape>
