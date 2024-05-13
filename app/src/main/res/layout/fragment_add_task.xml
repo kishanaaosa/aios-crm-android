@@ -66,9 +66,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/actPriority"
-                        android:fontFamily="@font/montserrat_semi_bold"
-                        android:textColor="@color/color444444"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:text="@={viewModel.priority}"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,10 +90,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etSubject"
+                        android:text="@={viewModel.subject}"
                         android:maxLength="30"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp" />
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,16 +107,16 @@
                     app:startIconDrawable="@drawable/ic_monetization_24"
                     app:startIconTint="@color/color6E394A"
                     app:counterEnabled="true"
-                    android:maxLength="20"
                     app:counterMaxLength="20">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etRate"
+                        android:maxLength="20"
+                        android:text="@={viewModel.hourlyRate}"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp" />
+                        android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,9 +139,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/etStartDate"
                         android:maxLength="20"
+                        android:text="@={viewModel.startDate}"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,9 +164,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/etDueDate"
                         android:maxLength="20"
+                        android:text="@={viewModel.dueDate}"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,10 +183,10 @@
                         android:id="@+id/actRepeat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="@dimen/_12sdp"
+                        android:text="@={viewModel.repeat}"
                         android:inputType="none"
-                        android:textColor="@color/color444444"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -208,6 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etTotal"
+                        android:text="@={viewModel.total}"
                         android:maxLength="40"
                         style="@style/TextInputEditText.regular.11.color444444" />
 
@@ -230,6 +231,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etPos"
+                        android:text="@={viewModel.related}"
                         android:maxLength="50"
                         style="@style/TextInputEditText.regular.11.color444444"/>
 
@@ -252,10 +254,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etSearch"
+                        android:text="@={viewModel.search}"
                         android:maxLength="50"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp" />
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -279,9 +281,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/etDesc"
                         android:maxLength="200"
+                        android:text="@={viewModel.desc}"
                         style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="textMultiLine"
-                        android:textSize="@dimen/_12sdp" />
+                        android:inputType="textMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -289,7 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/cbBillable"
-                    android:checked="true"
+                    android:checked="@={viewModel.billable}"
                     android:text="@string/lbl_billable"
                     app:buttonTint="@color/color6DC99B" />
 
@@ -304,12 +306,11 @@
             android:id="@+id/btnAddTask"
             style="@style/Button.bold.12.colorWhite"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:text="Add Task"
+            android:onClick="@{()-> viewModel.taskValidation()}"
+            android:text="@string/add_task"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toEndOf="@id/guidelineStart"/>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,10 +19,10 @@ class AddTaskFragment : FragmentBase<AddTaskViewModel, FragmentAddTaskBinding>()
             ToolbarModel(
                 isVisible = true,
                 title = "Add Task",
-                isBackButtonVisible = false,
-                isBottomNavVisible = true,
-                isNotificationVisible = true,
-                isMenuVisible = true
+                isBackButtonVisible = true,
+                isBottomNavVisible = false,
+                isNotificationVisible = false,
+                isMenuVisible = false
             )
         )
     }
@@ -40,9 +40,9 @@ class AddTaskFragment : FragmentBase<AddTaskViewModel, FragmentAddTaskBinding>()
         repeatItems.add("New")
         repeatItems.add("New")
         repeatItems.add("New")
+
         val reapetAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, repeatItems) }
         getDataBinding().actRepeat.setAdapter(reapetAdapter)
-
 
         val priorityItems = arrayListOf<String>()
         priorityItems.add("New")
@@ -50,8 +50,8 @@ class AddTaskFragment : FragmentBase<AddTaskViewModel, FragmentAddTaskBinding>()
         priorityItems.add("New")
         priorityItems.add("New")
         priorityItems.add("New")
-        val priorityAdapter =
-            context?.let { ArrayAdapter(it, R.layout.item_spinner, priorityItems) }
+
+        val priorityAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, priorityItems) }
         getDataBinding().actPriority.setAdapter(priorityAdapter)
 
     }

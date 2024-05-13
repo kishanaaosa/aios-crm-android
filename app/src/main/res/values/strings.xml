@@ -42,8 +42,8 @@
     <string name="lbl_is_public">Is Public</string>
     <string name="lbl_custom_fields">Custom Fields</string>
     <string name="lbl_set_date">Select Date</string>
-    <string name="lbl_select_priority" translatable="false">Please select priority</string>
-    <string name="lbl_select_subject" translatable="false">Please enter subject</string>
+    <string name="lbl_select_priority" translatable="false">Please Select Priority</string>
+    <string name="lbl_select_subject" translatable="false">Please Enter Subject</string>
     <string name="lbl_hourly_rate" translatable="false">Hourly Rate</string>
     <string name="lbl_due_date" translatable="false">Due Date</string>
     <string name="lbl_start_date" translatable="false">Start Date</string>
@@ -84,6 +84,7 @@
 
     <string name="error_enter_save">saved</string>
     <string name="add_task">Add Task</string>
+    <string name="add_lead">Add Lead</string>
 
 
 </resources>
