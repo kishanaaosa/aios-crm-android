@@ -87,8 +87,8 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
         binding.layoutSideMenuDrawer.tvName.text = mPref.getValueString(PrefKey.USER_NAME, "Guest")
         binding.layoutSideMenuDrawer.btnMyAccount.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
-            //navHostFragment.findNavController().navigate(R.id.myAccountFragment)
+            //Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+            navHostFragment.findNavController().navigate(R.id.myAccountFragment)
         }
 
         sideMenuList = getSideMenuList()

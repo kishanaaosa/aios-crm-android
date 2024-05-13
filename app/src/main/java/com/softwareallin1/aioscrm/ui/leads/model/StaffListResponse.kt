@@ -8,5 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 class StaffListResponse {
-
+    @JsonProperty("staff_listing")
+    var staffList: ArrayList<Staff>? = arrayListOf()
 }

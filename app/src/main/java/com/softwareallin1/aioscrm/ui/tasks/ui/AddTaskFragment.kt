@@ -35,21 +35,22 @@ class AddTaskFragment : FragmentBase<AddTaskViewModel, FragmentAddTaskBinding>()
     private fun setUpAllDropDowns() {
 
         val repeatItems = arrayListOf<String>()
-        repeatItems.add("New")
-        repeatItems.add("New")
-        repeatItems.add("New")
-        repeatItems.add("New")
-        repeatItems.add("New")
+        repeatItems.add("Week")
+        repeatItems.add("2 Week")
+        repeatItems.add("1 Month")
+        repeatItems.add("2 Month")
+        repeatItems.add("3 Month")
+        repeatItems.add("6 Month")
+        repeatItems.add("1 Year")
 
         val reapetAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, repeatItems) }
         getDataBinding().actRepeat.setAdapter(reapetAdapter)
 
         val priorityItems = arrayListOf<String>()
-        priorityItems.add("New")
-        priorityItems.add("New")
-        priorityItems.add("New")
-        priorityItems.add("New")
-        priorityItems.add("New")
+        priorityItems.add("Low")
+        priorityItems.add("Medium")
+        priorityItems.add("High")
+        priorityItems.add("Urgent")
 
         val priorityAdapter = context?.let { ArrayAdapter(it, R.layout.item_spinner, priorityItems) }
         getDataBinding().actPriority.setAdapter(priorityAdapter)
