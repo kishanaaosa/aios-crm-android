@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.softwareallin1.aioscrm.ui.leads.viewmodel.AddLeadViewModel"/>
+            type="com.softwareallin1.aioscrm.ui.leads.viewmodel.AddLeadViewModel" />
 
     </data>
 
@@ -66,389 +66,373 @@
                         android:id="@+id/actStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="@dimen/_12sdp"
                         android:inputType="none"
                         android:text="@={viewModel.status}"
-                        android:textColor="@color/color444444"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="@dimen/_5sdp"
                     style="@style/TextInputLayoutStyleWithDropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/lbl_source"
                     app:hintEnabled="true"
                     app:startIconDrawable="@drawable/ic_source"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actSource"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/actSource"
-                        android:fontFamily="@font/montserrat_semi_bold"
                         android:inputType="none"
-                        android:textColor="@color/color444444"
+                        android:textSize="@dimen/_12sdp"
                         android:text="@={viewModel.source}"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutStyleWithDropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:hintEnabled="true"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/lbl_assigned"
+                    app:hintEnabled="true"
                     app:startIconDrawable="@drawable/ic_assigned"
-                    app:startIconTint="@color/color6E394A"
-                    style="@style/TextInputLayoutStyleWithDropDown">
+                    app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actStaff"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/actStaff"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="@dimen/_12sdp"
                         android:text="@={viewModel.staff}"
-                        android:textColor="@color/color444444"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tlName"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/lbl_name"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_name"
                     app:counterEnabled="true"
                     app:counterMaxLength="30"
                     app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_name"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etName"
-                        android:maxLength="30"
-                        style="@style/TextInputEditText.regular.11.color444444"
                         android:inputType="textPersonName"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.name}"/>
+                        android:maxLength="30"
+                        android:text="@={viewModel.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tlPos"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/lbl_position"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_board_24"
-                    app:startIconTint="@color/color6E394A"
-                    app:endIconMode="clear_text"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="20">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etPos"
-                        android:maxLength="20"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:text="@={viewModel.position}"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tlEmail"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/lbl_email"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_mail_24"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="40"
-                    app:endIconMode="clear_text"
-                    app:startIconTint="@color/color6E394A">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etEmail"
-                        android:maxLength="40"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="textEmailAddress"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.email}"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tlWeb"
-                    android:hint="@string/lbl_website"
-                    style="@style/TextInputLayoutStyle"
-                    app:hintEnabled="true"
-                    app:endIconMode="clear_text"
-                    app:startIconContentDescription="@string/lbl_website"
-                    app:startIconTint="@color/color6E394A"
-                    app:startIconDrawable="@drawable/ic_web_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etWeb"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="textPersonName"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.website}"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tlPhone"
-                    style="@style/TextInputLayoutStyle"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/lbl_phone"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_phone_24"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="12"
-                    app:endIconMode="clear_text"
-                    app:startIconTint="@color/color6E394A">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etPhone"
-                        android:maxLength="12"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="number"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.phoneNumber}"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tlLeadValue"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/lbl_lead_value"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_monetization_24"
                     app:counterEnabled="true"
                     app:counterMaxLength="20"
                     app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_board_24"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPos"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etLeadValue"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="numberSigned"
-                        android:textSize="@dimen/_12sdp"
                         android:maxLength="20"
-                        android:text="@={viewModel.leadValue}"/>
+                        android:text="@={viewModel.position}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlEmail"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/TextInputLayoutStyle"
-                    android:id="@+id/tlCompany"
-                    app:hintEnabled="true"
-                    android:hint="@string/lbl_company"
-                    app:startIconDrawable="@drawable/ic_work_24"
-                    app:startIconTint="@color/color6E394A"
+                    android:hint="@string/lbl_email"
                     app:counterEnabled="true"
-                    android:maxLength="50"
-                    app:counterMaxLength="50">
+                    app:counterMaxLength="40"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_mail_24"
+                    app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etCompany"
-                        style="@style/TextInputEditText.regular.11.color444444"
-                        android:inputType="text"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.companyName}"/>
+                        android:inputType="textEmailAddress"
+                        android:maxLength="40"
+                        android:text="@={viewModel.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlWeb"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/lbl_website"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconContentDescription="@string/lbl_website"
+                    app:startIconDrawable="@drawable/ic_web_24"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWeb"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModel.website}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlPhone"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/lbl_phone"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="12"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_phone_24"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhone"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:text="@={viewModel.phoneNumber}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlLeadValue"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_lead_value"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_monetization_24"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLeadValue"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberSigned"
+                        android:maxLength="20"
+                        android:text="@={viewModel.leadValue}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlCompany"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_company"
+                    android:maxLength="50"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_work_24"
+                    app:startIconTint="@color/color6E394A">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCompany"
+                        style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="@={viewModel.companyName}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tlAddress"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/lbl_address"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_location_24"
                     app:counterEnabled="true"
                     app:counterMaxLength="200"
                     app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_location_24"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddress"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etAddress"
-                        android:maxLength="200"
-                        style="@style/TextInputEditText.regular.11.color444444"
                         android:inputType="text"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.address}"/>
+                        android:maxLength="200"
+                        android:text="@={viewModel.address}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tlCity"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/lbl_city"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_location_24"
                     app:counterEnabled="true"
                     app:counterMaxLength="50"
                     app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_location_24"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/etCity"
                         style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLength="50"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.city}"/>
+                        android:text="@={viewModel.city}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tlState"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/lbl_state"
-                    app:hintEnabled="true"
-                    app:startIconDrawable="@drawable/ic_location_24"
                     app:counterEnabled="true"
                     app:counterMaxLength="50"
                     app:endIconMode="clear_text"
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_location_24"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etState"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etState"
-                        android:maxLength="50"
-                        style="@style/TextInputEditText.regular.11.color444444"
                         android:inputType="text"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.state}"/>
+                        android:maxLength="50"
+                        android:text="@={viewModel.state}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/tlCountry"
                     style="@style/TextInputLayoutStyleWithDropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="@string/lbl_country"
                     app:hintEnabled="true"
                     app:startIconDrawable="@drawable/ic_location_24"
                     app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/actCountry"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="@dimen/_12sdp"
                         android:inputType="none"
                         android:text="@={viewModel.country}"
-                        android:textColor="@color/color444444"
-                        android:textSize="@dimen/_12ssp" />
-
+                        android:textColor="@color/color444444" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlZipCode"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tlZipCode"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/lbl_zip_code"
-                    style="@style/TextInputLayoutStyle"
-                    app:hintEnabled="true"
                     app:endIconMode="clear_text"
-                    app:startIconTint="@color/color6E394A"
-                    app:startIconDrawable="@drawable/ic_my_location_24">
+                    app:hintEnabled="true"
+                    app:startIconDrawable="@drawable/ic_my_location_24"
+                    app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/etZipCode"
                         style="@style/TextInputEditText.regular.11.color444444"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.zipCode}"/>
+                        android:text="@={viewModel.zipCode}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlDesc"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tlDesc"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/lbl_description"
-                    app:counterMaxLength="200"
                     app:counterEnabled="true"
-                    style="@style/TextInputLayoutStyle"
-                    app:hintEnabled="true"
+                    app:counterMaxLength="200"
                     app:endIconMode="clear_text"
-                    app:startIconTint="@color/color6E394A"
+                    app:hintEnabled="true"
                     app:startIconContentDescription="@string/lbl_description"
-                    app:startIconDrawable="@drawable/ic_file_copy_24">
+                    app:startIconDrawable="@drawable/ic_file_copy_24"
+                    app:startIconTint="@color/color6E394A">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDesc"
+                        style="@style/TextInputEditText.regular.11.color444444"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etDesc"
-                        android:maxLength="200"
-                        style="@style/TextInputEditText.regular.11.color444444"
                         android:inputType="textMultiLine"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="@={viewModel.desc}"/>
+                        android:maxLength="200"
+                        android:text="@={viewModel.desc}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cbContactedToday"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/cbContactedToday"
-                    android:text="@string/lbl_contacted_today"
                     android:checked="@={viewModel.isContractToday()}"
+                    android:text="@string/lbl_contacted_today"
                     app:buttonTint="@color/color6DC99B" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cbIsPublic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/cbIsPublic"
                     android:checked="@={viewModel.isPublic()}"
                     android:text="@string/lbl_is_public"
                     app:buttonTint="@color/color6DC99B" />
@@ -463,9 +447,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
             android:onClick="@{()->viewModel.leadValidation()}"
-            android:text="Add Lead"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/add_lead"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineStart" />
