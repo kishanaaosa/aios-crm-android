@@ -9,6 +9,7 @@ import com.softwareallin1.aioscrm.ui.home.model.CheckAttendanceResponse
 import com.softwareallin1.aioscrm.ui.leads.model.LeadsResponse
 import com.softwareallin1.aioscrm.ui.leads.model.StaffListResponse
 import com.softwareallin1.aioscrm.ui.login.model.LoginResponse
+import com.softwareallin1.aioscrm.ui.tasks.model.TaskListResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Field
@@ -39,7 +40,7 @@ interface ApiInterface {
         @Part("lat") lat: String?,
         @Part("long") long: String?,
         @Part image: MultipartBody.Part?
-        ): Response<ResponseData<FillAttendanceResponse>>
+    ): Response<ResponseData<FillAttendanceResponse>>
 
     @GET("staff_attendance_get/{staffId}")
     suspend fun checkAttendance(
@@ -83,4 +84,9 @@ interface ApiInterface {
 
     @GET("staff_list_get")
     suspend fun getStaffList(): Response<ResponseData<StaffListResponse>>
+
+    @GET("get_tasks/{staffId}")
+    suspend fun getTasks(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<TaskListResponse>>
 }

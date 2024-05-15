@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.softwareallin1.aioscrm.ui.tasks.model.TaskModel" />
+            type="com.softwareallin1.aioscrm.ui.tasks.model.Task" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:text="@{model.title}"
+                    android:text="@{model.name}"
                     app:layout_constraintEnd_toStartOf="@id/tvStatus"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -127,7 +127,7 @@
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:text="@{model.startDate}"
+                    android:text="@{model.startdate}"
                     app:layout_constraintEnd_toStartOf="@id/tvLblEndDate"
                     app:layout_constraintStart_toEndOf="@id/tvLblStartDate"
                     app:layout_constraintTop_toTopOf="@id/tvLblStartDate"
@@ -141,7 +141,7 @@
                     android:layout_marginStart="@dimen/_4sdp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:text="@{model.endDate}"
+                    android:text="@{model.enddate}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvLblStartDate"
                     tools:text="@tools:sample/first_names" />
