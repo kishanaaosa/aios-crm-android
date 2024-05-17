@@ -81,10 +81,25 @@
     <string name="error_enter_total">Please enter total</string>
     <string name="lbl_save">Save</string>
 
+    <string name="lbl_email_notify" translatable="false">Email Notification</string>
+    <string name="lbl_sms" translatable="false">SMS Notification</string>
+    <string name="lbl_related" translatable="false">Related</string>
+    <string name="lbl_date_time" translatable="false">Date Time</string>
+    <string name="lbl_attendance" translatable="false">Attendance</string>
+    <string name="lbl_appointment" translatable="false">Appointment Type</string>
+    <string name="lbl_location" translatable="false">Appointment Location ( optional )</string>
+    <string name="lbl_note">Please mark the checkboxs as checked if you "n" want selected attendes and contact to recieve "\n" reminders eg. if set 30 minutes before the "\n" appointment start. Note that this feature "\n" requires cron job to be configured</string>
 
     <string name="error_enter_save">saved</string>
     <string name="add_task">Add Task</string>
     <string name="add_lead">Add Lead</string>
+    <string name="add_appointment">Add Appointment</string>
+
+    <string name="error_enter_appointment">Please enter Appointment</string>
+    <string name="error_enter_attendance">Please enter Attendance</string>
+    <string name="error_enter_dateTime">Please enter Date and Time</string>
+    <string name="error_enter_attendance_type">Please enter attendance type</string>
+
 
 
 </resources>
