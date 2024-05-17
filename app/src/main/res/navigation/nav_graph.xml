@@ -62,7 +62,11 @@
         android:id="@+id/appointlyFragment"
         android:name="com.softwareallin1.aioscrm.ui.appointly.ui.AppointlyFragment"
         android:label="AppointlyFragment"
-        tools:layout="@layout/fragment_appointly" />
+        tools:layout="@layout/fragment_appointly" >
+        <action
+            android:id="@+id/action_appointlyFragment_to_addAppointmentFragment"
+            app:destination="@id/addAppointmentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.softwareallin1.aioscrm.ui.tasks.ui.TasksFragment"
@@ -145,4 +149,8 @@
         android:id="@+id/addTaskFragment"
         android:name="com.softwareallin1.aioscrm.ui.tasks.ui.AddTaskFragment"
         android:label="AddTaskFragment" />
+    <fragment
+        android:id="@+id/addAppointmentFragment"
+        android:name="com.softwareallin1.aioscrm.ui.appointly.ui.AddAppointmentFragment"
+        android:label="AddAppointmentFragment" />
 </navigation>

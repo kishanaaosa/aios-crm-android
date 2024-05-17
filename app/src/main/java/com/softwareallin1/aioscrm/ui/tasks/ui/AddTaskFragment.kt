@@ -14,7 +14,7 @@ class AddTaskFragment : FragmentBase<AddTaskViewModel, FragmentAddTaskBinding>()
     override fun getLayoutId(): Int = R.layout.fragment_add_task
 
     override fun setupToolbar() {
-        (activity as MainActivity).setStatusBarColor(R.color.white, true)
+        ((activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false))
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,
