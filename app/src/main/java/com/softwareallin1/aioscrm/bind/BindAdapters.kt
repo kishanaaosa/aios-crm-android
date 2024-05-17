@@ -37,6 +37,69 @@ class BindAdapters {
             }
         }
 
+        @BindingAdapter("setAppointmentStatusWiseColors")
+        @JvmStatic
+        fun setAppointmentStatusWiseColors(textView: TextView, text: String?) {
+            when (text) {
+                "Finished" -> {
+                    textView.background =
+                        ContextCompat.getDrawable(textView.context, R.drawable.outline_green)
+                    textView.setTextColor(
+                        ContextCompat.getColor(
+                            textView.context,
+                            R.color.colorGradientStart
+                        )
+                    )
+                }
+
+                "Pending Approval" -> {
+                    textView.background =
+                        ContextCompat.getDrawable(textView.context, R.drawable.outline_orange)
+                    textView.setTextColor(
+                        ContextCompat.getColor(
+                            textView.context,
+                            R.color.colorGradientStartC73B1C
+                        )
+                    )
+                }
+
+                "Missed" -> {
+                    textView.background =
+                        ContextCompat.getDrawable(textView.context, R.drawable.outline_pink)
+                    textView.setTextColor(
+                        ContextCompat.getColor(
+                            textView.context,
+                            R.color.color_F50057
+                        )
+                    )
+                }
+
+                "Cancelled" -> {
+                    textView.background =
+                        ContextCompat.getDrawable(textView.context, R.drawable.outline_blue)
+                    textView.setTextColor(
+                        ContextCompat.getColor(
+                            textView.context,
+                            R.color.color_1976D2
+                        )
+                    )
+                }
+
+                else -> {
+                    textView.background =
+                        ContextCompat.getDrawable(textView.context, R.drawable.outline_blue)
+                    textView.setTextColor(
+                        ContextCompat.getColor(
+                            textView.context,
+                            R.color.colorGradientEnd131D32
+                        )
+                    )
+                }
+
+            }
+
+        }
+
 
         /**
          * load image from url

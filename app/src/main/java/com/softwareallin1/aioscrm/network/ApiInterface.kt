@@ -1,5 +1,6 @@
 package com.softwareallin1.aioscrm.network
 
+import com.softwareallin1.aioscrm.ui.appointly.model.AppointmentResponse
 import com.softwareallin1.aioscrm.ui.attendance.model.FillAttendanceResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.AddNoteOnLeadResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.AutoCallLeadsResponse
@@ -89,4 +90,9 @@ interface ApiInterface {
     suspend fun getTasks(
         @Path("staffId") staffId: String
     ): Response<ResponseData<TaskListResponse>>
+
+    @GET("get_appointments/{staffId}")
+    suspend fun getAppointments(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<AppointmentResponse>>
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.softwareallin1.aioscrm.ui.appointly.model.AppointmentModel" />
+            type="com.softwareallin1.aioscrm.ui.appointly.model.Appointment" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -59,15 +59,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
-                android:background="@{model.status.equals(`Missed`)?@drawable/outline_pink:@drawable/outline_blue}"
                 android:ellipsize="end"
                 android:lines="1"
+                setAppointmentStatusWiseColors="@{model.status}"
                 android:paddingStart="@dimen/_8sdp"
                 android:paddingEnd="@dimen/_8sdp"
                 android:text="@{model.status}"
-                android:textColor="@{model.status.equals(`Missed`)?@color/color_F50057:@color/color_1976D2}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:background="@drawable/outline_red"
                 tools:text="@tools:sample/lorem" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -116,7 +116,7 @@
                 android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@{model.title}"
+                android:text="@{model.subject}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view"

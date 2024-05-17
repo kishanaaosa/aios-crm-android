@@ -62,7 +62,7 @@
                     style="@style/TextView.regular.10.color545353"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@{model.status.equals(`Pending`)?@drawable/outline_pink:@drawable/outline_blue}"
+                    android:background="@{model.status.equals(`Pending`)?@drawable/outline_red:@drawable/outline_blue}"
                     android:ellipsize="end"
                     android:lines="1"
                     android:paddingStart="@dimen/_8sdp"

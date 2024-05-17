@@ -84,6 +84,8 @@ class TasksFragment : FragmentBase<TasksViewModel, FragmentTasksBinding>() {
     }
 
     private fun setUpTasks(list: ArrayList<Task>?) {
+        viewModel.totalRecords.value = list?.size.toString()
+
         if (list?.size == 0) {
             showNoDataFound()
         } else {
