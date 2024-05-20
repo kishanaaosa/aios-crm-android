@@ -1,27 +1,21 @@
 package com.softwareallin1.aioscrm.ui.leads.ui
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
 import com.softwareallin1.aioscrm.MainActivity
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
-import com.softwareallin1.aioscrm.databinding.FragmentProfileDetailBinding
+import com.softwareallin1.aioscrm.databinding.FragmentLeadDetailsBinding
 import com.softwareallin1.aioscrm.ui.leads.ui.tabs.ProfileFragment
-import com.softwareallin1.aioscrm.ui.leads.viewmodel.ProfileDetailViewModel
+import com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadDetailsViewModel
 import com.softwareallin1.aioscrm.ui.todo.adapter.ProfileTabsViewPagerAdapter
-import com.softwareallin1.aioscrm.ui.todo.ui.FinishedToDoFragment
-import com.softwareallin1.aioscrm.ui.todo.ui.UnfinishedToDoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileDetailFragment : FragmentBase<ProfileDetailViewModel,FragmentProfileDetailBinding>(){
+class LeadDetailsFragment : FragmentBase<LeadDetailsViewModel,FragmentLeadDetailsBinding>(){
 
-    override fun getLayoutId(): Int = R.layout.fragment_profile_detail
+    override fun getLayoutId(): Int = R.layout.fragment_lead_details
 
     override fun setupToolbar() {
         (activity as MainActivity).setStatusBarColor(R.color.colorGradientEnd, false)
@@ -53,10 +47,10 @@ class ProfileDetailFragment : FragmentBase<ProfileDetailViewModel,FragmentProfil
         fragmentArrayList.add(ProfileFragment())
 
         fragmentNameArrayList.add("Profile")
-        fragmentNameArrayList.add("Proposal")
-        fragmentNameArrayList.add("Tasks")
-        fragmentNameArrayList.add("Attachment")
+        fragmentNameArrayList.add("Task")
         fragmentNameArrayList.add("Reminders")
+        fragmentNameArrayList.add("Notes")
+        fragmentNameArrayList.add("Activity Logs")
         
         val adapter =
             ProfileTabsViewPagerAdapter(
@@ -72,7 +66,7 @@ class ProfileDetailFragment : FragmentBase<ProfileDetailViewModel,FragmentProfil
 
     }
 
-    override fun getViewModelClass(): Class<ProfileDetailViewModel> = ProfileDetailViewModel::class.java
+    override fun getViewModelClass(): Class<LeadDetailsViewModel> = LeadDetailsViewModel::class.java
 
     override fun getViewModelIsSharedViewModel(): Boolean = true
 

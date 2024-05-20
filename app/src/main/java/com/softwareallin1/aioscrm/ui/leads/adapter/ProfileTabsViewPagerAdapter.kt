@@ -20,6 +20,9 @@ class ProfileTabsViewPagerAdapter(
         return when (position) {
             0 -> return fragmentArrayList[0]
             1 -> return fragmentArrayList[1]
+            2 -> return fragmentArrayList[2]
+            3 -> return fragmentArrayList[3]
+            4 -> return fragmentArrayList[4]
             else -> {
                 return fragmentArrayList[0]
             }

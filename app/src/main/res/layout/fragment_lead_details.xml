@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.leads.ui.ProfileDetailFragment">
+        tools:context=".ui.leads.ui.LeadDetailsFragment">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tbProfileDetail"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/white"
-            app:tabMode="fixed"
+            app:tabMode="auto"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/CustomTabTextAppearanceTab"
             app:tabTextColor="@color/white" />

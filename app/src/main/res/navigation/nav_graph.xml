@@ -158,6 +158,6 @@
         android:label="AddAppointmentFragment" />
     <fragment
         android:id="@+id/profileDetailFragment"
-        android:name="com.softwareallin1.aioscrm.ui.leads.ui.ProfileDetailFragment"
+        android:name="com.softwareallin1.aioscrm.ui.leads.ui.LeadDetailsFragment"
         android:label="ProfileDetailFragment" />
 </navigation>
