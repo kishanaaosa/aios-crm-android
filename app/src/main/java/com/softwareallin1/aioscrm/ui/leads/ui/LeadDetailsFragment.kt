@@ -22,7 +22,7 @@ class LeadDetailsFragment : FragmentBase<LeadDetailsViewModel,FragmentLeadDetail
         viewModel.setToolbarItems(
             ToolbarModel(
                 isVisible = true,
-                title = "Profile Detail",
+                title = "Lead Details",
                 isBackButtonVisible = true,
                 isBottomNavVisible = false,
                 isNotificationVisible = false,
