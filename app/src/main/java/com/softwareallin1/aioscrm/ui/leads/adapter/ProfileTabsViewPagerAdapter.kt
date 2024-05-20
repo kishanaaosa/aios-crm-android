@@ -1,4 +1,4 @@
-package com.softwareallin1.aioscrm.ui.todo.adapter
+package com.softwareallin1.aioscrm.ui.leads.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

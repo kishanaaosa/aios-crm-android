@@ -7,7 +7,7 @@ import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
 import com.softwareallin1.aioscrm.databinding.FragmentToDoBinding
-import com.softwareallin1.aioscrm.ui.todo.adapter.ProfileTabsViewPagerAdapter
+import com.softwareallin1.aioscrm.ui.todo.adapter.ToDoTabsViewPagerAdapter
 import com.softwareallin1.aioscrm.ui.todo.viewmodel.ToDoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,7 +45,7 @@ class ToDoFragment : FragmentBase<ToDoViewModel, FragmentToDoBinding>() {
         fragmentNameArrayList.add("Finished(5)")
 
         val adapter =
-            ProfileTabsViewPagerAdapter(
+            ToDoTabsViewPagerAdapter(
                 requireActivity().supportFragmentManager,
                 lifecycle,
                 fragmentArrayList
