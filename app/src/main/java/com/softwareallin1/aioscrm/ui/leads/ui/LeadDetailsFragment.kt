@@ -7,9 +7,10 @@ import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
 import com.softwareallin1.aioscrm.databinding.FragmentLeadDetailsBinding
+import com.softwareallin1.aioscrm.ui.leads.adapter.ProfileTabsViewPagerAdapter
+import com.softwareallin1.aioscrm.ui.leads.ui.tabs.LeadTasksFragment
 import com.softwareallin1.aioscrm.ui.leads.ui.tabs.ProfileFragment
 import com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadDetailsViewModel
-import com.softwareallin1.aioscrm.ui.todo.adapter.ProfileTabsViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +42,7 @@ class LeadDetailsFragment : FragmentBase<LeadDetailsViewModel,FragmentLeadDetail
         val fragmentNameArrayList: ArrayList<String> = arrayListOf()
 
         fragmentArrayList.add(ProfileFragment())
-        fragmentArrayList.add(ProfileFragment())
+        fragmentArrayList.add(LeadTasksFragment())
         fragmentArrayList.add(ProfileFragment())
         fragmentArrayList.add(ProfileFragment())
         fragmentArrayList.add(ProfileFragment())
