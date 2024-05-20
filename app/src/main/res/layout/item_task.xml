@@ -30,7 +30,7 @@
                 style="@style/TextView.montserrat.semi.bold.12.white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@{model.priority.equals(`High`)?@drawable/bg_priority_high:@drawable/bg_priority_low}"
+                android:background="@{model.priority.equals(`High`)?@drawable/bg_priority_high: model.priority.equals(`Low`)?@drawable/bg_priority_low:@drawable/bg_priority_medium}"
                 android:ellipsize="end"
                 android:lines="1"
                 android:padding="@dimen/_4sdp"
