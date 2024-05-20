@@ -32,6 +32,8 @@ class NotificationFragment : FragmentBase<NotificationViewModel, FragmentNotific
     }
 
     override fun initializeScreenVariables() {
+        viewModel.initVariables()
+        setUpObserver()
         val list: ArrayList<NotificationModel> = arrayListOf()
         list.add(
             NotificationModel(
@@ -133,6 +135,10 @@ class NotificationFragment : FragmentBase<NotificationViewModel, FragmentNotific
             )
         )
         setUpNotification(list)
+    }
+
+    private fun setUpObserver() {
+
     }
 
     private fun setUpNotification(notificationList: ArrayList<NotificationModel>?) {

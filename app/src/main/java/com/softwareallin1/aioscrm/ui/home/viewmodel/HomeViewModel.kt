@@ -11,6 +11,7 @@ import com.softwareallin1.aioscrm.utils.SingleLiveEvent
 import com.softwareallin1.aioscrm.utils.sharedpref.MyPreference
 import com.softwareallin1.aioscrm.utils.sharedpref.PrefKey
 import com.example.android_practical.ui.home.CallerModel
+import com.softwareallin1.aioscrm.ui.home.model.HomeResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +23,7 @@ class HomeViewModel @Inject constructor(
 ) : ViewModelBase() {
 
     lateinit var checkAttendanceResponse: MutableLiveData<ResponseHandler<ResponseData<CheckAttendanceResponse>?>>
+    lateinit var homeResponse: MutableLiveData<ResponseHandler<ResponseData<HomeResponse>?>>
 
 
     lateinit var onStartCalling: SingleLiveEvent<Boolean>
@@ -130,6 +132,7 @@ class HomeViewModel @Inject constructor(
         logsList = arrayListOf()
         onStartCalling = SingleLiveEvent()
         checkAttendanceResponse = MutableLiveData<ResponseHandler<ResponseData<CheckAttendanceResponse>?>>()
+        homeResponse = MutableLiveData<ResponseHandler<ResponseData<HomeResponse>?>>()
     }
 
     fun onStartCalling() {
@@ -139,7 +142,13 @@ class HomeViewModel @Inject constructor(
     fun checkAttendance() {
         viewModelScope.launch {
             checkAttendanceResponse.postValue(ResponseHandler.Loading)
-            checkAttendanceResponse.value = repository.checkAttendance(myPreference.getValueString(PrefKey.STAFF_ID,"0").toString())
+            checkAttendanceResponse.value = repository.checkAttendance()
+        }
+    }
+    fun getHomeData() {
+        viewModelScope.launch {
+            homeResponse.postValue(ResponseHandler.Loading)
+            homeResponse.value = repository.getHomeData()
         }
     }
 

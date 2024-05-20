@@ -68,6 +68,8 @@ class LoginFragment : FragmentBase<LoginViewModel, FragmentLoginBinding>() {
             userDetails?.firstname.toString() + " " + userDetails?.lastname.toString()
         )
         mPref.setValueString(PrefKey.STAFF_ID, userDetails?.staffid.toString())
+        mPref.setValueString(PrefKey.EMAIL, userDetails?.email.toString())
+        mPref.setValueString(PrefKey.PROFILE_IMAGE, userDetails?.profileImage.toString())
         mPref.setValueBoolean(PrefKey.IS_LOGIN, true)
         (activity as MainActivity).setupSideMenu()
         (activity as MainActivity).navigateToNextScreenThroughDirections(LoginFragmentDirections.actionLoginFragmentToHomeFragment())

@@ -37,7 +37,7 @@
                 app:layout_constraintGuide_end="@dimen/_8sdp" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvFinishedTask"
+                android:id="@+id/cvAppointment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -48,22 +48,22 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clFinishedTask"
+                    android:id="@+id/clAppointment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="@dimen/_16sdp">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/ivFinishedTasks"
+                        android:id="@+id/ivFinishedAppointment"
                         android:layout_width="@dimen/_18sdp"
                         android:layout_height="@dimen/_18sdp"
                         android:tint="@color/color6DC99B"
-                        app:layout_constraintStart_toStartOf="@id/clFinishedTask"
-                        app:layout_constraintTop_toTopOf="@id/clFinishedTask"
+                        app:layout_constraintStart_toStartOf="@id/clAppointment"
+                        app:layout_constraintTop_toTopOf="@id/clAppointment"
                         app:srcCompat="@drawable/ic_task" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/lblTaskNotFinished"
+                        android:id="@+id/lblAppointmentNotFinished"
                         style="@style/TextView.regular.10.color444444"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -71,25 +71,25 @@
                         android:layout_marginEnd="@dimen/_4sdp"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="Tasks not Finished"
+                        android:text="Opened Appointments"
                         android:textAllCaps="true"
-                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedTasks"
-                        app:layout_constraintEnd_toStartOf="@+id/tvTaskCounts"
-                        app:layout_constraintStart_toEndOf="@id/ivFinishedTasks"
-                        app:layout_constraintTop_toTopOf="@id/ivFinishedTasks" />
+                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedAppointment"
+                        app:layout_constraintEnd_toStartOf="@+id/tvAppointmentCounts"
+                        app:layout_constraintStart_toEndOf="@id/ivFinishedAppointment"
+                        app:layout_constraintTop_toTopOf="@id/ivFinishedAppointment" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvTaskCounts"
+                        android:id="@+id/tvAppointmentCounts"
                         style="@style/TextView.regular.10.color444444"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
                         android:text="18/25"
-                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedTasks"
-                        app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
-                        app:layout_constraintStart_toEndOf="@id/lblTaskNotFinished"
-                        app:layout_constraintTop_toTopOf="@id/ivFinishedTasks" />
+                        app:layout_constraintBottom_toBottomOf="@id/ivFinishedAppointment"
+                        app:layout_constraintEnd_toEndOf="@id/clAppointment"
+                        app:layout_constraintStart_toEndOf="@id/lblAppointmentNotFinished"
+                        app:layout_constraintTop_toTopOf="@id/ivFinishedAppointment" />
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:id="@+id/pb"
@@ -97,9 +97,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:progress="70"
-                        app:layout_constraintEnd_toEndOf="@id/clFinishedTask"
-                        app:layout_constraintStart_toStartOf="@id/ivFinishedTasks"
-                        app:layout_constraintTop_toBottomOf="@id/ivFinishedTasks" />
+                        app:layout_constraintEnd_toEndOf="@id/clAppointment"
+                        app:layout_constraintStart_toStartOf="@id/ivFinishedAppointment"
+                        app:layout_constraintTop_toBottomOf="@id/ivFinishedAppointment" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,7 +115,7 @@
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                 app:layout_constraintStart_toEndOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@id/cvFinishedTask">
+                app:layout_constraintTop_toBottomOf="@id/cvAppointment">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clOpenedTask"

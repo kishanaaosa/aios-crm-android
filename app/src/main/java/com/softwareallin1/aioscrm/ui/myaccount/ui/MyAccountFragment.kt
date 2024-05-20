@@ -9,7 +9,7 @@ import com.softwareallin1.aioscrm.ui.myaccount.viewmodel.MyAccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MyAccountFragment : FragmentBase<MyAccountViewModel,FragmentMyAccountBinding>() {
+class MyAccountFragment : FragmentBase<MyAccountViewModel, FragmentMyAccountBinding>() {
     override fun getLayoutId(): Int = R.layout.fragment_my_account
 
     override fun setupToolbar() {
@@ -27,6 +27,8 @@ class MyAccountFragment : FragmentBase<MyAccountViewModel,FragmentMyAccountBindi
     }
 
     override fun initializeScreenVariables() {
+        getDataBinding().viewModel = viewModel
+        viewModel.initVariables()
     }
 
     override fun getViewModelClass(): Class<MyAccountViewModel> = MyAccountViewModel::class.java

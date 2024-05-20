@@ -7,9 +7,11 @@ import com.softwareallin1.aioscrm.ui.autocall.model.AutoCallLeadsResponse
 import com.softwareallin1.aioscrm.ui.autocall.model.ChangeLeadStatusResponse
 import com.softwareallin1.aioscrm.ui.calls.model.CallLogListResponse
 import com.softwareallin1.aioscrm.ui.home.model.CheckAttendanceResponse
+import com.softwareallin1.aioscrm.ui.home.model.HomeResponse
 import com.softwareallin1.aioscrm.ui.leads.model.LeadsResponse
 import com.softwareallin1.aioscrm.ui.leads.model.StaffListResponse
 import com.softwareallin1.aioscrm.ui.login.model.LoginResponse
+import com.softwareallin1.aioscrm.ui.notification.model.NotificationResponse
 import com.softwareallin1.aioscrm.ui.tasks.model.TaskListResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -95,4 +97,14 @@ interface ApiInterface {
     suspend fun getAppointments(
         @Path("staffId") staffId: String
     ): Response<ResponseData<AppointmentResponse>>
+
+    @GET("dashboard_get/{staffId}")
+    suspend fun getHomeData(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<HomeResponse>>
+
+    @GET("notification_get/{staffId}")
+    suspend fun getNotification(
+        @Path("staffId") staffId: String
+    ): Response<ResponseData<NotificationResponse>>
 }

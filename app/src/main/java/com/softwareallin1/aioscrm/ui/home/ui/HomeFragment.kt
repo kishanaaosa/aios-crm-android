@@ -22,6 +22,7 @@ import com.softwareallin1.aioscrm.utils.permissions.Permission
 import com.softwareallin1.aioscrm.utils.permissions.PermissionManager
 import com.softwareallin1.aioscrm.utils.sharedpref.PrefKey
 import com.example.android_practical.ui.home.CallerModel
+import com.softwareallin1.aioscrm.ui.home.model.HomeResponse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -60,6 +61,7 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
         setUpObserver()
         checkPermissions()
         viewModel.checkAttendance()
+        //viewModel.getHomeData()
     }
 
     private fun setUpObserver() {
@@ -91,6 +93,29 @@ class HomeFragment : FragmentBase<HomeViewModel, FragmentHomeBinding>() {
                             HomeFragmentDirections.actionHomeFragmentToFillAttendanceFragment()
                         )
                     }
+                }
+            }
+        })
+
+        viewModel.homeResponse.observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                return@Observer
+            }
+            when (it) {
+                is ResponseHandler.Empty -> {
+
+                }
+                is ResponseHandler.Loading -> {
+                    viewModel.showProgressBar(true)
+                }
+
+                is ResponseHandler.OnFailed -> {
+                    viewModel.showProgressBar(false)
+                    httpFailedHandler(it.code, it.message, it.messageCode)
+                }
+
+                is ResponseHandler.OnSuccessResponse<ResponseData<HomeResponse>?> -> {
+                    viewModel.showProgressBar(false)
                 }
             }
         })
