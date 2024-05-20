@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_leadsFragment_to_addLeadFragment"
             app:destination="@id/addLeadFragment" />
+        <action
+            android:id="@+id/action_leadsFragment_to_profileDetailFragment"
+            app:destination="@id/profileDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/callsFragment"
@@ -153,4 +156,8 @@
         android:id="@+id/addAppointmentFragment"
         android:name="com.softwareallin1.aioscrm.ui.appointly.ui.AddAppointmentFragment"
         android:label="AddAppointmentFragment" />
+    <fragment
+        android:id="@+id/profileDetailFragment"
+        android:name="com.softwareallin1.aioscrm.ui.leads.ui.ProfileDetailFragment"
+        android:label="ProfileDetailFragment" />
 </navigation>

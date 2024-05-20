@@ -57,7 +57,7 @@
                     style="@style/TextInputLayoutStyleWithDropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/lbl_status"
+                    android:hint="@string/lbl_enter_status"
                     app:hintEnabled="true"
                     app:startIconDrawable="@drawable/ic_status2"
                     app:startIconTint="@color/color6E394A">
