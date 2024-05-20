@@ -130,6 +130,7 @@ class LeadsFragment : FragmentBase<LeadsViewModel, FragmentLeadsBinding>() {
                     }
 
                     override fun onItemClick(model: LeadsList, position: Int) {
+                        (activity as MainActivity).navigateToNextScreenThroughDirections(LeadsFragmentDirections.actionLeadsFragmentToProfileDetailFragment())
                     }
                 }
         }

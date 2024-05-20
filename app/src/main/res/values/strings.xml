@@ -6,6 +6,7 @@
     <string name="lbl_forgot_your_password">Forgot your password?</string>
     <string name="lbl_password">Password</string>
     <string name="lbl_email">Email</string>
+    <string name="lbl_default_language">Default Language</string>
     <string name="lbl_or">or</string>
     <string name="error_enter_email_password">Please enter email and password</string>
     <string name="error_enter_email">Please enter email</string>
@@ -24,21 +25,28 @@
     <string name="company">Company: %s</string>
     <string name="default_notification_channel_id">aios_crm_default_notification</string>
     <string name="lbl_name">Name</string>
-    <string name="lbl_status">Please Select Status</string>
+    <string name="lbl_enter_status">Please Select Status</string>
     <string name="lbl_source">Please Select Source</string>
     <string name="lbl_assigned">Assign a staff</string>
+    <string name="lbl_assine">Assigned</string>
     <string name="lbl_position">Position</string>
     <string name="lbl_website">Website</string>
+    <string name="lbl_tags">Tags</string>
+    <string name="lbl_Created">Created</string>
+    <string name="lbl_gender">Gender</string>
     <string name="lbl_phone">PhoneNumber</string>
     <string name="lbl_lead_value">Lead Value</string>
+    <string name="lbl_last_contact">Last Contact</string>
     <string name="lbl_company">Company Name</string>
     <string name="lbl_address">Address</string>
     <string name="lbl_city">City</string>
     <string name="lbl_state">State</string>
+    <string name="lbl_status">Status</string>
     <string name="lbl_zip_code">Zip Code</string>
     <string name="lbl_description">Please enter description</string>
     <string name="lbl_country">Please select Country</string>
     <string name="lbl_contacted_today">Contacted Today</string>
+    <string name="lbl_public">Public</string>
     <string name="lbl_is_public">Is Public</string>
     <string name="lbl_custom_fields">Custom Fields</string>
     <string name="lbl_set_date">Select Date</string>
@@ -53,6 +61,7 @@
     <string name="lbl_search" translatable="false">Search</string>
     <string name="lbl_billable" translatable="false">Billable</string>
     <string name="lbl_count" translatable="false">Enter Count</string>
+    <string name="lbl_source_">Source</string>
 
     <string name="error_enter_status">Please enter status</string>
     <string name="error_enter_source">Please enter source</string>
@@ -100,6 +109,10 @@
     <string name="error_enter_dateTime">Please enter Date and Time</string>
     <string name="error_enter_attendance_type">Please enter attendance type</string>
 
+
+    <string name="lbl_leads_info">Leads Info</string>
+    <string name="lbl_"></string>
+    <string name="general_information">General Information</string>
 
 
 </resources>
