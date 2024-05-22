@@ -160,4 +160,28 @@
         android:id="@+id/profileDetailFragment"
         android:name="com.softwareallin1.aioscrm.ui.leads.ui.LeadDetailsFragment"
         android:label="ProfileDetailFragment" />
+    <fragment
+        android:id="@+id/creditNotesFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.CreditNotesFragment"
+        android:label="CreditNotesFragment" />
+    <fragment
+        android:id="@+id/estimatesFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.EstimatesFragment"
+        android:label="EstimatesFragment" />
+    <fragment
+        android:id="@+id/invoicesFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.InvoicesFragment"
+        android:label="InvoicesFragment" />
+    <fragment
+        android:id="@+id/paymentsFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.PaymentsFragment"
+        android:label="PaymentsFragment" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.ProductFragment"
+        android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/proposalsFragment"
+        android:name="com.softwareallin1.aioscrm.ui.sales.ui.ProposalsFragment"
+        android:label="ProposalsFragment" />
 </navigation>

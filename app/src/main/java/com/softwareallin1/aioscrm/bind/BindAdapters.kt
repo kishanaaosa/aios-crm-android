@@ -1,6 +1,7 @@
 package com.softwareallin1.aioscrm.bind
 
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
@@ -10,8 +11,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.palette.graphics.Palette
 import coil.load
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.SimpleTarget
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.softwareallin1.aioscrm.R
@@ -130,6 +134,30 @@ class BindAdapters {
                 view.setImageResource(R.mipmap.ic_launcher)
             }
         }
+
+        @JvmStatic
+        @BindingAdapter("app:loadImageGlide")
+        fun loadImageGlide(imageView: ImageView, url: String?) {
+            Glide.with(imageView)
+                .asBitmap()
+                .load(url)
+                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_background)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(object : SimpleTarget<Bitmap?>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: com.bumptech.glide.request.transition.Transition<in Bitmap?>?
+                    ) {
+                        Palette.from(resource).generate { palette ->
+                            imageView.setBackgroundColor(palette!!.getLightVibrantColor(com.google.android.material.R.attr.colorAccent))
+                        }
+                    }
+                })
+
+            imageView.clipToOutline = true
+        }
+
 
 
         @BindingAdapter("bind:hintWithAsterisk")

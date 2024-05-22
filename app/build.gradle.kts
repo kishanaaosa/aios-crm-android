@@ -81,6 +81,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.palette:palette-ktx:1.0.0")
     val hilt_version = "2.45"
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
     implementation("androidx.core:core-ktx:1.9.0")

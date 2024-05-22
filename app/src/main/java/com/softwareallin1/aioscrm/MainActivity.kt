@@ -126,8 +126,8 @@ class MainActivity : AppCompatActivity(), HomeToolbarClickHandler {
                         }
 
                         "menuOption2" -> {
-                            Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
-                           // navHostFragment.findNavController().navigate(R.id.salesFragment)
+                            //Toast.makeText(this@MainActivity, "Coming soon!!", Toast.LENGTH_LONG).show()
+                            navHostFragment.findNavController().navigate(R.id.salesFragment)
 
                         }
 
