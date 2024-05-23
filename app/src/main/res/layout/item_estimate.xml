@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.softwareallin1.aioscrm.ui.sales.model.Estimate" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_3sdp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPriority"
+                style="@style/TextView.montserrat.semi.bold.12.white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{model.status.equals(`Open`)?@drawable/bg_priority_high: model.status.equals(`Accepted`)?@drawable/bg_priority_low:@drawable/bg_priority_medium}"
+                android:ellipsize="end"
+                android:lines="1"
+                android:padding="@dimen/_4sdp"
+                android:text="@{model.status}"
+                android:textAlignment="center"
+                tools:background="@drawable/bg_priority_high"
+                tools:text="@tools:sample/lorem" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_8sdp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -94,8 +94,8 @@ class ProposalsFragment : FragmentBase<SalesViewModel, FragmentProposalsBinding>
                 arrayListOf("Appointment", "Interview", "Shaps","Closed")
             )
         )
-        //setUpProposals(list)
-        setUpProposals(arrayListOf())
+        setUpProposals(list)
+        //setUpProposals(arrayListOf())
     }
 
     private fun setUpProposals(list: ArrayList<Proposal>?) {
