@@ -8,27 +8,28 @@ import android.view.ViewGroup
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.bind.GenericRecyclerViewAdapter
-import com.softwareallin1.aioscrm.databinding.FragmentLeadTasksBinding
-import com.softwareallin1.aioscrm.databinding.FragmentProfileBinding
-import com.softwareallin1.aioscrm.databinding.ItemNotificationBinding
+import com.softwareallin1.aioscrm.databinding.FragmentLeadReminderBinding
+import com.softwareallin1.aioscrm.databinding.ItemLeadReminderBinding
 import com.softwareallin1.aioscrm.databinding.ItemTaskBinding
+import com.softwareallin1.aioscrm.ui.leads.repository.LeadsRepository
 import com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadDetailsViewModel
+import com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadsViewModel
 import com.softwareallin1.aioscrm.ui.notification.model.NotificationModel
 import com.softwareallin1.aioscrm.utils.CommonFunctionHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LeadTasksFragment : FragmentBase<LeadDetailsViewModel, FragmentLeadTasksBinding>(){
+class LeadReminderFragment : FragmentBase<LeadDetailsViewModel, FragmentLeadReminderBinding>() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_lead_tasks
+    override fun getLayoutId(): Int = R.layout.fragment_lead_reminder
 
-    override fun setupToolbar() {  }
+    override fun setupToolbar() { }
 
     override fun initializeScreenVariables() {
-        setupLeadsTasksList()
+        setupLeadReminderList()
     }
 
-    fun setupLeadsTasksList() {
+    fun setupLeadReminderList() {
         val list: ArrayList<NotificationModel> = arrayListOf()
         list.add(
             NotificationModel(
@@ -130,29 +131,28 @@ class LeadTasksFragment : FragmentBase<LeadDetailsViewModel, FragmentLeadTasksBi
             )
         )
 
-        setupLeadsTasks(list)
+        setupLeadReminder(list)
     }
 
-
-    private fun setupLeadsTasks(tasksList: ArrayList<NotificationModel>?) {
+    private fun setupLeadReminder(tasksList: ArrayList<NotificationModel>?) {
         if (tasksList?.size == 0) {
             showNoDataFound()
         } else {
-            getDataBinding().rvTasks.adapter = object :
-                GenericRecyclerViewAdapter<NotificationModel, ItemTaskBinding>(
+            getDataBinding().rvReminder.adapter = object :
+                GenericRecyclerViewAdapter<NotificationModel, ItemLeadReminderBinding>(
                     requireContext(),
                     tasksList
                 ) {
                 override val layoutResId: Int
-                    get() = R.layout.item_task
+                    get() = R.layout.item_lead_reminder
 
                 override fun onBindData(
                     model: NotificationModel,
                     position: Int,
-                    dataBinding: ItemTaskBinding
+                    dataBinding: ItemLeadReminderBinding
                 ) {
                     CommonFunctionHelper.setFadeAnimation(dataBinding.root)
-               
+
                     dataBinding.executePendingBindings()
                 }
 
@@ -165,10 +165,12 @@ class LeadTasksFragment : FragmentBase<LeadDetailsViewModel, FragmentLeadTasksBi
 
     private fun showNoDataFound() {
         getDataBinding().clNoDataFound.visibility = View.VISIBLE
-        getDataBinding().rvTasks.visibility = View.GONE
+        getDataBinding().rvReminder.visibility = View.GONE
     }
 
-    override fun getViewModelClass(): Class<LeadDetailsViewModel> = LeadDetailsViewModel::class.java
+
+    override fun getViewModelClass(): Class<LeadDetailsViewModel>
+    = LeadDetailsViewModel::class.java
 
     override fun getViewModelIsSharedViewModel(): Boolean = true
 

@@ -8,6 +8,8 @@ import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.base.ToolbarModel
 import com.softwareallin1.aioscrm.databinding.FragmentLeadDetailsBinding
 import com.softwareallin1.aioscrm.ui.leads.adapter.ProfileTabsViewPagerAdapter
+import com.softwareallin1.aioscrm.ui.leads.ui.tabs.LeadNotesFragment
+import com.softwareallin1.aioscrm.ui.leads.ui.tabs.LeadReminderFragment
 import com.softwareallin1.aioscrm.ui.leads.ui.tabs.LeadTasksFragment
 import com.softwareallin1.aioscrm.ui.leads.ui.tabs.ProfileFragment
 import com.softwareallin1.aioscrm.ui.leads.viewmodel.LeadDetailsViewModel
@@ -43,8 +45,8 @@ class LeadDetailsFragment : FragmentBase<LeadDetailsViewModel,FragmentLeadDetail
 
         fragmentArrayList.add(ProfileFragment())
         fragmentArrayList.add(LeadTasksFragment())
-        fragmentArrayList.add(ProfileFragment())
-        fragmentArrayList.add(ProfileFragment())
+        fragmentArrayList.add(LeadReminderFragment())
+        fragmentArrayList.add(LeadNotesFragment())
         fragmentArrayList.add(ProfileFragment())
 
         fragmentNameArrayList.add("Profile")

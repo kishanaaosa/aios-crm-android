@@ -47,7 +47,6 @@
                 bind:setTintToMTV="@{`TEXT`}"
                 tools:text="A" />
 
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTitle"
                 style="@style/TextView.montserrat.semi.bold.10.color444444"
@@ -117,6 +116,7 @@
                 app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
 </layout>
