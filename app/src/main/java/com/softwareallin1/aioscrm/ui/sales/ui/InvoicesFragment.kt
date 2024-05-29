@@ -1,6 +1,8 @@
 package com.softwareallin1.aioscrm.ui.sales.ui
 
 import android.view.View
+import androidx.core.content.ContextCompat
+import com.google.android.material.chip.Chip
 import com.softwareallin1.aioscrm.R
 import com.softwareallin1.aioscrm.base.FragmentBase
 import com.softwareallin1.aioscrm.bind.GenericRecyclerViewAdapter
@@ -20,6 +22,138 @@ class InvoicesFragment : FragmentBase<SalesViewModel, FragmentInvoicesBinding>()
 
     override fun initializeScreenVariables() {
         val list: ArrayList<Invoice> = arrayListOf()
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
+        list.add(
+            Invoice(
+                "Paid",
+                "Vasol Automobile",
+                "5000",
+                "New Project",
+                "500",
+                arrayListOf("Appointment", "Interview", "Shaps", "Closed"),
+                "2 Feb 2023",
+                "2 Feb 2023"
+            )
+        )
         setUpCreditNotes(list)
     }
 
@@ -42,6 +176,26 @@ class InvoicesFragment : FragmentBase<SalesViewModel, FragmentInvoicesBinding>()
                 ) {
                     CommonFunctionHelper.setFadeAnimation(dataBinding.root)
                     dataBinding.model = model
+                    for (item in model.tags ?: arrayListOf()) {
+                        val chip = Chip(requireContext())
+                        chip.text = item
+                        chip.chipStrokeWidth = resources.getDimension(com.intuit.sdp.R.dimen._1sdp)
+                        chip.chipBackgroundColor =
+                            ContextCompat.getColorStateList(context, R.color.white)
+                        chip.chipStrokeColor = ContextCompat.getColorStateList(
+                            context,
+                            R.color.colorGradientStartC73B1C
+                        )
+                        chip.setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.colorGradientStartC73B1C
+                            )
+                        )
+
+                        chip.chipCornerRadius = resources.getDimension(com.intuit.sdp.R.dimen._8sdp)
+                        dataBinding.chipGroup.addView(chip)
+                    }
                     dataBinding.executePendingBindings()
                 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,6 +24,163 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_8sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblCustomer"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Customer:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCustomer"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.customer}"
+                app:layout_constraintEnd_toStartOf="@id/tvLblAmount"
+                app:layout_constraintStart_toEndOf="@id/tvLblCustomer"
+                app:layout_constraintTop_toTopOf="@id/tvLblCustomer"
+                tools:text="@tools:sample/full_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvAmount"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.amount}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLblCustomer"
+                tools:text="@tools:sample/first_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblAmount"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Amount:"
+                app:layout_constraintEnd_toStartOf="@+id/tvAmount"
+                app:layout_constraintTop_toTopOf="@id/tvLblCustomer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblPaymentMode"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Payment Mode:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblCustomer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPaymentMode"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.paymentMode}"
+                app:layout_constraintEnd_toStartOf="@id/tvLblInvoice"
+                app:layout_constraintStart_toEndOf="@id/tvLblPaymentMode"
+                app:layout_constraintTop_toTopOf="@id/tvLblPaymentMode"
+                tools:text="@tools:sample/full_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvInvoice"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.invoice}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLblPaymentMode"
+                tools:text="@tools:sample/first_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblInvoice"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Invoice:"
+                app:layout_constraintEnd_toStartOf="@+id/tvInvoice"
+                app:layout_constraintTop_toTopOf="@id/tvLblPaymentMode" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblTransactionId"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Transaction ID:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblPaymentMode" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTransactionId"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.transactionId}"
+                app:layout_constraintEnd_toStartOf="@id/tvLblDate"
+                app:layout_constraintStart_toEndOf="@id/tvLblTransactionId"
+                app:layout_constraintTop_toTopOf="@id/tvLblTransactionId"
+                tools:text="@tools:sample/full_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDate"
+                style="@style/TextView.regular.10.color7D7D7D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{model.invoice}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLblTransactionId"
+                tools:text="@tools:sample/date/ddmmyy" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLblDate"
+                style="@style/TextView.regular.10.color545353"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Date:"
+                app:layout_constraintEnd_toStartOf="@+id/tvDate"
+                app:layout_constraintTop_toTopOf="@id/tvLblTransactionId" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

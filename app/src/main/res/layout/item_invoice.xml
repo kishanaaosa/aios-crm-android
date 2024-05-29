@@ -44,6 +44,183 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/_8sdp">
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblCustomer"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Customer:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCustomer"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.customer}"
+                    app:layout_constraintEnd_toStartOf="@id/tvLblAmount"
+                    app:layout_constraintStart_toEndOf="@id/tvLblCustomer"
+                    app:layout_constraintTop_toTopOf="@id/tvLblCustomer"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAmount"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.amount}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLblCustomer"
+                    tools:text="@tools:sample/first_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblAmount"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Amount:"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAmount"
+                    app:layout_constraintTop_toTopOf="@id/tvLblCustomer" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblProject"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Project:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLblCustomer" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvProject"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.customer}"
+                    app:layout_constraintEnd_toStartOf="@id/tvLblTotalTax"
+                    app:layout_constraintStart_toEndOf="@id/tvLblProject"
+                    app:layout_constraintTop_toTopOf="@id/tvLblProject"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTotalTax"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.totalTex}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLblProject"
+                    tools:text="@tools:sample/first_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblTotalTax"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Total Tax:"
+                    app:layout_constraintEnd_toStartOf="@+id/tvTotalTax"
+                    app:layout_constraintTop_toTopOf="@id/tvLblProject" />
+
+                <HorizontalScrollView
+                    android:id="@+id/hsChip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvLblProject">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:singleLine="true" />
+
+                </HorizontalScrollView>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblDate"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Date Created:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hsChip" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDate"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.date}"
+                    app:layout_constraintEnd_toStartOf="@id/tvLblDueDate"
+                    app:layout_constraintStart_toEndOf="@id/tvLblDate"
+                    app:layout_constraintTop_toTopOf="@id/tvLblDate"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDueDate"
+                    style="@style/TextView.regular.10.color7D7D7D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{model.dueDate}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvLblDate"
+                    tools:text="@tools:sample/first_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLblDueDate"
+                    style="@style/TextView.regular.10.color545353"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Due Date:"
+                    app:layout_constraintEnd_toStartOf="@+id/tvDueDate"
+                    app:layout_constraintTop_toTopOf="@id/tvLblDate" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>

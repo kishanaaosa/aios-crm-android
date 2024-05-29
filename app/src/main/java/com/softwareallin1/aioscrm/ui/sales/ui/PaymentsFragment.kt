@@ -20,6 +20,96 @@ class PaymentsFragment : FragmentBase<SalesViewModel, FragmentPaymentsBinding>()
 
     override fun initializeScreenVariables() {
         val list: ArrayList<Payment> = arrayListOf()
+        list.add(
+            Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+            )
+        )
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
+        list.add(Payment(
+            "Vasole Automobile",
+            "5000",
+            "Cash",
+            "INV-0001",
+            "TID-0002",
+            "16 Feb 2023",
+        ))
         setUpCreditNotes(list)
     }
 

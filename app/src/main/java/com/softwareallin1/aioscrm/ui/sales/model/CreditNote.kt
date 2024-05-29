@@ -7,5 +7,5 @@ data class CreditNote(
     var project: String,
     var reference: String,
     var remainingAmount: String,
-    var createdNotDate: String
+    var date: String
 )

@@ -20,7 +20,7 @@ class CreditNotesFragment : FragmentBase<SalesViewModel, FragmentCreditNotesBind
 
     override fun initializeScreenVariables() {
         val list: ArrayList<CreditNote> = arrayListOf()
-      /*  list.add(
+        list.add(
             CreditNote(
                 "Open",
                 " Vsol Automobile",
@@ -30,7 +30,106 @@ class CreditNotesFragment : FragmentBase<SalesViewModel, FragmentCreditNotesBind
                 "New Project",
                 "16 Feb 2023"
             )
-        )*/
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
+        list.add(
+            CreditNote(
+                "Open",
+                " Vsol Automobile",
+                "5000",
+                "New Project",
+                "7000",
+                "New Project",
+                "16 Feb 2023"
+            )
+        )
         setUpCreditNotes(list)
     }
 

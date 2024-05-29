@@ -24,6 +24,138 @@ class EstimatesFragment : FragmentBase<SalesViewModel, FragmentEstimatesBinding>
 
     override fun initializeScreenVariables() {
         val list: ArrayList<Estimate> = arrayListOf()
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
+        list.add(Estimate(
+            "sent",
+            "2 Feb 2023",
+            "2 Feb 2023",
+            "Vasol Automobile",
+            "Lorem",
+            "New Project",
+            "EST-00002",
+            "5000",
+            "500",
+            arrayListOf("Appointment", "Interview", "Shaps","Closed")
+        ))
         setUpEstimates(list)
     }
 
@@ -46,7 +178,7 @@ class EstimatesFragment : FragmentBase<SalesViewModel, FragmentEstimatesBinding>
                 ) {
                     CommonFunctionHelper.setFadeAnimation(dataBinding.root)
                     dataBinding.model = model
-                 /*   for (item in model.tags ?: arrayListOf()) {
+                    for (item in model.tags ?: arrayListOf()) {
                         val chip = Chip(requireContext())
                         chip.text = item
                         chip.chipStrokeWidth = resources.getDimension(com.intuit.sdp.R.dimen._1sdp)
@@ -65,7 +197,7 @@ class EstimatesFragment : FragmentBase<SalesViewModel, FragmentEstimatesBinding>
 
                         chip.chipCornerRadius = resources.getDimension(com.intuit.sdp.R.dimen._8sdp)
                         dataBinding.chipGroup.addView(chip)
-                    }*/
+                    }
                     dataBinding.executePendingBindings()
                 }
 
